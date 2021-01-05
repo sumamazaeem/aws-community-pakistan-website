@@ -1,1 +1,0 @@
-# aws-community-pakistan-website
