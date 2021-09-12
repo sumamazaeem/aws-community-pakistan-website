@@ -623,7 +623,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #FF952A;
   color: #fff;
 }
-
+.btn-warning{
+  background-color: #FF952A!important;
+  color: #fff!important;
+  border: 1px solid #FF952A!important;
+}
+.btn-warning:hover{
+  background-color: none!important;
+  background: none!important;
+  color: #FF952A!important;
+  border: 1px solid #FF952A!important;
+}
 @-webkit-keyframes pulsate-btn {
   0% {
     -webkit-transform: scale(0.6, 0.6);
