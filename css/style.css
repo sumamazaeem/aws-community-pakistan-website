@@ -1887,3 +1887,6 @@ div#socialSharing a span#whatsapp:hover {
 @media screen and (max-width: 980px) {
     .a2a_floating_style.a2a_vertical_style { display: none; }
 }
+.align{
+  text-align: center;
+}
