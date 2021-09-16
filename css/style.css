@@ -20,12 +20,18 @@ a {
   transition: 0.5s;
 }
 
-a:hover,
+
 a:active,
 a:focus {
   color: #f8234a;
   outline: none;
   text-decoration: none;
+}
+
+a:hover {
+  outline: none;
+  text-decoration: none;
+  color: #2f3138;
 }
 
 p {
