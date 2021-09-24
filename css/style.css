@@ -1556,7 +1556,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-
+.padding{
+  padding: 10px;
+}
 #footer {
   background: #101522;
   padding: 0 0 25px 0;
