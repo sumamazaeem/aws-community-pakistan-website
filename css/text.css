@@ -19,7 +19,7 @@ body {
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
   -ms-font-smoothing: antialiased;
-  font-smoothing: antialiased
+  /* font-smoothing: antialiased */
 }
 
 .hidden{
@@ -62,9 +62,7 @@ body {
   -o-transform:rotate(-360deg);
   transform:rotate(-360deg);
 }
-  </style>
 
-  <style>
     #codepen-footer, #codepen-footer * {
       -webkit-box-sizing: border-box !important;
       -moz-box-sizing: border-box !important;
