@@ -695,16 +695,7 @@
       </div>
     </div> -->
 
-    <script>
-      function myMap() {
-      var mapProp= {
-        center:new google.maps.LatLng(31.586249070710878, 74.3457611252922),
-        zoom:5,
-      };
-      var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-      }
-      </script>
-      
+    =
     <div class="section section-3 inv" id="venues">
       <div class="container flex-it">
         <div class="left f1 flex-it">
@@ -713,25 +704,27 @@
           </h4>
           <div class="left_in f1">
             <div id="map">
-              <img src="src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSLi7cPcCyU_JGjEfEaxfO14yvdASwNOE&callback=myMap"" alt="">
+              <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSLi7cPcCyU_JGjEfEaxfO14yvdASwNOE&callback=myMap" alt=""></script> -->
+              
             </div>
           </div>
         </div>
         <div class="right f1">
           <div class="right_in">
-            <div class="ven-1 ven active" data-lat="12.9767814" data-lng="77.6197088" data-label="Conrad Bengaluru">
+            
+            <div class="ven-1 ven active" data-lat="31.57997008137722" data-lng="74.35631829803307" data-label=" ">
               <div class="rand_cls">
-                <span class="date_ori">27th July 2019</span>
+                <span class="date_ori">5th October, 2022</span>
                 <h4 class="headin-ttl">Conference</h4>
               </div>
               <ul>
-                <li><b>Conrad Bengaluru,</b></li>
-                <li>25/3, Kensington Rd, Someshwarpura,</li>
-                <li>Ulsoor, Bengaluru,</li>
-                <li>Karnataka 560008</li>
+                <li><b>UET Lahore</b></li>
+                <li>G.T Road, Staff Houses Engineering University,</li>
+                <li>Lahore, Punjab</li>
+                <li>Pakistan</li>
               </ul>
             </div>
-            <div class="ven-2 ven" data-lat="12.9502273" data-lng="77.6967477" data-label="Radisson Blu">
+            <!-- <div class="ven-2 ven" data-lat="12.9502273" data-lng="77.6967477" data-label="Radisson Blu">
               <div class="rand_cls">
                 <span class="date_ori">26th July 2019</span>
                 <h4 class="headin-ttl">Workshop</h4>
@@ -742,7 +735,7 @@
                 <li>Marathahalli, Bengaluru,</li>
                 <li>Karnataka 560037</li>
               </ul>
-            </div>
+            </div> -->
             <div class="marked"></div>
           </div>
         </div>
@@ -1944,9 +1937,10 @@
     </div>
   </div>
   <script type="text/javascript">
-    var latt = 12.9767814;
-    var lngg = 77.6197088;
-    var venue = "Conrad";
+    // 31.57997008137722, 74.35631829803307
+    var latt = 31.57997008137722;
+    var lngg = 74.35631829803307;
+    var venue = " ";
 
     function setCoords(latt, lngg, venue) {
       this.latt = latt;
@@ -1985,9 +1979,10 @@
         }
       });
     }
+
   </script>
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSK4vqrOG3caqUr6dxAVhA7MrdMmq63q0&callback=initMap"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSLi7cPcCyU_JGjEfEaxfO14yvdASwNOE&callback=initMap"></script>
      <!-- getting utm parameter and passing to konfhub start -->
   <script>
     $(".buy-ticket-link").on("click", ()=> {
