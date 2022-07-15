@@ -691,6 +691,17 @@
         </div>
       </div>
     </div> -->
+
+    <script>
+      function myMap() {
+      var mapProp= {
+        center:new google.maps.LatLng(31.586249070710878, 74.3457611252922),
+        zoom:5,
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+      </script>
+      
     <div class="section section-3 inv" id="venues">
       <div class="container flex-it">
         <div class="left f1 flex-it">
@@ -698,7 +709,9 @@
             Venues
           </h4>
           <div class="left_in f1">
-            <div id="map"></div>
+            <div id="map">
+              <img src="src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSLi7cPcCyU_JGjEfEaxfO14yvdASwNOE&callback=myMap"" alt="">
+            </div>
           </div>
         </div>
         <div class="right f1">
