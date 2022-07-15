@@ -1646,7 +1646,7 @@ ul.circle li {
   cursor: pointer;
   width: 100%;
   margin: auto;
-  height: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
