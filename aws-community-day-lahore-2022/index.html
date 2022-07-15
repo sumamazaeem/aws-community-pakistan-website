@@ -79,12 +79,15 @@
   <!-- onesignal integration -->
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script>  
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "33c59050-95d4-4a66-a1b4-4de51e9c2468",
+  function oneSignal() {
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "33c59050-95d4-4a66-a1b4-4de51e9c2468",
+      });
     });
-  });
+  } 
+  oneSignal();
   </script>
   <!-- onesignal integration -->
 </head>
@@ -177,7 +180,7 @@
             <a href="https://youtu.be/6Y4Xsz7rSTM" target="_blank">Community Day Pakistan 2021</a>
           </li>
           <li>
-            <a href="#subscribe" id="sub-button" class="sub-button">
+            <a href="#subscribe" id="sub-button" class="sub-button" onclick="oneSignal">
               <i class="icon large ion-md-notifications-outline"></i>
             </a>
           </li>
