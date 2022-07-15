@@ -57,15 +57,7 @@
   rel="manifest"
   href="/manifest.json"
   />
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-  <script>
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: "b3f01cfa-1a70-4f46-9dd1-202a1ae14385",
-      });
-    });
-  </script>
+  
   <!-- Facebook Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -85,15 +77,17 @@
   <!-- End Facebook Pixel Code -->
 
   <!-- onesignal integration -->
-  
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script>  
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "33c59050-95d4-4a66-a1b4-4de51e9c2468",
+  function oneSignal() {
+    window.OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "33c59050-95d4-4a66-a1b4-4de51e9c2468",
+      });
     });
-  });
+  } 
+  oneSignal();
   </script>
   <!-- onesignal integration -->
 </head>
@@ -186,7 +180,7 @@
             <a href="https://youtu.be/6Y4Xsz7rSTM" target="_blank">Community Day Pakistan 2021</a>
           </li>
           <li>
-            <a href="#subscribe" id="sub-button" class="sub-button">
+            <a href="#subscribe" id="sub-button" class="sub-button" onclick="oneSignal">
               <i class="icon large ion-md-notifications-outline"></i>
             </a>
           </li>
@@ -700,6 +694,17 @@
         </div>
       </div>
     </div> -->
+
+    <script>
+      function myMap() {
+      var mapProp= {
+        center:new google.maps.LatLng(31.586249070710878, 74.3457611252922),
+        zoom:5,
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+      }
+      </script>
+      
     <div class="section section-3 inv" id="venues">
       <div class="container flex-it">
         <div class="left f1 flex-it">
@@ -707,7 +712,9 @@
             Venues
           </h4>
           <div class="left_in f1">
-            <div id="map"></div>
+            <div id="map">
+              <img src="src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSLi7cPcCyU_JGjEfEaxfO14yvdASwNOE&callback=myMap"" alt="">
+            </div>
           </div>
         </div>
         <div class="right f1">
