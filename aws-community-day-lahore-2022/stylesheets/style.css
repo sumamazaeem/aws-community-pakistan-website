@@ -1408,7 +1408,13 @@ ul.circle li {
     width: calc(100% - 70px);
     margin-left: auto;
   }
+
 }
+
+.coming-soon {
+  color: #232f3f;
+}
+
 /* line 265, ../sass/shared/_home.scss */
 #page .section-2 {
   padding: 100px 0 170px;
@@ -1419,6 +1425,7 @@ ul.circle li {
   /* line 265, ../sass/shared/_home.scss */
   #page .section-2 {
     padding: 0;
+    margin-top: 90vh;
   }
   /* line 271, ../sass/shared/_home.scss */
   #page .section-2 .container {
@@ -2563,7 +2570,7 @@ ul.circle li {
 }
 /* line 1167, ../sass/shared/_home.scss */
 #page .section-tickets.inv {
-  background: transparent;
+  background: #eeeeee;
   box-shadow: none;
 }
 @media only screen and (max-width: 991px) {
