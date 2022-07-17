@@ -38,7 +38,7 @@ body small {
   width: 1200px;
   padding: 0;
   margin: auto;
-  width: 100%;
+  width: 90%;
 }
 
 /* line 33, ../sass/shared/_site.scss */
@@ -1701,7 +1701,8 @@ ul.circle li {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 10px !important;
+    padding: 20px !important;
+    text-align: left !important;
   }
 }
 /* line 491, ../sass/shared/_home.scss */
