@@ -2896,3 +2896,82 @@ i.icon.large {
   width: 200px;
   height: auto;
 }
+
+.volunteers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.voluns {
+  display: grid;
+  gap: 40px 8rem;
+  grid-template-columns: 10% 10% 10% 10% 10% 10%;
+}
+
+@media screen and (max-width:1100px){
+  .voluns {
+    grid-template-columns:  15% 15% 15% 15% 15% ;
+    gap: 40px 6rem;
+  }
+}
+@media screen and (max-width:850px){
+  .voluns {
+    grid-template-columns:  20% 20% 20% ;
+    gap: 40px 6rem;
+  }
+}
+@media screen and (max-width:450px){
+  .voluns {
+    grid-template-columns: 40% 40%  ;
+    gap: 40px 6rem;
+  }
+}
+.volun {
+  width: 100px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.volun .img-area {
+  width: 100px;
+  height: 100px;
+  border-radius: 20%;
+  overflow: hidden;
+}
+
+.volun .img-area p {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 20%;
+  background-color: #232f3f00;
+  position: relative;
+  z-index: 10;
+  top: 0%;
+  left: 0%;
+  color: white;
+  font-size: 70px;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0;
+  transition: 0.3s;
+  cursor: pointer;
+
+}
+
+.volun .img-area p:hover, .volun .img-area img:hover + p{
+  opacity: 1;
+  top:-100%;
+  background-color: #232f3fbd;
+}
+
+.volun .text-area {
+  width: 100px;
+  height: auto;
+  text-align: center;
+}
