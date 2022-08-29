@@ -13,6 +13,9 @@ body *:focus {
   outline: none;
   text-decoration: none;
 }
+a:hover {
+  color: #00acee !important;
+}
 /* line 11, ../sass/shared/_site.scss */
 body * {
   box-sizing: border-box;
@@ -1649,7 +1652,7 @@ ul.circle li {
   cursor: pointer;
   width: 100%;
   margin: auto;
-  height: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1722,7 +1725,7 @@ ul.circle li {
   /* line 522, ../sass/shared/_home.scss */
   #page .section-3 .right .right_in > div {
     padding: 0 15px;
-    width: 50%;
+    width: 100%;
     height: auto;
   }
 }
