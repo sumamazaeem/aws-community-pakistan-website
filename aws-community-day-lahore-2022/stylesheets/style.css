@@ -2978,3 +2978,7 @@ i.icon.large {
   height: auto;
   text-align: center;
 }
+
+#agenda-table td, #agenda-table th {
+  width: 25%;
+}
