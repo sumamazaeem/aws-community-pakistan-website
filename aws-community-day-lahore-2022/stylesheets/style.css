@@ -56,6 +56,19 @@ p {
   margin: 0;
 }
 
+.bg-base {
+  background-color: #232f3f;
+}
+
+.footer::before {
+  display: none !important;
+}
+
+.footer-links > li > a {
+  color: white;
+  
+}
+
 /* line 41, ../sass/shared/_site.scss */
 button,
 .button,
