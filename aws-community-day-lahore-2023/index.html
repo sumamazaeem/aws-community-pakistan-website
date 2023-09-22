@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AWS Community Day Pakistan 2023</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/aws-community-pk-logo150-150x.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/aws-community-pk-logo150-150x.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/aws-community-pk-logo150-150x.png" />
+    <link rel="manifest" href="images/site.webmanifest" />
+    <link rel="mask-icon" href="images/aws-community-pk-logo150-150x.png" color="#5bbad5" />
+    <link rel="shortcut icon" href="images/aws-community-pk-logo150-150x.png" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="images/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/site.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/mystyles.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123754553-1"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .footer {
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 1rem;
+            background-color: #fff;
+            text-align: center;
+            color: #232f3f;
+        }
+
+
+
+        .form-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* CSS for the input field */
+        .newsletter-input {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border-color: #ff9900;
+            color: #232f3f;
+        }
+
+
+
+
+
+
+
+        .cards__copy {
+            text-align: center;
+            padding-bottom: 5rem;
+        }
+
+        .cards__title {
+            font-size: 48px;
+            margin-bottom: 2rem;
+        }
+
+        label.cards__copy-toggle-monthly,
+        label.cards__copy-toggle-annually {
+            text-transform: uppercase;
+            font-weight: 500;
+            color: #aaa;
+            border: 1px solid transparent;
+            padding: 5px;
+        }
+
+        #pricing__monthly:checked~* label.cards__copy-toggle-monthly,
+        #pricing__annually:checked~* label.cards__copy-toggle-annually {
+            color: #262a33;
+            border: 1px solid black;
+        }
+
+        .cards__container {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1280px;
+            padding: 12px;
+        }
+
+
+        .pricing__choice,
+        .card__price-annually,
+        .card__price-monthly {
+            display: none;
+        }
+
+        #pricing__annually:checked~* .card__price-annually,
+        #pricing__monthly:checked~* .card__price-monthly {
+            display: block;
+        }
+
+        .cards__list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            column-gap: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 340px;
+            margin-bottom: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            box-shadow: -2px 2px 12px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card__inner {
+            display: flex;
+            flex-direction: column;
+            /* min-height: 480px; */
+
+        }
+
+        .card__title {
+            font-size: 28px;
+            margin: 2rem 0 2rem 0;
+        }
+
+        .card__price {
+            margin-bottom: 2rem;
+            font-size: 26px;
+            font-weight: 700;
+            background-color: #eee4;
+            padding: 20px 0;
+        }
+
+        .price__type {
+            color: #0006;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .card__feature {
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 3px;
+            color: hsl(233, 13%, 39%);
+            width: 170px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card__feature:last-of-type {
+            margin-bottom: 2rem;
+        }
+
+        .card__feature:not(:last-of-type) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .temp12 {
+            display: inline;
+            border-radius: 10px;
+            padding: 1rem;
+            background-color: #ff9900;
+            color: #fff;
+            margin-left: 1rem;
+        }
+
+        .temp12:hover {
+            color: #fff;
+        }
+
+        @media(max-width: 450px) {
+            .temp12 {
+                display: block;
+                width: auto;
+                text-align: center;
+                padding: 1rem;
+                margin-left: 0rem;
+            }
+        }
+
+        @media (min-width: 960px) {
+            .cards__copy {
+                margin-bottom: 0;
+            }
+
+            .card {
+                max-width: 300px;
+            }
+
+            .cards__list {
+                column-gap: 5px;
+            }
+
+            .card.main__card {
+                transform: scale(1);
+                box-shadow: 0 0 6px rgba(65, 65, 65, 0.1);
+                transform: scale(1.1);
+            }
+
+            .card.main__card .card__price {
+                margin-top: 10px;
+            }
+        }
+
+        .hello {
+            opacity: 1 !important;
+        }
+
+        .full {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .full .content {
+            background-color: rgba(0, 0, 0, 0.75) !important;
+            height: 100%;
+            width: 100%;
+            display: grid;
+        }
+
+        .full .content img {
+            left: 50%;
+            transform: translate3d(0, 0, 0);
+            animation: zoomin 1s ease;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+        }
+
+        .byebye {
+            opacity: 0;
+        }
+
+        .byebye:hover {
+            transform: scale(0.2) !important;
+        }
+
+        .gall {
+            background-color: #232f3f;
+            color: #ff9900;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+
+        }
+
+        .hea {
+            color: #ff9900;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 16px #333;
+            transition: all 1.5s ease;
+        }
+
+        .gallery img:hover {
+            box-shadow: 0 0 32px #333;
+        }
+
+        .gallery .content {
+            padding: 4px;
+        }
+
+        .gallery .gallery-item {
+            transition: all 0.5s ease;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader:before {
+            content: "";
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .gallery .gallery-item:hover {
+            transform: scale(1.025);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            margin: 60px auto;
+        }
+
+        .close-button {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            }
+        }
+
+        @-moz-keyframes zoomin {
+            0% {
+                max-width: 50%;
+                transform: rotate(-30deg);
+                filter: blur(4px);
+            }
+
+            30% {
+                filter: blur(4px);
+                transform: rotate(-80deg);
+            }
+
+            70% {
+                max-width: 50%;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                max-width: 100%;
+                transform: rotate(0deg);
+            }
+        }
+
+        @-webkit-keyframes zoomin {
+            0% {
+                max-width: 50%;
+                transform: rotate(-30deg);
+                filter: blur(4px);
+            }
+
+            30% {
+                filter: blur(4px);
+                transform: rotate(-80deg);
+            }
+
+            70% {
+                max-width: 50%;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                max-width: 100%;
+                transform: rotate(0deg);
+            }
+        }
+
+        @-o-keyframes zoomin {
+            0% {
+                max-width: 50%;
+                transform: rotate(-30deg);
+                filter: blur(4px);
+            }
+
+            30% {
+                filter: blur(4px);
+                transform: rotate(-80deg);
+            }
+
+            70% {
+                max-width: 50%;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                max-width: 100%;
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes zoomin {
+            0% {
+                max-width: 50%;
+                transform: rotate(-30deg);
+                filter: blur(4px);
+            }
+
+            30% {
+                filter: blur(4px);
+                transform: rotate(-80deg);
+            }
+
+            70% {
+                max-width: 50%;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                max-width: 100%;
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "UA-123754553-1");
+    </script>
+    <!-- <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5b63095a78eb8b00113e362f&product=inline-share-buttons"></script>
+    <link rel="manifest" href="/manifest.json" /> -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "b3f01cfa-1a70-4f46-9dd1-202a1ae14385",
+            });
+        });
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1112628635595414');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1112628635595414&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+
+<body>
+    <div id="page">
+        <div class="section section-1 hdr" id="home">
+            <div class="content">
+                <div class="container">
+                    <div>
+                        <div wid="50%" class="left">
+                            <div class="left_in">
+                                <img src="simages/logo.png" />
+                                <div class="txt">
+                                    <h4 class="headin-ttl">
+                                        Coming Soon, Lahore
+                                    </h4>
+                                    <p>
+                                        AWS Community Pakistan is back to host the most awaited event, AWS Community Day Pakistan 2023, unveiling success stories, use cases & much more from industry leaders.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div wid="50%" class="right">
+                            <div class="gal flex-it col">
+                                <div class="top f1 flex-it">
+                                    <div class="f2 ims" style="background-image: url(img/1.jpg);"></div>
+                                    <div class="f1 ims" style="background-image: url(img/2.jpg);"></div>
+                                </div>
+                                <div class="bot f1 flex-it">
+                                    <div class="f1 ims " style="background-image: url(img/3.jpg);"></div>
+                                    <div class="f2 flex-it col">
+                                        <div class="f1 flex-it">
+                                            <div class="f1 ims" style="background-image: url(img/4.jpg);"></div>
+                                            <div class="f1 ims" style="background-image: url(img/5.jpg);"></div>
+                                        </div>
+                                        <div class="f1 ims" style="background-image: url(img/6.jpg);"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right_in flex display-inline row">
+                                <p class="awsugblr_logo  col-sm-6 col-md-12">
+                                    <img src="./images/aws-community-pk-logo150-150x.png" />
+                                </p>
+                                <p class="enlarge col-sm-6 col-md-12">
+                                    Thanks everyone for making last Community Day a huge
+                                    success
+                                </p>
+                                <button class="white icon-grp rt rt" id="link">
+                                    EXPLORE 2022
+                                    <i class="icon large ion-md-play-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="nav-bar">
+                <p id="toggle"><span></span></p>
+                <li class="spec">
+                    <a href="#registration" class=" button ">Register</a>
+                </li>
+                <ul>
+                    <li>
+                        <a href="#com_info">About Community Day</a>
+                    </li>
+                    <!-- <li>
+            <a href="#cfp">CFP</a>
+          </li> -->
+                    <li>
+                        <a href="#venues">Venues</a>
+                    </li>
+                    <li>
+                        <a href="#agenda">Agenda</a>
+                    </li>
+                    <li>
+                        <a href="#sponsors">Sponsors</a>
+                    </li>
+                    <li>
+                        <a href="#Advisory">Advisory Board</a>
+                    </li>
+                    <li>
+                        <a href="#speakers">Speakers</a>
+                    </li>
+                    <li>
+                        <a href="#partners">Partners</a>
+                    </li>
+                    <li>
+                        <a href="#volunteers">Volunteers</a>
+                    </li>
+                    <!-- <li>
+                        <a href="https://communityday.awsugblr.in/2018" target="_blank">Community Day 2018</a>
+                    </li>
+                    <li>
+                        <a href="#subscribe" id="sub-button" class="sub-button">
+                            <i class="icon large ion-md-notifications-outline"></i>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="section section-2">
+            <div class="container flex-it">
+                <div class="f1 left" id="com_info">
+                    <div class="left_in">
+                        <h4 class="headin-ttl">
+                            WHO ARE WE?
+                        </h4>
+                        <p>
+                            <b><a href="https://awscommunity.pk/" target="_blank">AWS Community Pakistan</a></b>
+                            is a Pakisatan-based group united by community-led learnings
+                            and diversified by the wide variety of tools and technologies
+                            closely knit with Amazon Web Services, cloud computing
+                            technology, AWS design implementation and servicing,
+                            high scalability/performance computing, production use
+                            cases of AWS, blockchain, Artificial Intelligence and much more.
+                        </p>
+                        <p>
+                            AWS Community Days are community-organized cloud education events, featuring technical discussions
+                            and demos led by expert AWS users and industry leaders from around the world
+                        </p>
+                        <p>
+                            Community-based learning is the best way to enhance the concepts being
+                            taught by connecting with enthusiasts in person, thereby sharing first-hand
+                            experiences and familiar, accessible examples
+                        </p>
+                        <p>
+                            All skills levels are welcome to help accomplish our motto of
+                            learning, sharing and networking. Let's join hands to empower
+                            this tech community to make it bigger and better!
+                        </p>
+                        <p>
+                            <center>
+                                <a href="https://instagram.com/awscommunitypakistan" target="_blank">
+                                    <i class="fa fa-instagram" aria-hidden="true" style="color:orange;font-size:250%"></i> </a>&nbsp;
+                                <a href="https://www.facebook.com/AWScommunityPakistan" target="_blank">
+                                    <i class="fa fa-facebook" aria-hidden="true" style="font-size:250%;"></i> </a>&nbsp;
+                                <a href="https://www.linkedin.com/company/aws-community-pakistan/" target="_blank">
+                                    <i class="fa fa-linkedin" aria-hidden="true" style="font-size:250%"></i> </a>&nbsp;
+                                <a href="https://awscommunity.pk/slack" target="_blank">
+                                    <i class="fa fa-slack" aria-hidden="true" style="color:orange;font-size:250%"></i>
+                                </a>
+                                <a href="https://twitter.com/AWSCommunityPK" target="_blank">
+                                    <i class="fa fa-twitter" aria-hidden="true" style="color:orange;font-size:250%"></i>
+                                </a>
+                            </center>
+                        </p>
+                    </div>
+                </div>
+                <div class="f1 right" id="even_info">
+                    <div class="right_in">
+                        <h4 class="heading-ttl">
+                            What to expect from AWS Community Day?
+                        </h4>
+                        <ul class="circle">
+                            <li>
+                                Renew, revive & revitalize to exemplify your excitement about
+                                the work you do
+                            </li>
+                            <li>
+                                Learn industry trends and intricacies about innovative
+                                implementations from AWS experts
+                            </li>
+                            <li>
+                                Harness the power of networking with 500+ AWS users, DevOps,
+                                developers & solutions architects
+                            </li>
+                            <li>
+                                Network with fellow AWS veterans & techies during breaks
+                            </li>
+                            <li>
+                                Novice to pioneer on relentless pursuit to learn can rejoice
+                                the AWS offerings & success stories under one roof.
+                            </li>
+                            <li>Take helpful and valuable information back to business</li>
+                            <li>
+                                Gain visibility to get more publicity for your esteemed
+                                organisation
+                            </li>
+                            <li>
+                                Sporting chance for active participants to win AWS goodies
+                            </li>
+                        </ul>
+                    </div>
+                    <br /><b>Please read the
+                        <a href="codeofconduct.html" target="_blank">Code of Conduct</a>
+                        for this event</b>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="background-color: #232f3f; color:#ff9900; padding-top:10rem;padding-bottom:10rem;">
+            <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Gallery</h4>
+            <div class="gallery container" id="gallery">
+
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/1.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/2.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/3.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/4.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/5.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/6.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/7.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/8.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img src="simages/gallery/9.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-tickets text-center" id="registration">
+            <div class="container">
+                <h4 class="main-heading-ttl text-center">Waiting List!</h4>
+                <div class="form-container">
+                    <form action="#" method="post">
+
+                        <!-- <script type="text/javascript" src="//mautic.sumamazaeem.com/form/generate.js?id=9"></script> -->
+                        <!-- <iframe src="//mautic.sumamazaeem.com/form/9" width="300" height="300"><p>Your browser does not support iframes.</p></iframe> -->
+
+
+
+
+
+
+                    </form>
+
+
+                    <style type="text/css" scoped>
+                        .mauticform_wrapper {
+                            max-width: 450px;
+                            margin: 10px auto;
+                            color: #6f6f6f;
+                            font-weight: 400;
+                            font-family: 'Source Sans Pro', 'Helvetica Neue', 'Arial', 'sans-serif';
+                            font-size: 18px;
+                        }
+
+                        .mauticform-name {
+                            font-weight: bold;
+                            font-size: 1.5em;
+                            margin-bottom: 3px;
+                        }
+
+                        .mauticform-description {
+                            margin-top: 2px;
+                            margin-bottom: 10px;
+                        }
+
+                        .mauticform-error {
+                            margin-bottom: 10px;
+                            color: red;
+                        }
+
+                        .mauticform-message {
+                            margin-bottom: 10px;
+                            color: green;
+                        }
+
+                        .mauticform-row {
+                            display: block;
+                            margin-bottom: 20px;
+                        }
+
+                        .mauticform-label {
+                            font-size: 1.1em;
+                            display: block;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                        }
+
+                        .mauticform-row.mauticform-required .mauticform-label:after {
+                            color: #e32;
+                            content: " *";
+                            display: inline;
+                        }
+
+                        .mauticform-helpmessage {
+                            display: block;
+                            font-size: 0.9em;
+                            margin-bottom: 3px;
+                        }
+
+                        .mauticform-errormsg {
+                            display: block;
+                            color: red;
+                            margin-top: 2px;
+                        }
+
+                        .mauticform-selectbox,
+                        .mauticform-input,
+                        .mauticform-textarea {
+                            width: 90%;
+                            padding: 0.5em 0.5em;
+                            border: 1px solid #CCC;
+                            background: #fff;
+                            box-shadow: 0px 0px 0px #fff inset;
+                            border-radius: 4px;
+                            box-sizing: border-box;
+                        }
+
+                        .mauticform-checkboxgrp-label {
+                            font-weight: normal;
+                        }
+
+                        .mauticform-radiogrp-label {
+                            font-weight: normal;
+                        }
+
+                        .mauticform-button-wrapper .mauticform-button.btn-default {
+                            color: #5d6c7c;
+                            background-color: #ffffff;
+                            border-color: #dddddd;
+                        }
+
+                        .mauticform-button-wrapper .mauticform-button {
+                            display: inline-block;
+                            margin-bottom: 0;
+                            font-weight: 600;
+                            text-align: center;
+                            vertical-align: middle;
+                            cursor: pointer;
+                            background-image: none;
+                            border: 1px solid transparent;
+                            white-space: nowrap;
+                            padding: 6px 12px;
+                            font-size: 13px;
+                            line-height: 1.3856;
+                            border-radius: 3px;
+                            -webkit-user-select: none;
+                            -moz-user-select: none;
+                            -ms-user-select: none;
+                            user-select: none;
+                        }
+
+                        .mauticform-button-wrapper .mauticform-button.btn-default[disabled] {
+                            background-color: #ffffff;
+                            border-color: #dddddd;
+                        }
+                    </style>
+
+                    <div id="mauticform_wrapper_awscommunityday2023pkwaitinglistform" class="mauticform_wrapper">
+                        <form autocomplete="false" role="form" method="post" action="https://mautic.sumamazaeem.com/form/submit?formId=9" id="mauticform_awscommunityday2023pkwaitinglistform" data-mautic-form="awscommunityday2023pkwaitinglistform" enctype="multipart/form-data">
+                            <div class="mauticform-error" id="mauticform_awscommunityday2023pkwaitinglistform_error"></div>
+                            <div class="mauticform-message" id="mauticform_awscommunityday2023pkwaitinglistform_message"></div>
+                            <div class="mauticform-innerform">
+
+
+                                <div class="mauticform-page-wrapper mauticform-page-1" data-mautic-form-page="1">
+
+                                    <div id="mauticform_awscommunityday2023pkwaitinglistform_f_name" data-validate="f_name" data-validation-type="text" class="mauticform-row mauticform-text mauticform-field-1 mauticform-required">
+                                        <label id="mauticform_label_awscommunityday2023pkwaitinglistform_f_name" for="mauticform_input_awscommunityday2023pkwaitinglistform_f_name" class="mauticform-label">Name</label>
+                                        <input id="mauticform_input_awscommunityday2023pkwaitinglistform_f_name" name="mauticform[f_name]" value="" class="mauticform-input" type="text">
+                                        <span class="mauticform-errormsg" style="display: none;">This is required.</span>
+                                    </div>
+
+                                    <div id="mauticform_awscommunityday2023pkwaitinglistform_email" data-validate="email" data-validation-type="email" class="mauticform-row mauticform-email mauticform-field-2 mauticform-required">
+                                        <label id="mauticform_label_awscommunityday2023pkwaitinglistform_email" for="mauticform_input_awscommunityday2023pkwaitinglistform_email" class="mauticform-label">Email</label>
+                                        <input id="mauticform_input_awscommunityday2023pkwaitinglistform_email" name="mauticform[email]" value="" class="mauticform-input" type="email">
+                                        <span class="mauticform-errormsg" style="display: none;">This is required.</span>
+                                    </div>
+
+                                    <div id="mauticform_awscommunityday2023pkwaitinglistform_submit" class="mauticform-row mauticform-button-wrapper mauticform-field-3">
+                                        <button type="submit" name="mauticform[submit]" id="mauticform_input_awscommunityday2023pkwaitinglistform_submit" value="" class="mauticform-button btn btn-default">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="mauticform[formId]" id="mauticform_awscommunityday2023pkwaitinglistform_id" value="9">
+                            <input type="hidden" name="mauticform[return]" id="mauticform_awscommunityday2023pkwaitinglistform_return" value="">
+                            <input type="hidden" name="mauticform[formName]" id="mauticform_awscommunityday2023pkwaitinglistform_name" value="awscommunityday2023pkwaitinglistform">
+
+                        </form>
+                    </div>
+
+
+
+
+
+                </div>
+                <!-- <div class="buy-wrapper row flex-it">
+                    <div class="f1">
+                        <a class="button large buy-ticket-link">Register Now</a>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- <section class="cards" id="pricing">
+                <input type="radio" class='pricing__choice' name="pricing__choice" id="pricing__annually" checked='true'>
+                <input type="radio" class='pricing__choice' name="pricing__choice" id="pricing__monthly" checked='true'>
+                <div class="cards__container">
+                    <div class="cards__list">
+                        <div class="card">
+                            <div class="card__inner" style="display: flex; ">
+                                <h3 class="card__title">Student Pass</h3>
+                                <p class="card__price card__price-annually">Free</p>
+                                <p class="card__feature">Access to All Talks</p>
+                                <p class="card__feature">Regular Merchandise/SWAGS</p>
+                                <p class="card__feature">General Seating</p>
+                                <p class="card__feature">Networking</p>
+                                <div class="buy-wrapper row flex-it" style="margin-top:auto;">
+                                    <div class="f1">
+                                        <a href="#register" class="button">Register Now!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="margin-left: 1rem;">
+                            <div class="card__inner">
+                                <h3 class="card__title">General Pass</h3>
+                                <p class="card__price card__price-annually">Free</p>
+                                <p class="card__feature">Access to All Talks</p>
+                                <p class="card__feature">Regular Merchandise/SWAGS</p>
+                                <p class="card__feature">General Seating</p>
+                                <p class="card__feature">Networking</p>
+                                <div class="buy-wrapper row flex-it" style="margin-top:auto;">
+                                    <div class="f1">
+                                        <a href="#register" class="button">Register Now!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+        </div>
+        <!-- <div class="section section-talk text-center hide" id="cfp">
+      <div class="container">
+        <img src="images/bgda.svg">
+        <div class="cfp">
+          <h4 class="main-heading-ttl">Submit a talk</h4>
+          <h4>Thank you for the overwhelming response. CFPs are now closed.</h4>
+        </div>
+      </div>
+    </div> -->
+        <div class="section section-3 inv" id="venues">
+            <div class="container flex-it">
+                <div class="left f1 flex-it">
+                    <h4 class="headin-ttl">
+                        Venues
+                    </h4>
+
+                    <div class="left_in f1">
+                        <div id="map"></div>
+                    </div>
+                </div>
+                <div class="right f1">
+                    <div class="right_in">
+                        <div class="ven-1 active" data-lat="12.9767814" data-lng="77.6197088" data-label="Conrad Bengaluru" style="visibility: hidden;">
+                            <div class="rand_cls">
+                                <span class="date_ori">27th July 2019</span>
+                                <h4 class="headin-ttl">Conference</h4>
+                            </div>
+                            <ul>
+                                <li><b>Conrad Bengaluru,</b></li>
+                                <li>25/3, Kensington Rd, Someshwarpura,</li>
+                                <li>Ulsoor, Bengaluru,</li>
+                                <li>Karnataka 560008</li>
+                            </ul>
+                        </div>
+                        <div class="ven-2 ven" data-lat="12.9502273" data-lng="77.6967477" data-label="Radisson Blu" style="visibility: hidden;">
+                            <div class="rand_cls">
+                                <span class="date_ori">26th July 2019</span>
+                                <h4 class="headin-ttl">Workshop</h4>
+                            </div>
+                            <ul>
+                                <li><b>Radisson Blu Bengaluru Outer Ring Road,</b></li>
+                                <li>90-4, Sarjapur Outer Ring Rd,</li>
+                                <li>Marathahalli, Bengaluru,</li>
+                                <li>Karnataka 560037</li>
+                            </ul>
+                        </div>
+                        <div class="marked">
+                            <!-- coming soon text displayed -->
+                            <h4 style="display: block; text-align: center; color:#fff;">Coming Soon!</h4>
+
+
+                            <!-- <div class="rand_cls">
+                                <span class="date_ori">27th July 2019</span>
+                                <h4 class="headin-ttl">Conference</h4>
+                            </div> -->
+                            <!-- <ul>
+                                <li><b>Conrad Bengaluru,</b></li>
+                                <li>25/3, Kensington Rd, Someshwarpura,</li>
+                                <li>Ulsoor, Bengaluru,</li>
+                                <li>Karnataka 560008</li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-4 inv" id="agenda">
+            <div class="container">
+                <div class="sponsors">
+                    <h4 class="main-heading-ttl text-center" style="color: #fc9701;">Agenda</h4>
+                    <div class="text-center agenda">
+                        <!-- @if($agenda1 != 0)
+                        <img src="{{$agenda->image}}" style="height: 100%;" />
+                        @else -->
+                        <h4 class="main-heading-ttl text-center" style="color: #fc9701;">Coming Soon!</h4>
+
+                        <div class="table">
+                            <div class="thead">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="section section-tickets text-center" id="register">
+            <div class="container">
+                <h4 class="main-heading-ttl text-center">Click button to Register</h4>
+                <div class="form-container">
+                    <form action="#" method="post"> -->
+
+                        <!-- <script type="text/javascript" src="//mautic.sumamazaeem.com/form/generate.js?id=9"></script> -->
+                        <!-- <iframe src="//mautic.sumamazaeem.com/form/9" width="300" height="300"><p>Your browser does not support iframes.</p></iframe> -->
+
+
+
+
+
+
+                    <!-- </form> -->
+
+
+                    <!-- <style type="text/css" scoped>
+                        .mauticform_wrapper {
+                            max-width: 450px;
+                            margin: 10px auto;
+                            color: #6f6f6f;
+                            font-weight: 400;
+                            font-family: 'Source Sans Pro', 'Helvetica Neue', 'Arial', 'sans-serif';
+                            font-size: 18px;
+                        }
+
+                        .mauticform-name {
+                            font-weight: bold;
+                            font-size: 1.5em;
+                            margin-bottom: 3px;
+                        }
+
+                        .mauticform-description {
+                            margin-top: 2px;
+                            margin-bottom: 10px;
+                        }
+
+                        .mauticform-error {
+                            margin-bottom: 10px;
+                            color: red;
+                        }
+
+                        .mauticform-message {
+                            margin-bottom: 10px;
+                            color: green;
+                        }
+
+                        .mauticform-row {
+                            display: block;
+                            margin-bottom: 20px;
+                        }
+
+                        .mauticform-label {
+                            font-size: 1.1em;
+                            display: block;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                        }
+
+                        .mauticform-row.mauticform-required .mauticform-label:after {
+                            color: #e32;
+                            content: " *";
+                            display: inline;
+                        }
+
+                        .mauticform-helpmessage {
+                            display: block;
+                            font-size: 0.9em;
+                            margin-bottom: 3px;
+                        }
+
+                        .mauticform-errormsg {
+                            display: block;
+                            color: red;
+                            margin-top: 2px;
+                        }
+
+                        .mauticform-selectbox,
+                        .mauticform-input,
+                        .mauticform-textarea {
+                            width: 90%;
+                            padding: 0.5em 0.5em;
+                            border: 1px solid #CCC;
+                            background: #fff;
+                            box-shadow: 0px 0px 0px #fff inset;
+                            border-radius: 4px;
+                            box-sizing: border-box;
+                        }
+
+                        .mauticform-checkboxgrp-label {
+                            font-weight: normal;
+                        }
+
+                        .mauticform-radiogrp-label {
+                            font-weight: normal;
+                        }
+
+                        .mauticform-button-wrapper .mauticform-button.btn-default {
+                            color: #5d6c7c;
+                            background-color: #ffffff;
+                            border-color: #dddddd;
+                        }
+
+                        .mauticform-button-wrapper .mauticform-button {
+                            display: inline-block;
+                            margin-bottom: 0;
+                            font-weight: 600;
+                            text-align: center;
+                            vertical-align: middle;
+                            cursor: pointer;
+                            background-image: none;
+                            border: 1px solid transparent;
+                            white-space: nowrap;
+                            padding: 6px 12px;
+                            font-size: 13px;
+                            line-height: 1.3856;
+                            border-radius: 3px;
+                            -webkit-user-select: none;
+                            -moz-user-select: none;
+                            -ms-user-select: none;
+                            user-select: none;
+                        }
+
+                        .mauticform-button-wrapper .mauticform-button.btn-default[disabled] {
+                            background-color: #ffffff;
+                            border-color: #dddddd;
+                        }
+                    </style> -->
+
+                    <!-- <div id="mauticform_wrapper_awscommunityday2023pkwaitinglistform" class="mauticform_wrapper" hidden>
+                        <form autocomplete="false" role="form" method="post" action="https://mautic.sumamazaeem.com/form/submit?formId=9" id="mauticform_awscommunityday2023pkwaitinglistform" data-mautic-form="awscommunityday2023pkwaitinglistform" enctype="multipart/form-data">
+                            <div class="mauticform-error" id="mauticform_awscommunityday2023pkwaitinglistform_error"></div>
+                            <div class="mauticform-message" id="mauticform_awscommunityday2023pkwaitinglistform_message"></div>
+                            <div class="mauticform-innerform">
+
+
+                                <div class="mauticform-page-wrapper mauticform-page-1" data-mautic-form-page="1">
+
+                                    <div id="mauticform_awscommunityday2023pkwaitinglistform_f_name" data-validate="f_name" data-validation-type="text" class="mauticform-row mauticform-text mauticform-field-1 mauticform-required">
+                                        <label id="mauticform_label_awscommunityday2023pkwaitinglistform_f_name" for="mauticform_input_awscommunityday2023pkwaitinglistform_f_name" class="mauticform-label">Name</label>
+                                        <input id="mauticform_input_awscommunityday2023pkwaitinglistform_f_name" name="mauticform[f_name]" value="" class="mauticform-input" type="text">
+                                        <span class="mauticform-errormsg" style="display: none;">This is required.</span>
+                                    </div>
+
+                                    <div id="mauticform_awscommunityday2023pkwaitinglistform_email" data-validate="email" data-validation-type="email" class="mauticform-row mauticform-email mauticform-field-2 mauticform-required">
+                                        <label id="mauticform_label_awscommunityday2023pkwaitinglistform_email" for="mauticform_input_awscommunityday2023pkwaitinglistform_email" class="mauticform-label">Email</label>
+                                        <input id="mauticform_input_awscommunityday2023pkwaitinglistform_email" name="mauticform[email]" value="" class="mauticform-input" type="email">
+                                        <span class="mauticform-errormsg" style="display: none;">This is required.</span>
+                                    </div>
+
+                                    <div id="mauticform_awscommunityday2023pkwaitinglistform_submit" class="mauticform-row mauticform-button-wrapper mauticform-field-3">
+                                        <button type="submit" name="mauticform[submit]" id="mauticform_input_awscommunityday2023pkwaitinglistform_submit" value="" class="mauticform-button btn btn-default">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="mauticform[formId]" id="mauticform_awscommunityday2023pkwaitinglistform_id" value="9">
+                            <input type="hidden" name="mauticform[return]" id="mauticform_awscommunityday2023pkwaitinglistform_return" value="">
+                            <input type="hidden" name="mauticform[formName]" id="mauticform_awscommunityday2023pkwaitinglistform_name" value="awscommunityday2023pkwaitinglistform">
+
+                        </form>
+                    </div> -->
+
+
+
+
+
+                <!-- </div> -->
+                <!-- <div class="buy-wrapper row flex-it">
+                    <div class="f1">
+                        <a class="button large buy-ticket-link">Register Now</a>
+                    </div>
+                </div> -->
+            <!-- </div>
+            <section class="cards" id="pricing">
+                <input type="radio" class='pricing__choice' name="pricing__choice" id="pricing__annually" checked='true'>
+                <input type="radio" class='pricing__choice' name="pricing__choice" id="pricing__monthly">
+                <div class="cards__container">
+                    <div class="cards__list">
+                        <div class="card" style="margin-left: 1rem; box-shadow:none; background-color:#fff; border:none;">
+                            <div class="card__inner">
+                                <div style=" position:relative;">
+                                    <script src=https://widget.konfhub.com/widget.js button_id="btn_1db15f81f1db"></script>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div> -->
+
+        <div class="section section-5" id="sponsors" style="background-color: #eee;">
+
+            <div class="container">
+                <div class="sponsors">
+                    <h4 class="main-heading-ttl text-center">Our Esteemed Sponsors</h4>
+                    <!-- add a paragraph sentence and a button with same design inlined-->
+                    <div class="text-center agenda" style="display: flex; justify-content: center; align-items: center;">
+                        <p style="font-size: 2rem; display: inline; color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;">Interested in sponsorship?<a class="temp12" href="https://bit.ly/awscdpk2023-sponsorship-interest-form" target="_blank">Reach Out to us</a></p>
+                    </div>
+
+                    <div class="cats">
+                        <!-- @if($plCount > 0)
+                        <div class="pltnm">
+                            <div class="flex-it">
+                                <div class="fhf">
+                                    <div class="head"><span>Platinum</span></div>
+                                </div>
+                                @foreach($platinumSponsors as $platinumSponsor)
+                                <div class="f1">
+                                    <div class=" sq" style="background-image: url({{$platinumSponsor->logo}});">
+                                        <a href="https://jfrog.com/" target="_blank">{{$platinumSponsor->name}}</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
+                        @if($gCount > 0)
+                        <div class="gld">
+                            <div class="flex-it">
+                                <div class="fhf">
+                                    <div class="head"><span>Gold</span></div>
+                                </div>
+                                @foreach($goldSponsors as $goldSponsor)
+                                <div class="f1">
+                                    <div class="sq" style="background-image: url({{$goldSponsor->logo}});">
+                                        <a href="{{$goldSponsor->url}}" target="_blank">{{$goldSponsor->name}}</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
+                        @if($sCount > 0)
+                        <div class="slvr">
+                            <div class="flex-it">
+                                <div class="fhf">
+                                    <div class="head"><span>Silver</span></div>
+                                </div>
+                                @foreach($silverSponsors as $goldSponsor)
+                                <div class="f1">
+                                    <div class=" sq" style="background-image: url({{$goldSponsor->logo}});">
+                                        <a href="{{$goldSponsor->url}}" target="_blank">{{$goldSponsor->name}}</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section-8" id="Advisory">
+            <div class="container">
+                <div class="speakers">
+                    <h4 class="main-heading-ttl text-center">Advisory Board</h4>
+                    <div class="spk_lst flex-it ">
+
+                        <!-- @if($aCount > 0)
+                        <div class="spk_itm_col">
+
+                            @foreach($advisorPersons as $advisorPerson)
+
+                            <div class="spk_itm flex-it">
+                                <div class="prod_im"><img src="{{$advisorPerson->picture}}" alt=""></div>
+                                <div class="namenid" style="border: dashed 2px #fff; color:#fff;" onmouseover="this.style.backgroundColor='#fff'" onmouseout="this.style.backgroundColor='#232f3f'">
+
+                                    <a href="{{$advisorPerson->linkedin_id}}" style="color:#ff9900 ">
+                                        <p>
+                                            <b>{{$advisorPerson->name}}</b>
+                                            <br>
+                                            <small>{{$advisorPerson->position}}</small>
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @else -->
+                        <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Coming Soon!</h4>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="section-6 inv" id="Advisory" style="background-color: #232f3f;">
+            <div class="container">
+                <div class="volunteers">
+                    <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Advisory Board</h4>
+                    <div class="vl-row-list">
+                        @if($aCount > 0)
+                        <div class="vl-i  flex-it hcenter">
+                            @foreach($advisorPersons as $advisorPerson)
+                            <div class="person" data-fname="{{$advisorPerson->name}}" data-lname="{{$advisorPerson->position}}" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url({{$advisorPerson->picture}});">
+                                    <a target="_blank" href="{{$advisorPerson->linkedin_id}}">
+                                        <i class="icon large ion-logo-linkedin"></i>@jeevandongre</a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @else
+                        <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Coming Soon!</h4>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="section section-tickets text-center" id="cfc">
+            <div class="container">
+                <h4 class="main-heading-ttl text-center">Call for Collaborators!</h4>
+                <div class="form-container">
+                </div>
+                <div class="buy-wrapper row flex-it">
+                    <div class="f1">
+                        <a class="button large">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-tickets text-center" id="cfs" style="background-color: #232f3f;color: #ff9900;">
+            <div class="container">
+                <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Call for Speakers!</h4>
+                <div class="form-container">
+                </div>
+                <div class="buy-wrapper row flex-it">
+                    <div class="f1">
+                        <a class="button large">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="section-8" id="speakers" style="background-color: #EEE;">
+            <div class="container">
+                <div class="speakers">
+                    <h4 class="main-heading-ttl text-center" style="color: #232f3f;">Speakers</h4>
+                    <div class="text-center agenda" style="display: flex; justify-content: center; align-items: center;">
+                        <p style="font-size: 2rem; display: inline; color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;">Call for Speaker is Open<a class="temp12" href="https://sessionize.com/aws-community-day-pakistan-2023/" target="_blank">Click here to submit your session</a></p>
+                    </div>
+                    <div class="spk_lst flex-it ">
+
+                        <!-- @if($sCount1 > 0)
+                        <div class="spk_itm_col">
+
+                            @foreach($speakerPersons as $advisorPerson)
+                            <div class="spk_itm flex-it">
+                                <div class="prod_im"><img src="{{$advisorPerson->picture}}" alt=""></div>
+                                <div class="namenid">
+
+                                    <a href="{{$advisorPerson->linkedin_id}}" style="color:#ff9900;">
+                                        <p>
+                                            <b>{{$advisorPerson->name}}</b>
+                                            <br>
+                                            <small>{{$advisorPerson->position}}</small>
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @endif -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="section-6 inv" id="speakers">
+            <div class="container">
+                <div class="volunteers">
+                    <h4 class="main-heading-ttl text-center">Speakers</h4>
+                    <div class="vl-row-list">
+                        @if($sCount1 > 0)
+                        <div class="vl-i  flex-it hcenter">
+                            @foreach($speakerPersons as $speakerPerson)
+                            <div class="person" data-fname="{{$speakerPerson->name}}" data-lname="{{$speakerPerson->position}}" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url({{$speakerPerson->picture}});">
+                                    <a target="_blank" href="{{$speakerPerson->linkedin_id}}">
+                                        <i class="icon large ion-logo-linkedin"></i>@jeevandongre</a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @else
+                        <h4 class="main-heading-ttl text-center">Coming Soon!</h4>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="section section-5" id="partners" style="background-color:#232f3f;color: #ff9900;">
+            <div class="container">
+                <div class="sponsors">
+                    <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Our Esteemed Partners</h4>
+                    <div class="text-center agenda" style="display: flex; justify-content: center; align-items: center;">
+                        <p style="font-size: 2rem; display: inline; color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;"><a class="temp12" href="https://bit.ly/awscdpk2023-collaboration-interest-form" target="_blank">Click here to collaborate with us</a></p>
+                    </div>
+                    <div class="cats">
+                        <!-- @if($mCount > 0)
+                        <div class="gld">
+                            <div class="flex-it">
+                                <div class="fhf">
+                                    <div class="head"><span>Media</span></div>
+                                </div>
+                                @foreach($mediaSponsors as $goldSponsor)
+                                <div class="f1">
+                                    <div class="sq" style="background-image: url({{$goldSponsor->logo}});">
+                                        <a href="{{$goldSponsor->url}}" target="_blank">{{$goldSponsor->name}}</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
+                        @if($cCount > 0)
+                        <div class="cmnty">
+                            <div class="flex-it">
+                                <div class="fhf">
+                                    <div class="head"><span>Community</span></div>
+                                </div>
+                                @foreach($communitySponsors as $goldSponsor)
+                                <div class="f1">
+                                    <div class="sq" style="background-image: url({{$goldSponsor->logo}});">
+                                        <a href="{{$goldSponsor->url}}" target="_blank">{{$goldSponsor->name}}</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
+
+                        @if($tCount > 0)
+                        <div class="slvr">
+                            <div class="flex-it">
+                                <div class="fhf">
+                                    <div class="head"><span>Technical</span></div>
+                                </div>
+                                @foreach($technicalSponsors as $goldSponsor)
+                                <div class="f1">
+                                    <div class=" sq" style="background-image: url({{$goldSponsor->logo}});">
+                                        <a href="{{$goldSponsor->url}}" target="_blank">{{$goldSponsor->name}}</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-5" id="">
+            <div class="container">
+                <div class="sponsors">
+                    <h4 class="main-heading-ttl text-center">Apply for Ambassadors</h4>
+                    <div class="text-center agenda" style="display: flex; justify-content: center; align-items: center;">
+                        <p style="font-size: 2rem; display: inline; color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;"><a class="temp12" href="https://bit.ly/awscdpk2023-ambassador-interest-form" target="_blank">Click here to be a Ambassador</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-6 inv" id="volunteers" style="background-color:#232f3f;color: #ff9900;">
+            <div class="container">
+                <div class="volunteers">
+                    <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Volunteers</h4>
+                    <div class="vl-row-list">
+                        <div class="vl-i  flex-it hcenter">
+                            <div class="person" data-fname="Sumama Zaeem" data-lname="Organizer" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/sumama.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/sumamazaeem/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="M Waqas Rashid" data-lname="Co Organizer" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/waqas.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/waqas-aly07">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Abdul Haseeb Sheikh" data-lname="Co Organizer" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/haseeb.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/thehaseebsh">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Noor Atif" data-lname="Event Coordinator" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/noor.jpeg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/noor-atif-24a58b170/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="M Usman Bin Farid" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/usman.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/muhammad-usman-bin-farid/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Muhammad Hashir" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/hashir.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/muhammad-hashir-39ba98233">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Zain Ramzan" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/zain.jpg);">
+                                    <a target="_blank" href="Https://www.linkedin.com/in/zainramzan">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Samia Liaqat" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/samia.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/samia-liaqat">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Rana Maaz" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/maaz.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/rana-maaz-27994a24b">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Nauman Yousaf" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/nauman.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/nauman-yousaf-a8a247275">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Bismah Farooq" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/bisma.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/bismah-farooq-0ba630232">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Syed Hussnain Iqrar" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/hussnain.webp);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/syed-hussain-iqrar-71388b236">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="person" data-fname="Ayesha Saeed" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/1.JPG);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/ayesha-saeed-6b7050255">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="M Abdullah" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/abdullah.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/muhammad-abdullah-kasuri">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="M Mubeen Mubashar" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/mubeen.png);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/reverse0x7/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Anam Shahzad" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/anam.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/anam-shahzad-khan">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Syed Asfar Bukhari" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/asfar.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/syed-asfar-ahmad-bukhari">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Syed Noor Ali" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/syednoor.jpeg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/syed-noor-ali-dev/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Maheerah Khalid" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/maheera.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/themaheerahkhalid/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Ayesha Islam Qadri" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/ayesha1.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/ayesha-islam-qadri">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Muhammad Abdullah" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/abdullah1.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/muhammadabdullah00">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Rabia Batool" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/rabia.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/rabia-batool-44502923b/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="M Hussnain Ali Mazhar " data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/hussnain1.png);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/hussnain-ali-370b2a203">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Mahnoor Arshad" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/mahnoor.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/me?trk=p_mwlite_feed_updates-secondary_nav">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Altamash Zaheer" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/altamash.png);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/aaltamashzaheer">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Hammad Mustafa" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/hammad.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/hammad-mustafa-graphics-designer-2641971bb">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Sibgha Bhatti" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/sibgha.jpg);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/sibgha-bhatti-563102273">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Abbas Haider" data-lname="" style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url(vimages/abbas.png);">
+                                    <a target="_blank" href="https://www.linkedin.com/in/abbas1058/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            &copy;Copyright 2023, Developed and Maintained by <a target="_blank" style="font-weight: bolder;" href="https://www.linkedin.com/in/muhammad-usman-bin-farid/">Muhammad Usman Bin Farid</a>.
+        </div>
+
+        <div class="modal">
+            <span class="close-button">&times;</span>
+            <img class="modal-content" src="" alt="">
+        </div>
+        <script type="text/javascript">
+            var latt = 12.9767814;
+            var lngg = 77.6197088;
+            var venue = "Conrad";
+
+            function setCoords(latt, lngg, venue) {
+                this.latt = latt;
+                this.lngg = lngg;
+                this.venue = venue;
+                console.log("clicked");
+                initMap();
+                $(this).addClass("hello");
+            }
+
+            function initMap() {
+                var uluru = {
+                    lat: latt,
+                    lng: lngg
+                };
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: uluru,
+                    scrollwheel: false
+                });
+                var markerIcon = {
+                    url: "https://image.flaticon.com/icons/svg/252/252025.svg",
+                    scaledSize: new google.maps.Size(50, 50),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(32, 65),
+                    labelOrigin: new google.maps.Point(25, 70)
+                };
+                var markerLabel = venue;
+                var marker = new google.maps.Marker({
+                    map: map,
+                    animation: google.maps.Animation.DROP,
+                    position: uluru,
+                    icon: markerIcon,
+                    disableDefaultUI: true,
+                    label: {
+                        text: markerLabel,
+                        color: "#eb3a44",
+                        fontSize: "16px",
+                        fontWeight: "bold"
+                    }
+                });
+            }
+        </script>
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSK4vqrOG3caqUr6dxAVhA7MrdMmq63q0&callback=initMap"></script> -->
+        <!-- getting utm parameter and passing to konfhub start -->
+        <script>
+            $(".buy-ticket-link").on("click", () => {
+                checkForUtmAvilableOrNot(decodeURIComponent(location.href)).then((formResolve) => {
+                    window.open("https://konfhub.com/awsdaysblr?" + formResolve, "_blank");
+                }).catch((fromReject) => {
+                    window.open("https://konfhub.com/awsdaysblr", "_blank");
+                });
+            });
+
+            let checkForUtmAvilableOrNot = (_currentUrl) => {
+                return new Promise((resolve, reject) => {
+                    if (_currentUrl.indexOf("utm_source") > -1) {
+                        let qp = _currentUrl.slice(_currentUrl.indexOf('?') + 1)
+                        let a = qp.split("&");
+                        let _utmPara = "";
+                        a.forEach((v, j) => {
+                            try {
+                                if (j > 2) return;
+                                let _utm = checkForSpecialChar(v);
+                                _utmPara += _utm == 1 ? j == 2 ? v : v + "&" : v.slice(0, _utm);
+                            } catch (err) {
+                                console.log(err);
+                            }
+                        });
+                        resolve(_utmPara);
+                    } else {
+                        reject(0);
+                    }
+                })
+            };
+            let specialChars = "<>@!#$?%^&*()+[]{}:;|'\"\\,./~`-";
+            let checkForSpecialChar = function(string) {
+                let _indexOf = string.length;
+                for (i = 0; i < specialChars.length; i++) {
+                    if (string.indexOf(specialChars[i]) > -1) {
+                        _indexOf = _indexOf > string.indexOf(specialChars[i]) ? string.indexOf(specialChars[i]) : _indexOf
+                    }
+                }
+                return _indexOf != string.length ? _indexOf : 1;
+            }
+            window.addEventListener('load', function() {
+                var image = document.getElementById('image');
+                var loader = document.querySelector('.loader');
+                image.addEventListener('load', function() {
+                    loader.style.display = 'none';
+                });
+            });
+        </script>
+        <!-- getting utm parameter and passing to konfhub end -->
+        <script>
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const modal = document.querySelector('.modal');
+            const modalImage = document.querySelector('.modal-content');
+            const closeButton = document.querySelector('.close-button');
+
+            // Function to open the modal and display the clicked image
+            function openModal(imageSrc) {
+                modal.style.display = 'block';
+                modalImage.src = imageSrc;
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            // Add click event listeners to each gallery item
+            galleryItems.forEach(item => {
+                const imageSrc = item.querySelector('img').src;
+                item.addEventListener('click', () => openModal(imageSrc));
+            });
+
+            // Add click event listener to close button and overlay to close the modal
+            closeButton.addEventListener('click', closeModal);
+            modal.addEventListener('click', closeModal);
+        </script>
+</body>
+
+</html>
