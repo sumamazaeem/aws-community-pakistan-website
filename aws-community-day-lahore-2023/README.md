@@ -1,1 +1,0 @@
-# AWS-Community-Day-Pakistan-2023
