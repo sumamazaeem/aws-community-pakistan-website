@@ -1,98 +1,156 @@
 :root {
-    --base: #9F65FC;
-    --baseDark: #3C2E75;
-    --baseDarker: #2A245A;
-    --baseDarkest: #18212D;
+  --base: #9f65fc;
+  --baseDark: #3c2e75;
+  --baseDarker: #2a245a;
+  --baseDarkest: #18212d;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 a:hover {
-    color: inherit;
+  color: inherit;
 }
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .text-base {
-    color: var(--base)
+  color: #ff9900;
 }
 .text-baseDark {
-    color: var(--baseDark)
+  color: var(--baseDark);
 }
 .text-baseDarker {
-    color: var(--baseDarker)
+  color: var(--baseDarker);
 }
 .text-baseDarkest {
-    color: var(--baseDarkest)
+  color: var(--baseDarkest);
 }
 .bg-base {
-    background-color: var(--base)
+  background-color: var(--base);
 }
 .bg-baseDark {
-    background-color: var(--baseDark)
+  background-color: var(--baseDark);
 }
 .bg-baseDarker {
-    background-color: var(--baseDarker)
+  background-color: var(--baseDarker);
 }
 .bg-baseDarkest {
-    background-color: var(--baseDarkest)
+  background-color: var(--baseDarkest);
 }
 
 .py-50 {
-    padding-top: 50px;
-    padding-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
+.py-header {
+    padding-top: 75px;
+  }
+
 .py-100 {
-    padding-top: 100px;
-    padding-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .bg-light {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 .w-40 {
-    width: 45%;
+  width: 45%;
 }
 
 .w-350 {
-    width: 350px;
+  width: 350px;
 }
 .max-w-350 {
-    max-width: 350px;
+  max-width: 350px;
 }
 .max-w-300 {
-    max-width: 300px;
+  max-width: 300px;
 }
 
-@media screen and (max-width:992px) {
-    .w-lg-100 {
-      width: 100% !important;
-    }
+@media screen and (max-width: 992px) {
+  .w-lg-100 {
+    width: 100% !important;
   }
-@media screen and (max-width:768px) {
-    .w-md-100 {
-      width: 100% !important;
-    }
+}
+@media screen and (max-width: 768px) {
+  .w-md-100 {
+    width: 100% !important;
   }
+}
 
 .z-100 {
-    z-index: 100;
+  z-index: 100;
 }
 
 .h-basic-section {
-    min-height: 700px;
+  min-height: 700px;
 }
 
 .h-screen {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 .h-screen-with-header {
-    min-height: calc(100vh - 150px);
+  min-height: calc(100vh - 150px);
+}
+
+.register-btn {
+  background-color: #ff9900; /* Orange background */
+  color: white; /* White text */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.register-btn:hover {
+  background-color: #cc7a00; /* Darker orange on hover */
+}
+
+.carousel-container {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
 }

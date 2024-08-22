@@ -19,7 +19,7 @@ body {
 }
 
 .text-base {
-    color: var(--base)
+    color: #FF9900;
 }
 .text-baseDark {
     color: var(--baseDark)

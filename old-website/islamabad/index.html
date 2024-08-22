@@ -49,27 +49,76 @@
     </header>
 
     <main>
-      <section id="hero" class="bg-baseDarkest h-auto">
+      <section id="hero" class="bg-baseDarkest h-auto py-header">
         <div
           class="container h-basic-section d-flex flex-column flex-lg-row justify-content-between align-items-center"
         >
           <div class="w-50 w-lg-100">
-            <p class="h1 text-base fw-semibold">AWS User Group Islamabad</p>
-            <p class="h4 text-white">
-              We are a group of Amazon Web Services (AWS) enthusiasts, 
-              professionals,and students, 
-              in Islamabad who are passionate about sharing their knowledge, 
-              and learning about technology.  
-              We meet every few weeks to talk about the Tech Ecosystem, 
-              Cloud and how we build amazing products and solutions. We gather people working with lots of different 
-              technologies that take advantage of cloud solutions.
-              
+            <p class="h1 text-base fw-semibold text-[#FF9900]">AWS Community Day 2024</p>
+            <p🚀 class="h4 text-white">
+              🎉✨ We’re back and even bigger! </br></br>🚀 Save the date for AWS
+              Community Day Islamabad 2024! </br></br>🌟 Join us on August 24th, 2024, for
+              an unforgettable day of all things AWS! Get ready for a day filled
+              with insights, learning, networking, and excitement! </br></br>🏢 Venue -
+              National Incubation Centre, Islamabad</br> </br>📅 Date - 24th August
+              2024, Saturday 
+            </br></br>⏳
+              Limited spots available – register now through the link to book
+              your seat! 
+            </br></br>🎟️ Be part of the biggest tech event in Islamabad this
+              August – this one event is something you won’t want to miss! 🎈
             </p>
-          </div>
+            <button class="register-btn" onClick="window.location.href='https://lnkd.in/dbfS-sSj'">
+              Register Now
+            </button>          </div>
           <div class="w-50 w-lg-100 text-center">
-            <img src="images/aws-ug-isl.png" alt="" width="80%" />
+            <img src="images/isb_community_day_2024.jpeg" alt="" width="80%" />
           </div>
         </div>
+      </section>
+      <section id="about" class="bg-light h-auto border-bottom py-50">
+        <div class="carousel-container">
+          <button class="prev" onclick="prevSlide()">&#10094;</button>
+          <div class="carousel-images" id="carousel-images">
+            <img src="images/community-day-2024/1.jpeg" alt="Image 1">
+            <img src="images/community-day-2024/2.jpeg" alt="Image 1">
+            <img src="images/community-day-2024/3.jpeg" alt="Image 1">
+            <img src="images/community-day-2024/4.jpeg" alt="Image 1">
+            <img src="images/community-day-2024/5.jpeg" alt="Image 1">
+            <img src="images/community-day-2024/6.jpeg" alt="Image 1">
+            <img src="images/community-day-2024/7.jpeg" alt="Image 1">
+            <img src="images/community-day-2024/8.jpeg" alt="Image 1">
+          </div>
+          <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+      
+        <script>
+          let currentIndex = 0;
+      
+          function showSlide(index) {
+            const imagesContainer = document.getElementById('carousel-images');
+            const totalImages = imagesContainer.children.length;
+            
+            if (index >= totalImages) {
+              currentIndex = 0; // Loop back to the first image
+            } else if (index < 0) {
+              currentIndex = totalImages - 1; // Loop back to the last image
+            } else {
+              currentIndex = index;
+            }
+            
+            const offset = -currentIndex * 100;
+            imagesContainer.style.transform = `translateX(${offset}%)`;
+          }
+      
+          function nextSlide() {
+            showSlide(currentIndex + 1);
+          }
+      
+          function prevSlide() {
+            showSlide(currentIndex - 1);
+          }
+        </script>        
       </section>
       <section id="about" class="bg-light h-auto border-bottom">
         <div
@@ -87,119 +136,138 @@
           </p>
         </div>
       </section>
-      <section id="team" class="bg-light h-auto">
+      <!-- <section id="team" class="bg-light h-auto">
         <div
           class="container py-100 h-basic-section d-flex flex-column justify-content-start align-items-center"
         >
           <p class="w-100 display-5 text-base fw-bold text-center">
             Meet our team
           </p>
-          <div 
+          <div
             class="w-100 d-flex flex-column flex-lg-row justify-content-between align-items-center"
           >
-            <div class="card max-w-300 m-3">  
+            <div class="card max-w-300 m-3">
               <a href="https://www.linkedin.com/in/fawad-hussain-80124032/">
-              <img src="images/team/Fawad.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">     
-                <p class="card-text h2 text-center text-baseDark fw-semibold">
-                  Fawad Hussain <br>                 
-                </p>
-                <p class="card-text h5 text-center text-baseDark fw-semibold">                  
-                  AWS User Group Mentor <br>
-                  Co-Founder & CTO @ Markaz 🚀| x Amazon Web Services (AWS)
-                </p>
-              </div>
+                <img
+                  src="images/team/Fawad.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <p class="card-text h2 text-center text-baseDark fw-semibold">
+                    Fawad Hussain <br />
+                  </p>
+                  <p class="card-text h5 text-center text-baseDark fw-semibold">
+                    AWS User Group Mentor <br />
+                    Co-Founder & CTO @ Markaz 🚀| x Amazon Web Services (AWS)
+                  </p>
+                </div>
               </a>
             </div>
 
             <div class="card max-w-300 m-3">
               <a href="https://www.linkedin.com/in/hamzashabbir1/">
-              <img src="images/team/Hamza.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <p class="card-text h2 text-center text-baseDark fw-semibold">
-                  Hamza Shabbir <br>                 
-                </p>
-                <p class="card-text h5 text-center text-baseDark fw-semibold">                  
-                  AWS User Group Organizer <br>  
-                  AWS Community Builder | Backend Engineer @Markaz ( YC-W22 ) 🚀
-                </p>
-              </div>
-            </a>
+                <img
+                  src="images/team/Hamza.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <p class="card-text h2 text-center text-baseDark fw-semibold">
+                    Hamza Shabbir <br />
+                  </p>
+                  <p class="card-text h5 text-center text-baseDark fw-semibold">
+                    AWS User Group Organizer <br />
+                    AWS Community Builder | Backend Engineer @Markaz ( YC-W22 )
+                    🚀
+                  </p>
+                </div>
+              </a>
             </div>
 
             <div class="card max-w-300 m-3">
               <a href="https://www.linkedin.com/in/eamaaypee/">
-              <img
-                src="images/team/Abdullah.jpg"
-                class="card-img-top"
-                alt="..."/>
-              <div class="card-body">
-                <p class="card-text h2 text-center text-baseDark fw-semibold">
-                  Abdullah Paracha <br>                 
-                </p>
-                <p class="card-text h5 text-center text-baseDark fw-semibold">                  
-                  AWS User Group Co-Organizer <br> 
-                  Big Data Consultant at Systems Limited | AWS Community Builder
-                </p>
-              </div>
+                <img
+                  src="images/team/Abdullah.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <p class="card-text h2 text-center text-baseDark fw-semibold">
+                    Abdullah Paracha <br />
+                  </p>
+                  <p class="card-text h5 text-center text-baseDark fw-semibold">
+                    AWS User Group Co-Organizer <br />
+                    Big Data Consultant at Systems Limited | AWS Community
+                    Builder
+                  </p>
+                </div>
               </a>
-            </div>           
+            </div>
           </div>
-          
-          <div 
+
+          <div
             class="w-100 d-flex flex-column flex-lg-row justify-content-between align-items-center"
           >
-            <div class="card max-w-300 m-3">   
+            <div class="card max-w-300 m-3">
               <a href="https://www.linkedin.com/in/alina-shoaib/">
-              <img src="images/team/Alina Shoaib.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">     
-                <p class="card-text h2 text-center text-baseDark fw-semibold">
-                  Alina Shoaib Qureshi   <br>                 
-                </p>
-                <p class="card-text h5 text-center text-baseDark fw-semibold">                  
-                  VFP S22 Product Fellow 🙌 | NUST'22 🎓| Product @Markaz ( YC-W22 ) 🚀
-                </p>
-              </div>
-            </a>
+                <img
+                  src="images/team/Alina Shoaib.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <p class="card-text h2 text-center text-baseDark fw-semibold">
+                    Alina Shoaib Qureshi <br />
+                  </p>
+                  <p class="card-text h5 text-center text-baseDark fw-semibold">
+                    VFP S22 Product Fellow 🙌 | NUST'22 🎓| Product @Markaz (
+                    YC-W22 ) 🚀
+                  </p>
+                </div>
+              </a>
             </div>
 
             <div class="card max-w-300 m-3">
               <a href="https://www.linkedin.com/in/kashif-mehmood-km/">
-              <img src="images/team/Kashif.jpg" class="card-img-top" alt="..." />
-              <div class="card-body">
-                <p class="card-text h2 text-center text-baseDark fw-semibold">
-                  Kashif Mehmood   <br>                 
-                </p>
-                <p class="card-text h5 text-center text-baseDark fw-semibold">                  
-                  Engineering Lead | Supercharging e-commerce rails 🚀Markaz ( YC-W22 )
-                </p>
-              </div>
-            </a>
+                <img
+                  src="images/team/Kashif.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <p class="card-text h2 text-center text-baseDark fw-semibold">
+                    Kashif Mehmood <br />
+                  </p>
+                  <p class="card-text h5 text-center text-baseDark fw-semibold">
+                    Engineering Lead | Supercharging e-commerce rails 🚀Markaz (
+                    YC-W22 )
+                  </p>
+                </div>
+              </a>
             </div>
 
             <div class="card max-w-300 m-3">
               <a href="https://www.linkedin.com/in/waleedrafi/">
-              <img
-                src="images/team/Waleed Rafi.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <p class="card-text h2 text-center text-baseDark fw-semibold">
-                  Waleed Rafi <br>                 
-                </p>
-                <p class="card-text h5 text-center text-baseDark fw-semibold">                  
-                  Software Engineer @ Markaz | AWS | MERN | REACT NATIVE | Python
-                </p>
-              </div>
-            </a>
+                <img
+                  src="images/team/Waleed Rafi.jpg"
+                  class="card-img-top"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <p class="card-text h2 text-center text-baseDark fw-semibold">
+                    Waleed Rafi <br />
+                  </p>
+                  <p class="card-text h5 text-center text-baseDark fw-semibold">
+                    Software Engineer @ Markaz | AWS | MERN | REACT NATIVE |
+                    Python
+                  </p>
+                </div>
+              </a>
             </div>
-
-
-          
           </div>
         </div>
-      </section>
+      </section> -->
       <section id="events" class="bg-baseDarkest h-auto">
         <div class="container h-auto py-100 d-flex flex-column">
           <p class="w-100 text-base text-center display-5 fw-semibold py-4">
@@ -229,8 +297,8 @@
               <a
                 href="#"
                 class="my-3 btn btn-lg bg-baseDark text-white fw-semibold"
-                >Register Now</a>
-              
+                >Register Now</a
+              >
             </div>
           </div>
 
@@ -256,11 +324,15 @@
 
           <p class="h3">
             <i class="fa-solid fa-envelope text-baseDark mx-2"></i>
-            <a href="mailto:abdullah.paracha@awsconmunity.pk">abdullah.paracha@awsconmunity.pk</a>
+            <a href="mailto:abdullah.paracha@awsconmunity.pk"
+              >abdullah.paracha@awsconmunity.pk</a
+            >
           </p>
           <p class="h3">
             <i class="fa-solid fa-envelope text-baseDark mx-2"></i>
-            <a href="mailto:abdullah.paracha@awsconmunity.pk">hamzashabbir@awsconmunity.pk</a>
+            <a href="mailto:abdullah.paracha@awsconmunity.pk"
+              >hamzashabbir@awsconmunity.pk</a
+            >
             <a href="mailto:awsugislamabad@awsconmunity.pk"
               >awsugislamabad@awsconmunity.pk</a
             >
