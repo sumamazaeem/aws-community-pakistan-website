@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AWS Community Pakistan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/aws-community-pk-logo150-150x.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/aws-community-pk-logo150-150x.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/aws-community-pk-logo150-150x.png" />
+    <link rel="manifest" href="../images/site.webmanifest" />
+    <link rel="mask-icon" href="../images/aws-community-pk-logo150-150x.png" color="#5bbad5" />
+    <link rel="shortcut icon" href="../images/aws-community-pk-logo150-150x.png" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="../images/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/site.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/style.min.css" />
+    <link rel="stylesheet" type="text/css" href="../stylesheets/mystyles.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123754553-1"></script>
+    <style>
+        .map-dimentions {
+            width: 40vw;
+            height: 40vw;
+        }
+
+        @media only screen and (max-width: 991px) {
+            .map-dimentions {
+                width: calc(100vw - 50px);
+                /* 100vw represents 100% of the viewport width */
+                height: calc(100vw - 50px);
+            }
+        }
+
+        body {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .footer {
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 1rem;
+            background-color: #fff;
+            text-align: center;
+            color: #232f3f;
+        }
+
+
+
+        .form-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* CSS for the input field */
+        .newsletter-input {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border-color: #ff9900;
+            color: #232f3f;
+        }
+
+
+
+
+
+
+
+        .cards__copy {
+            text-align: center;
+            padding-bottom: 5rem;
+        }
+
+        .cards__title {
+            font-size: 48px;
+            margin-bottom: 2rem;
+        }
+
+        label.cards__copy-toggle-monthly,
+        label.cards__copy-toggle-annually {
+            text-transform: uppercase;
+            font-weight: 500;
+            color: #aaa;
+            border: 1px solid transparent;
+            padding: 5px;
+        }
+
+        #pricing__monthly:checked~* label.cards__copy-toggle-monthly,
+        #pricing__annually:checked~* label.cards__copy-toggle-annually {
+            color: #262a33;
+            border: 1px solid black;
+        }
+
+        .cards__container {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1280px;
+            padding: 12px;
+        }
+
+
+        .pricing__choice,
+        .card__price-annually,
+        .card__price-monthly {
+            display: none;
+        }
+
+        #pricing__annually:checked~* .card__price-annually,
+        #pricing__monthly:checked~* .card__price-monthly {
+            display: block;
+        }
+
+        .cards__list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            column-gap: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 340px;
+            margin-bottom: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            box-shadow: -2px 2px 12px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card__inner {
+            display: flex;
+            flex-direction: column;
+            /* min-height: 480px; */
+
+        }
+
+        .card__title {
+            font-size: 28px;
+            margin: 2rem 0 2rem 0;
+        }
+
+        .card__price {
+            margin-bottom: 2rem;
+            font-size: 26px;
+            font-weight: 700;
+            background-color: #eee4;
+            padding: 20px 0;
+        }
+
+        .price__type {
+            color: #0006;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .card__feature {
+            font-size: 16px;
+            font-weight: 500;
+            padding: 5px 3px;
+            color: hsl(233, 13%, 39%);
+            width: 170px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card__feature:last-of-type {
+            margin-bottom: 2rem;
+        }
+
+        .card__feature:not(:last-of-type) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .temp12 {
+            display: inline;
+            border-radius: 10px;
+            padding: 1rem;
+            background-color: #ff9900;
+            color: #fff;
+            margin-left: 1rem;
+        }
+
+        .temp12:hover {
+            color: #fff;
+        }
+
+        @media(max-width: 450px) {
+            .temp12 {
+                display: block;
+                width: auto;
+                text-align: center;
+                padding: 1rem;
+                margin-left: 0rem;
+            }
+        }
+
+        @media (min-width: 960px) {
+            .cards__copy {
+                margin-bottom: 0;
+            }
+
+            .card {
+                max-width: 300px;
+            }
+
+            .cards__list {
+                column-gap: 5px;
+            }
+
+            .card.main__card {
+                transform: scale(1);
+                box-shadow: 0 0 6px rgba(65, 65, 65, 0.1);
+                transform: scale(1.1);
+            }
+
+            .card.main__card .card__price {
+                margin-top: 10px;
+            }
+        }
+
+        .hello {
+            opacity: 1 !important;
+        }
+
+        .full {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .full .content {
+            background-color: rgba(0, 0, 0, 0.75) !important;
+            height: 100%;
+            width: 100%;
+            display: grid;
+        }
+
+        .full .content img {
+            left: 50%;
+            transform: translate3d(0, 0, 0);
+            animation: zoomin 1s ease;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+        }
+
+        .byebye {
+            opacity: 0;
+        }
+
+        .byebye:hover {
+            transform: scale(0.2) !important;
+        }
+
+        .gall {
+            background-color: #232f3f;
+            color: #ff9900;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+
+        }
+
+        .hea {
+            color: #ff9900;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 16px #333;
+            transition: all 1.5s ease;
+        }
+
+        .gallery img:hover {
+            box-shadow: 0 0 32px #333;
+        }
+
+        .gallery .content {
+            padding: 4px;
+        }
+
+        .gallery .gallery-item {
+            transition: all 0.5s ease;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader:before {
+            content: "";
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .gallery .gallery-item:hover {
+            transform: scale(1.025);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            margin: 60px auto;
+        }
+
+        .close-button {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+            }
+        }
+
+        @-moz-keyframes zoomin {
+            0% {
+                max-width: 50%;
+                transform: rotate(-30deg);
+                filter: blur(4px);
+            }
+
+            30% {
+                filter: blur(4px);
+                transform: rotate(-80deg);
+            }
+
+            70% {
+                max-width: 50%;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                max-width: 100%;
+                transform: rotate(0deg);
+            }
+        }
+
+        @-webkit-keyframes zoomin {
+            0% {
+                max-width: 50%;
+                transform: rotate(-30deg);
+                filter: blur(4px);
+            }
+
+            30% {
+                filter: blur(4px);
+                transform: rotate(-80deg);
+            }
+
+            70% {
+                max-width: 50%;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                max-width: 100%;
+                transform: rotate(0deg);
+            }
+        }
+
+        @-o-keyframes zoomin {
+            0% {
+                max-width: 50%;
+                transform: rotate(-30deg);
+                filter: blur(4px);
+            }
+
+            30% {
+                filter: blur(4px);
+                transform: rotate(-80deg);
+            }
+
+            70% {
+                max-width: 50%;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                max-width: 100%;
+                transform: rotate(0deg);
+            }
+        }
+
+        @keyframes zoomin {
+            0% {
+                max-width: 50%;
+                transform: rotate(-30deg);
+                filter: blur(4px);
+            }
+
+            30% {
+                filter: blur(4px);
+                transform: rotate(-80deg);
+            }
+
+            70% {
+                max-width: 50%;
+                transform: rotate(45deg);
+            }
+
+            100% {
+                max-width: 100%;
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+
+    <style>
+        @font-face {
+            font-family: 'JosefinSans-Regular';
+            src: url(./fonts/JosefinSans-Regular.ttf);
+        }
+
+        #page .section-1 .content .container>div .right .gal:after {
+            background-color: rgba(35, 47, 63, 0.2) !important;
+        }
+
+        * {
+            font-family: 'JosefinSans-Regular';
+        }
+    </style>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "UA-123754553-1");
+    </script>
+    <!-- <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5b63095a78eb8b00113e362f&product=inline-share-buttons"></script>
+    <link rel="manifest" href="/manifest.json" /> -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: "b3f01cfa-1a70-4f46-9dd1-202a1ae14385",
+            });
+        });
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+        ! function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1112628635595414');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1112628635595414&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+
+<body>
+    <div id="page">
+        <div class="section section-1 hdr" id="home">
+            <div class="content">
+                <div class="container">
+                    <div>
+                        <div width="50%" class="left">
+                            <div class="left_in">
+                                <img src="../simages/Karachi_CommunityDay_logo-01.png" />
+                                <div class="txt">
+                                    <h4 class="headin-ttl">
+                                        22th Feb, 2025 (Saturday),
+                                        Venue: to be announced!
+                                    </h4>
+                                    <p>
+                                        AWS User Group Karachi is back to host the most awaited event, AWS Community Day
+                                        Karachi 2025, unveiling success stories, use cases & much more from industry
+                                        leaders.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div width="50%" class="right">
+                            <div class="gal flex-it col">
+                                <div class="top f1 flex-it">
+                                    <div class="f2 ims" style="background-image: url('./images/careem1.jpg');"></div>
+                                    <div class="f1 ims" style="background-image: url('./images/2.jpg');"></div>
+                                </div>
+                                <div class="bot f1 flex-it">
+                                    <div class="f1 ims " style="background-image: url('./images/careem3.jpg');"></div>
+                                    <div class="f2 flex-it col" style="padding: 0px;">
+                                        <div class="f1 flex-it">
+                                            <div class="f1 ims" style="background-image: url('./images/careem2.jpg');"></div>
+                                            <div class="f1 ims" style="background-image: url('./images/g1.jpg');">
+                                            </div>
+                                        </div>
+                                        <div class="f1 ims" style="background-image: url('./images/gok1.jpg');"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="nav-bar">
+                <p id="toggle"><span></span></p>
+                <li class="spec">
+                    <a href="#registration" class=" button ">Register</a>
+                </li>
+                <ul>
+                    <li>
+                        <a href="#com_info">About Community Day</a>
+                    </li>
+                    <li>
+                        <a href="#gallery">Gallery</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#guestpass">Guest Pass</a>
+                    </li> -->
+                    <li>
+                        <a href="#cfp">Call For Speakers</a>
+                    </li>
+                    <li>
+                        <a href="#venues">Venue</a>
+                    </li>
+                    <!-- <li>
+                        <a href="#agenda">Agenda</a>
+                    </li>
+                    <li>
+                        <a href="#app">Event App</a>
+                    </li> -->
+                    <!-- <li>
+                        <a href="#creatorpass">Content Creator Pass</a>
+                    </li> -->
+                    <!-- <li>
+                        <a href="#swags">SWAGS</a>
+                    </li>
+                    <li>
+                        <a href="#eventcoverage">Event Coverage</a>
+                    </li> -->
+                    <!-- <li>
+                        <a href="#speakers">Speakers</a>
+                    </li> -->
+                    <li>
+                        <a href="#volunteers">Volunteers</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="section section-2">
+            <div class="container flex-it">
+                <div class="f1 left" id="com_info">
+                    <div class="left_in">
+                        <h4 class="headin-ttl">
+                            WHO ARE WE?
+                        </h4>
+                        <p>
+                            <b><a href="https://awscommunity.pk/" target="_blank">AWS User Group Karachi</a></b>
+                            is a thriving community of AWS enthusiasts, cloud practitioners, and developers who are 
+                            passionate about technology and innovation. Over the years, we’ve grown from a handful 
+                            of members to a vibrant group hosting meetups, workshops, and now, our first Community Day!
+                        </p>
+                        <p>
+                            AWS Community Days are community-organized cloud education events, featuring technical
+                            discussions
+                            and demos led by expert AWS users and industry leaders from around the world
+                        </p>
+                        <p>
+                            Community-based learning is the best way to enhance the concepts being
+                            taught by connecting with enthusiasts in person, thereby sharing first-hand
+                            experiences and familiar, accessible examples
+                        </p>
+                        <p>
+                            All skills levels are welcome to help accomplish our motto of
+                            learning, sharing and networking. Let's join hands to empower
+                            this tech community to make it bigger and better!
+                        </p>
+                        <p>
+                            <center>
+                                <div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-top: 20px;">
+                                    <a href="https://www.instagram.com/awsugkhi" target="_blank" style="text-decoration: none;">
+                                        <i class="fa fa-instagram" aria-hidden="true" style="color: #E4405F; font-size: 2.5rem;"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/awsugkarachi" target="_blank" style="text-decoration: none;">
+                                        <i class="fa fa-facebook" aria-hidden="true" style="color: #1877F2; font-size: 2.5rem;"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/company/aws-ug-karachi/" target="_blank" style="text-decoration: none;">
+                                        <i class="fa fa-linkedin" aria-hidden="true" style="color: #0A66C2; font-size: 2.5rem;"></i>
+                                    </a>
+                                    <a href="https://awscommunity.pk/slack" target="_blank" style="text-decoration: none;">
+                                        <i class="fa fa-slack" aria-hidden="true" style="color: #4A154B; font-size: 2.5rem;"></i>
+                                    </a>
+                                </div>                                
+                            </center>
+                        </p>
+                    </div>
+                </div>
+                <div class="f1 right" id="even_info">
+                    <div class="right_in">
+                        <h4 class="heading-ttl">
+                            What to expect from AWS Community Day?
+                        </h4>
+                        <ul class="circle">
+                            <li>
+                                Renew, revive & revitalize to exemplify your excitement about
+                                the work you do
+                            </li>
+                            <li>
+                                Learn industry trends and intricacies about innovative
+                                implementations from AWS experts
+                            </li>
+                            <li>
+                                Harness the power of networking with 500+ AWS users, DevOps,
+                                developers & solutions architects
+                            </li>
+                            <li>
+                                Network with fellow AWS veterans & techies during breaks
+                            </li>
+                            <li>
+                                Novice to pioneer on relentless pursuit to learn can rejoice
+                                the AWS offerings & success stories under one roof.
+                            </li>
+                            <li>Take helpful and valuable information back to business</li>
+                            <li>
+                                Gain visibility to get more publicity for your esteemed
+                                organisation
+                            </li>
+                            <li>
+                                Sporting chance for active participants to win AWS goodies
+                            </li>
+                        </ul>
+                    </div>
+                    <br /><b>Please read the
+                        <a href="../codeofconduct.html" target="_blank">Code of Conduct</a>
+                        for this event</b>
+                </div>
+            </div>
+        </div>
+
+
+        <div style="background-color: #232f3f; color:#ff9900; padding-top:10rem;padding-bottom:10rem;">
+            <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Gallery</h4>
+            <div class="gallery container" id="gallery">
+
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img width="300" height="250" style="object-fit: cover;" src="./images/gallery/1.jpeg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img width="300" height="250" style="object-fit: cover;" src="./images/gallery/2.jpeg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img width="300" height="250" style="object-fit: cover;" src="./images/gallery/codup1.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img width="300" height="250" style="object-fit: cover;" src="./images/gallery/6.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img width="300" height="250" style="object-fit: cover;" src="./images/gallery/5.jpeg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img width="300" height="250" style="object-fit: cover;" src="./images/gallery/5-dstagyr.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img width="300" height="250" style="object-fit: cover;" src="./images/gallery/7.jpg" alt=""></div>
+                </div>
+                <div class="gallery-item col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="content"><img width="300" height="250" style="object-fit: cover;" src="./images/gallery/8.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="section section-tickets text-center" id="registration">
+            <div class="container">
+                <h4 class="main-heading-ttl text-center">Registrations are Now open for AWS COMMUNITY DAY KARACHI 2025!</h4>
+                <a
+                href="https://lu.ma/event/evt-7JMHl0xDZlRSjQY"
+                class="temp12"
+                data-luma-action="checkout"
+                data-luma-event-id="evt-7JMHl0xDZlRSjQY"
+                >
+                Register for Event
+                </a>
+
+            </div>
+        </div> -->
+
+        <div class="section section-tickets text-center" id="cfp">
+            <div class="container">
+                <p>The Call for Speakers for AWS Community Day Karachi 2025 is officially open!</p>
+                <h4 class="main-heading-ttl text-center">Submit your proposals now!</h4>
+                <a
+                href="https://sessionize.com/aws-community-day-karachi-2025/"
+                class="temp12 px-5 py-4"
+                target="_blank"
+                >
+                    Submit your CFP
+                </a>
+
+            </div>
+        </div>
+        <!-- <div class="section section-3 inv" id="venues">
+            <div class="text-center agenda" style="display: flex; justify-content: center; align-items: center;"
+                id="guestpass">
+                <p
+                    style="font-size: 2rem; display: inline;color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;">
+                    Nominate Senior Technology Professionals for a Guest Pass<a class="temp12"
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfnIUBcq7qV7_bPk3LHqH3Twctb6BmjTREhKZWarEt9brrDZw/viewform?usp=sf_link"
+                        target="_blank">Register for Guest Pass</a>
+                </p>
+            </div>
+        </div> -->
+        <div class="section section-3 inv" id="venues">
+            <h4 class="main-heading-ttl text-center">Venue</h4>
+            <p class="text-center mb-5"><strong>Stay tuned! </strong> Venue details for AWS Community Day Karachi 2025 will be announced soon.</p>
+
+            <div class="container flex-it">
+                <div class="left f1 flex-it">
+
+                    <h4 class="headin-ttl">
+                        Venue
+                    </h4>
+
+                    <div class="left_in f1 map-dimentions">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d462117.05296393496!2d66.82581529773248!3d25.193458567990753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi%2C%20Karachi%20City%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1737481541792!5m2!1sen!2s"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="right f1">
+                    <div class="right_in align-middle mb-padding" style="text-align: center;">
+                        <div class="marked align-middle" style="color: #fff;">
+                            <div class="rand_cls">
+                                <span class="date_ori"> 22th Feb 2025 </span>
+                                <h4 class="headin-ttl"> Saturday </h4>
+                            </div>
+                            <ul style="padding: 10px;">
+                                <li><b> Stay Tuned! </b></li>
+                                <li>Will be announced soon</li>
+                                <!-- <li>22-E Block 6 P.E.C.H.S</li>
+                                <li>Main Shahrah-e-Faisal Karachi,</li>
+                                <li>75400, Pakistan</li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-4 inv" id="agenda" style="display: none;">
+            <div class="container">
+                <div class="sponsors">
+                    <h4 class="main-heading-ttl text-center">Agenda</h4>
+                    <div class="text-center agenda">
+                        <div id="sectionContent">
+                            <!-- <script type="text/javascript" src="https://sessionize.com/api/v2/q3gfsob1/view/GridSmart"></script> -->
+                        </div>
+                        <div class="table">
+                            <div class="thead">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="section section-4 inv">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <div class="section section-4 inv" id="app">
+                            <div class="container">
+                                <div class="sponsors">
+                                    <p class="text-center text-white text-muted">To be Announced ...</p>
+                                    <h4 class="main-heading-ttl text-center" style="color: #fc9701;">Access Event App</h4>
+                                    <div class="text-center agenda" style="display: flex; justify-content: center; align-items: center;"
+                                        id="guestpass">
+                                        <p
+                                            style="font-size: 2rem; display: inline;color: #fff; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;">
+                                            <a class="temp12" href="#" target="_blank" onclick="return false;">Click Here</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <div class="section section-4 inv" id="swags">
+                            <div class="container">
+                                <div class="sponsors">
+                                    <p class="text-center text-white text-muted">To be Announced ...</p>
+                                    <h4 class="main-heading-ttl text-center" style="color: #fc9701;">Claim your swags!</h4>
+                                    <div class="text-center agenda">
+                                        <div class="text-center agenda"
+                                            style="display: flex; justify-content: center; align-items: center;" id="guestpass">
+                                            <p
+                                                style="font-size: 2rem; display: inline;color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;">
+                                                <a class="temp12" href="#" target="_blank" onclick="return false;">Click Here</a>
+                                            </p>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <div class="section section-4 inv" id="eventcoverage">
+                            <div class="container">
+                                <div class="sponsors">
+                                    <p class="text-center text-white text-muted">To be Announced ...</p>
+                                    <h4 class="main-heading-ttl text-center" style="color: #fc9701;">Event Coverage</h4>
+                                    <div class="text-center agenda">
+                                        <div class="text-center agenda"
+                                            style="display: flex; justify-content: center; align-items: center;" id="eventcoverage">
+                                            <p
+                                                style="font-size: 2rem; display: inline;color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;">
+                                                <a class="temp12"
+                                                    href="#"
+                                                    target="_blank" onclick="return false;">Click Here</a>
+                                            </p>
+                                        </div>
+                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="section section-4 inv" id="creatorpass">
+            <div class="container">
+                <div class="sponsors">
+                    <h4 class="main-heading-ttl text-center" style="color: #fc9701;">Access Content Creator Pass</h4>
+                    <div class="text-center agenda">
+
+                        <div class="text-center agenda"
+                            style="display: flex; justify-content: center; align-items: center;" id="guestpass">
+                            <p
+                                style="font-size: 2rem; display: inline;color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;">
+                                <a class="temp12" href="https://bit.ly/CONTENT-CREATOR-PASSES-AWS-CD-2024"
+                                    target="_blank">Click
+                                    Here</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="section-8" style="background-color: #fff;">
+            <div class="container">
+                <div class="speakers">
+                    <h4 class="main-heading-ttl text-center" style="color: #232f3f;">Sessions</h4>
+                    <div class="text-center agenda" style="display: flex; justify-content: center; align-items: center;">
+                        <p style="font-size: 2rem; display: inline;color: #232f3f; margin-right: 1rem; margin-top: 1rem; font-weight: bolder;">Call for Speaker is Open<a class="temp12" href="https://sessionize.com/aws-community-day-lahore-2024/" target="_blank">Click here to submit your session</a></p>
+                    </div>
+                    <div class="spk_lst flex-it ">
+                        <script type="text/javascript" src="https://sessionize.com/api/v2/q3gfsob1/view/Sessions"></script>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        
+        <!-- <div class="section-8" id="speakers" style="background-color: #eee;">
+            <div class="container">
+                <div class="speakers">
+                    <h4 class="main-heading-ttl text-center" style="color: #232f3f;">Speakers</h4>
+                    <div class="spk_lst flex-it ">
+                        <iframe src="./session.html" frameborder="0" style="width: 100%; height:1300px;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-5" style="background-color: #fff;">
+            <div class="container">
+                <div class="sponsors">
+                    <h4 class="main-heading-ttl text-center">Speakers List</h4>
+                    <div class="cats">
+                        <iframe src="./speaker.html" frameborder="0" style="width: 100%; height:5300px;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="section-6 inv" id="volunteers" style="color: #ff9900; background-color: #ffffff;">
+            <div class="container">
+                <div class="volunteers">
+                    <h4 class="main-heading-ttl text-center" style="color: #ff9900;">Meet The Team</h4>
+                    <div class="vl-row-list">
+                        <div class="vl-i  flex-it hcenter">
+                            <div class="person" data-fname="Mobeen Ahmed" data-lname="User Group Leader"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/mobeen-ahmed.jpg');">
+                                    <a target="_blank" href="https://www.linkedin.com/in/mobeen-ahmed-dev/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Raheel Siddiqui" data-lname="User Group Leader"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/raheel-siddiqui.jpg');">
+                                    <a target="_blank" href="https://www.linkedin.com/in/rawheel/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Muhammad Awais" data-lname="Core Team Member"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/muhammad-awais.jpg');">
+                                    <a target="_blank" href="https://www.linkedin.com/in/muhammadawaisshaikh/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Qasim Hassan" data-lname="Core Team Member"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/qasim.jpg');">
+                                    <a target="_blank"
+                                        href="https://www.linkedin.com/in/qasimhassan/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Ayan Hussain" data-lname="Core Team Member"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/ayan.jpg');">
+                                    <a target="_blank"
+                                        href="https://www.linkedin.com/in/ayan-hussain/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Muhammad Uzair Khan" data-lname="Core Team Member"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/uzair-khan.jpg');">
+                                    <a target="_blank"
+                                        href="https://www.linkedin.com/in/muhammaduzairkhan1/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Muhammad Souhaib" data-lname="Core Team Member"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/souhaib.jpg');">
+                                    <a target="_blank"
+                                        href="https://www.linkedin.com/in/muhammad-souhaib/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Bahameen Majeed" data-lname="Core Team Member"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/bahameen.png');">
+                                    <a target="_blank"
+                                        href="https://www.linkedin.com/in/bahameen-majeed-160174219/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="person" data-fname="Ahad Ali" data-lname="Core Team Member"
+                                style="text-align: center; color:#ff9900">
+                                <div class="img" style="background-image: url('./images/team/ahad-ali.jpg');">
+                                    <a target="_blank"
+                                        href="https://www.linkedin.com/in/ahad--ali/">
+                                        <i class="icon large ion-logo-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            &copy;Copyright <span id="copyright-year"></span>, Developed and Maintained by <a target="_blank"
+                style="font-weight: bolder;"
+                href="https://www.linkedin.com/company/aws-ug-karachi/?originalSubdomain=pk">AWS User Group
+                Karachi</a>.
+        </div>
+
+        <script>
+            document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
+        </script>
+
+        <div class="modal">
+            <span class="close-button">&times;</span>
+            <img class="modal-content" src="" alt="">
+        </div>
+        <script type="text/javascript">
+            var latt = 12.9767814;
+            var lngg = 77.6197088;
+            var venue = "Conrad";
+
+            function setCoords(latt, lngg, venue) {
+                this.latt = latt;
+                this.lngg = lngg;
+                this.venue = venue;
+                console.log("clicked");
+                initMap();
+                $(this).addClass("hello");
+            }
+
+            function initMap() {
+                var uluru = {
+                    lat: latt,
+                    lng: lngg
+                };
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 15,
+                    center: uluru,
+                    scrollwheel: false
+                });
+                var markerIcon = {
+                    url: "https://image.flaticon.com/icons/svg/252/252025.svg",
+                    scaledSize: new google.maps.Size(50, 50),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(32, 65),
+                    labelOrigin: new google.maps.Point(25, 70)
+                };
+                var markerLabel = venue;
+                var marker = new google.maps.Marker({
+                    map: map,
+                    animation: google.maps.Animation.DROP,
+                    position: uluru,
+                    icon: markerIcon,
+                    disableDefaultUI: true,
+                    label: {
+                        text: markerLabel,
+                        color: "#eb3a44",
+                        fontSize: "16px",
+                        fontWeight: "bold"
+                    }
+                });
+            }
+        </script>
+        <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSK4vqrOG3caqUr6dxAVhA7MrdMmq63q0&callback=initMap"></script> -->
+        <!-- getting utm parameter and passing to konfhub start -->
+        <script>
+            $(".buy-ticket-link").on("click", () => {
+                checkForUtmAvilableOrNot(decodeURIComponent(location.href)).then((formResolve) => {
+                    window.open("https://konfhub.com/awsdaysblr?" + formResolve, "_blank");
+                }).catch((fromReject) => {
+                    window.open("https://konfhub.com/awsdaysblr", "_blank");
+                });
+            });
+
+            let checkForUtmAvilableOrNot = (_currentUrl) => {
+                return new Promise((resolve, reject) => {
+                    if (_currentUrl.indexOf("utm_source") > -1) {
+                        let qp = _currentUrl.slice(_currentUrl.indexOf('?') + 1)
+                        let a = qp.split("&");
+                        let _utmPara = "";
+                        a.forEach((v, j) => {
+                            try {
+                                if (j > 2) return;
+                                let _utm = checkForSpecialChar(v);
+                                _utmPara += _utm == 1 ? j == 2 ? v : v + "&" : v.slice(0, _utm);
+                            } catch (err) {
+                                console.log(err);
+                            }
+                        });
+                        resolve(_utmPara);
+                    } else {
+                        reject(0);
+                    }
+                })
+            };
+            let specialChars = "<>@!#$?%^&*()+[]{}:;|'\"\\,./~`-";
+            let checkForSpecialChar = function (string) {
+                let _indexOf = string.length;
+                for (i = 0; i < specialChars.length; i++) {
+                    if (string.indexOf(specialChars[i]) > -1) {
+                        _indexOf = _indexOf > string.indexOf(specialChars[i]) ? string.indexOf(specialChars[i]) : _indexOf
+                    }
+                }
+                return _indexOf != string.length ? _indexOf : 1;
+            }
+            window.addEventListener('load', function () {
+                var image = document.getElementById('image');
+                var loader = document.querySelector('.loader');
+                image.addEventListener('load', function () {
+                    loader.style.display = 'none';
+                });
+            });
+        </script>
+        <!-- getting utm parameter and passing to konfhub end -->
+        <script>
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const modal = document.querySelector('.modal');
+            const modalImage = document.querySelector('.modal-content');
+            const closeButton = document.querySelector('.close-button');
+
+            // Function to open the modal and display the clicked image
+            function openModal(imageSrc) {
+                modal.style.display = 'block';
+                modalImage.src = imageSrc;
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                modal.style.display = 'none';
+            }
+
+            // Add click event listeners to each gallery item
+            galleryItems.forEach(item => {
+                const imageSrc = item.querySelector('img').src;
+                item.addEventListener('click', () => openModal(imageSrc));
+            });
+
+            // Add click event listener to close button and overlay to close the modal
+            closeButton.addEventListener('click', closeModal);
+            modal.addEventListener('click', closeModal);
+        </script>
+        <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
+</body>
+
+</html>

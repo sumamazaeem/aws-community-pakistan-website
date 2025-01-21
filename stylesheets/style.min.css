@@ -2574,7 +2574,7 @@ ul.circle li {
 /* line 899, ../sass/shared/_home.scss */
 #page .section-6 .volunteers .vl-i {
   flex-wrap: wrap;
-  justify-content: unset;
+  justify-content: center;
 }
 
 /* line 902, ../sass/shared/_home.scss */
