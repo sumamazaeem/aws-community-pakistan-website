@@ -3343,3 +3343,9 @@ i.icon.large {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.gallery-image-size {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
