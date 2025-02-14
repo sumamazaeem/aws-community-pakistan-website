@@ -98,3 +98,11 @@ button:hover {
 #infoArea ul li strong {
     color: #007bff;
 }
+
+#cropperContainer {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    touch-action: none; /* Prevent unwanted touch behavior */
+}

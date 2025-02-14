@@ -38,13 +38,16 @@ $(document).ready(function () {
             }
 
             cropper = new Cropper(document.getElementById('imageToCrop'), {
-                aspectRatio: 1, // Square crop for the headshot
-                viewMode: 1,    // Restrict the image to be within the container
-                autoCropArea: 0.8, // Set crop area to be 80% of the image size
-                scalable: false,  // Disable scaling
-                zoomable: false,  // Disable zooming
-                cropBoxResizable: false, // Prevent resizing the crop box
-                background: true,
+                aspectRatio: 1,         // Maintain square crop for headshot
+                viewMode: 2,            // Restrict the crop box within the container
+                autoCropArea: 0.8,      // Crop area should be 80% of the image
+                scalable: false,        // Disable scaling
+                zoomable: false,        // Disable zooming
+                cropBoxResizable: false,// Prevent resizing crop box
+                background: true,       // Show background grid
+                movable: true,          // Allow moving crop box
+                rotatable: true,        // Allow rotating image
+                touchDrag: true,
             });
         };
         reader.readAsDataURL(event.target.files[0]);
