@@ -9,7 +9,7 @@ canvas.width = 1200;
 canvas.height = 630;
 
 const background = new Image();
-background.src = './img/aws-community-day-2025-pakistan.jpg';
+background.src = './img/aws-community-day-2025-pakistan.png';
 
 background.onload = function () {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
@@ -85,7 +85,7 @@ function generateBanner() {
 
     // Load background image
     const background = new Image();
-    background.src = './img/aws-community-day-2025-pakistan.jpg';
+    background.src = './img/aws-community-day-2025-pakistan.png';
 
     background.onload = function () {
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
