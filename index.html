@@ -1,78 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AWS Community Day Events</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: "JosefinSans";
+            src: url(karachi/fonts/JosefinSans-Regular.ttf);
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-image: url(images/bg_banner.jpg);
+            background-size: 100%;
+            background-position: center;
+            background-repeat: repeat-y;
+        }
+
+        * {
+            font-family: "JosefinSans";
+        }
+
+        .background {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100vh !important;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            Particles.init({
+                selector: ".background",
+                maxParticles: 500,
+                color: "#ffffff",
+                speed: 2,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        options: {
+                            maxParticles: 300,
+                            connectParticles: false,
+                        },
+                    },
+                    {
+                        breakpoint: 425,
+                        options: {
+                            maxParticles: 200,
+                            connectParticles: false,
+                        },
+                    },
+                    {
+                        breakpoint: 320,
+                        options: {
+                            maxParticles: 100,
+                            connectParticles: false,
+                        },
+                    },
+                ],
+            });
+        };
+    </script>
 </head>
-<body class="bg-gray-100 font-sans">
 
-    <!-- Header -->
-    <header class="bg-gray-800 text-white py-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <div class="flex items-center">
-                <img src="https://via.placeholder.com/50" alt="Logo" class="h-10 w-10 rounded-full mr-3">
-                <h1 class="text-2xl font-bold">AWS Community Day</h1>
+<body class="bg-gray-100 font-sans relative">
+    <canvas class="background"></canvas>
+    <div id="particles-js" class="absolute inset-0 z-0"></div>
+    <div class="container mx-auto p-4 text-center p-8 relative z-10">
+        <img src="images/aws-community-pk-logo.png" alt="AWS Community Day Pakistan"
+            class="w-[200px] h-auto mx-auto mb-6" />
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6 text-white">
+            AWS Community Pakistan
+        </h1>
+        <p class="text-lg text-center text-gray-600 mb-8 text-white">
+            Explore the power of AWS technologies and cloud innovations across
+            Pakistan!
+        </p>
+
+        <a href="karachi/index.html">
+            <div
+                class="flex flex-col md:flex-row items-center bg-white p-4 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-4 cursor-pointer hover:bg-gray-200">
+                <img src="simages/karachi_communityday_logo-01.png" alt="AWS Community Day Pakistan"
+                    class="w-32 h-auto md:w-48 md:h-auto rounded-lg" />
+
+                <div class="flex-1 md:ml-6 text-center md:text-left mt-4 md:mt-0 relative">
+                    <h3 class="text-xl font-semibold text-gray-800">AWS Community Day Karachi</h3>
+                    <p class="text-gray-600 mt-2 text-sm">AWS User Group Karachi is back to host the most awaited event,
+                        AWS
+                        Community Day Karachi 2025, unveiling success stories, use cases & much more from industry
+                        leaders.
+                    </p>
+                    <p class="text-gray-500 mt-1 text-sm"><span class="text-[#ff9900]">📅 Date:</span> 22th Feb, 2025
+                        (Saturday)</p>
+                    <p class="text-gray-500 text-sm"><span class="text-[#ff9900]">📍 Location:</span> MAJU, Karachi</p>
+                    <span id="open-registration"
+                        class="text-red-500 text-xs font-semibold ml-2 flex items-center absolute bottom-0 right-0">●
+                        <span class="animate-pulse animate-pulse-fast ml-1">Registration Open</span></span>
+                </div>
             </div>
+        </a>
 
-            <!-- Navigation -->
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="#current-event" class="text-white hover:text-gray-300">Current Event</a></li>
-                    <li><a href="#past-events" class="text-white hover:text-gray-300">Past Events</a></li>
-                    <li><a href="#contact" class="text-white hover:text-gray-300">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        <a href="lahore/index.html">
+            <div
+                class="flex flex-col md:flex-row items-center bg-white p-4 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-4 cursor-pointer hover:bg-gray-200">
+                <img src="simages/Aws community day pak 2023 logo(dark background)-ai.png"
+                    alt="AWS Community Day Pakistan" class="w-32 h-auto md:w-48 md:h-auto rounded-lg bg-[#252f3e]" />
 
-    <!-- Main Event Section -->
-    <section id="current-event" class="bg-white py-16">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6">AWS Community Day Karachi</h2>
-            <p class="text-gray-600 text-lg mb-8">Join us for an exciting day of learning and networking in the heart of Karachi. Meet cloud enthusiasts, developers, and AWS experts to discuss the latest in cloud technology.</p>
-            <a href="karachi\index.html" class="bg-yellow-500 text-white py-3 px-6 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300">Learn More</a>
-        </div>
-    </section>
-
-    <!-- Past Events Section -->
-    <section id="past-events" class="bg-gray-50 py-16">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Events</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <div class="bg-white shadow-lg rounded-lg p-6">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">AWS Community Day Karachi</h3>
-                    <p class="text-gray-600 mb-4">An incredible event in Karachi showcasing the power of AWS technologies and cloud innovations.</p>
-                    <a href="karachi/index.html" class="text-yellow-500 hover:text-yellow-600">View Event Page</a>
+                <div class="flex-1 md:ml-6 text-center md:text-left mt-4 md:mt-0">
+                    <h3 class="text-xl font-semibold text-gray-800">AWS Community Day Lahore</h3>
+                    <p class="text-gray-600 mt-2 text-sm">AWS User Group Lahore is back to host the most awaited event,
+                        AWS
+                        Community Day Lahore 2024, unveiling success stories, use cases & much more from industry
+                        leaders.
+                    </p>
+                    <p class="text-gray-500 mt-1 text-sm"><span class="text-[#ff9900]">📅 Date:</span> 25th Feb, 2024
+                        (Sunday)</p>
+                    <p class="text-gray-500 text-sm"><span class="text-[#ff9900]">📍 Location:</span> FAST Nuces(Main
+                        Auditorium),
+                        Lahore</p>
                 </div>
-                <!-- Event 1: Islamabad -->
-                <div class="bg-white shadow-lg rounded-lg p-6">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">AWS Community Day Islamabad</h3>
-                    <p class="text-gray-600 mb-4">Held in Islamabad, this event brought together top cloud enthusiasts and AWS experts.</p>
-                    <a href="islamabad\index.html" class="text-yellow-500 hover:text-yellow-600">View Event Page</a>
-                </div>
-
-                <!-- Event 2: Lahore -->
-                <div class="bg-white shadow-lg rounded-lg p-6">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">AWS Community Day Lahore</h3>
-                    <p class="text-gray-600 mb-4">An incredible event in Lahore showcasing the power of AWS technologies and cloud innovations.</p>
-                    <a href="lahore/index.html" class="text-yellow-500 hover:text-yellow-600">View Event Page</a>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </a>
 
-    <!-- Footer -->
-    <footer id="contact" class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto text-center">
-            <p>© 2025 AWS Community Pakistan. All Rights Reserved.</p>
-            <p class="mt-2">Contact us: <a href="mailto:info@awscommunity.pk" class="text-yellow-500 hover:text-yellow-600">info@awscommunity.pk</a></p>
-        </div>
-    </footer>
 
+        <a href="islamabad/index.html">
+            <div
+                class="flex flex-col md:flex-row items-center bg-white p-4 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-4 cursor-pointer hover:bg-gray-200">
+                <img src="islamabad/images/isb_community_day_2024-removebg-preview.png" alt="AWS Community Day Pakistan"
+                    class="w-32 h-auto md:w-48 md:h-auto rounded-lg bg-[#252f3e] py-12" />
+
+                <div class="flex-1 md:ml-6 text-center md:text-left mt-4 md:mt-0">
+                    <h3 class="text-xl font-semibold text-gray-800">AWS Community Day Islamabad</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Join us on August 24th, 2024, for an unforgettable day of all
+                        things AWS! Get ready for a day filled with insights, learning, networking, and excitement!</p>
+                    <p class="text-gray-500 mt-1 text-sm"><span class="text-[#ff9900]">📅 Date:</span> 24th August 2024,
+                        Saturday</p>
+                    <p class="text-gray-500 text-sm"><span class="text-[#ff9900]">📍 Location:</span> National
+                        Incubation
+                        Centre,
+                        Islamabad</p>
+                </div>
+            </div>
+        </a>
+
+
+
+
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
 </body>
+
 </html>
