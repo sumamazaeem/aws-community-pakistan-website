@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Community Day Lahore 2025 - Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../images/aws-community-pk-logo150-150x.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../images/aws-community-pk-logo150-150x.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../images/aws-community-pk-logo150-150x.png" />
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', 'Helvetica Neue', 'Arial', 'sans-serif';
+            background-color: #f5f5f5;
+            color: #232f3f;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #232f3f;
+            color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .page-header h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: #ffffff;
+        }
+
+        .page-header p {
+            margin: 10px 0 0 0;
+            color: #ff9900;
+            font-size: 1.1rem;
+        }
+
+        /* Registration Form Styles */
+        .registration-form-wrapper {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .registration-form-wrapper .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .registration-form-wrapper label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #232f3f;
+            font-size: 1rem;
+        }
+
+        .registration-form-wrapper label.required::after {
+            content: " *";
+            color: #e32;
+        }
+
+        .registration-form-wrapper .help-text {
+            font-size: 0.875rem;
+            color: #666;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+
+        .registration-form-wrapper input[type="text"],
+        .registration-form-wrapper input[type="email"],
+        .registration-form-wrapper input[type="tel"],
+        .registration-form-wrapper input[type="url"],
+        .registration-form-wrapper select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #fff;
+            color: #232f3f;
+        }
+
+        .registration-form-wrapper input[type="text"]:focus,
+        .registration-form-wrapper input[type="email"]:focus,
+        .registration-form-wrapper input[type="tel"]:focus,
+        .registration-form-wrapper input[type="url"]:focus,
+        .registration-form-wrapper select:focus {
+            outline: none;
+            border-color: #ff9900;
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+        }
+
+        .registration-form-wrapper input.error,
+        .registration-form-wrapper select.error {
+            border-color: #dc3545;
+        }
+
+        .registration-form-wrapper input.error:focus,
+        .registration-form-wrapper select.error:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+
+        .registration-form-wrapper input.valid,
+        .registration-form-wrapper select.valid {
+            border-color: #28a745;
+        }
+
+        .registration-form-wrapper input.valid:focus,
+        .registration-form-wrapper select.valid:focus {
+            border-color: #28a745;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+        }
+
+        .registration-form-wrapper .error-message {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .registration-form-wrapper .error-message.show {
+            display: block;
+        }
+
+        .registration-form-wrapper .success-message {
+            color: #28a745;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .registration-form-wrapper .success-message.show {
+            display: block;
+        }
+
+        .registration-form-wrapper .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .registration-form-wrapper input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .registration-form-wrapper .checkbox-label {
+            font-weight: normal;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .registration-form-wrapper .checkbox-label.required::after {
+            content: " *";
+            color: #e32;
+        }
+
+        /* Radio Button Styles */
+        .registration-form-wrapper .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .registration-form-wrapper .radio-label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .registration-form-wrapper input[type="radio"] {
+            width: auto;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        /* Textarea Styles */
+        .registration-form-wrapper textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #fff;
+            color: #232f3f;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .registration-form-wrapper textarea:focus {
+            outline: none;
+            border-color: #ff9900;
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.1);
+        }
+
+        .registration-form-wrapper textarea.error {
+            border-color: #dc3545;
+        }
+
+        .registration-form-wrapper textarea.error:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+
+        .registration-form-wrapper .submit-btn {
+            width: 100%;
+            max-width: 300px;
+            padding: 14px;
+            background-color: #ff9900;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .registration-form-wrapper .submit-btn:hover:not(:disabled) {
+            background-color: #e68900;
+        }
+
+        .registration-form-wrapper .submit-btn:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        .registration-form-wrapper .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .registration-form-wrapper .message {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .registration-form-wrapper .message.show {
+            display: block;
+        }
+
+        .registration-form-wrapper .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .registration-form-wrapper .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .registration-form-wrapper .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .registration-form-wrapper {
+                padding: 25px 20px;
+                margin: 10px;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .registration-form-wrapper input[type="text"],
+            .registration-form-wrapper input[type="email"],
+            .registration-form-wrapper input[type="tel"],
+            .registration-form-wrapper input[type="url"],
+            .registration-form-wrapper select,
+            .registration-form-wrapper textarea {
+                padding: 10px 12px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .registration-form-wrapper {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-header">
+        <h1>AWS Community Day Lahore 2025</h1>
+        <p>Registration Form</p>
+    </div>
+
+    <div class="registration-form-wrapper">
+        <!-- Success/Error Messages -->
+        <div id="successMessage" class="message success"></div>
+        <div id="errorMessage" class="message error"></div>
+
+        <form id="registrationForm" novalidate>
+            <!-- Full Name (Required) -->
+            <div class="form-group">
+                <label for="fullName" class="required">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <div class="error-message" id="fullNameError">We would appreciate it if you could provide your full name.</div>
+            </div>
+
+            <!-- Work Email (Required) -->
+            <div class="form-group">
+                <label for="workEmail" class="required">Work Email</label>
+                <input type="email" id="workEmail" name="workEmail" required>
+                <div class="help-text">Please use your work email address. Email invite will be sent to this address. Personal email domains (gmail.com, yahoo.com, hotmail.com, outlook.com, etc.) are discouraged.</div>
+                <div class="success-message" id="workEmailSuccess">✓ Valid work email</div>
+                <div class="error-message" id="workEmailError">Please provide a valid work email address. Personal email domains are discouraged for this registration.</div>
+            </div>
+
+            <!-- Phone Number (Required) -->
+            <div class="form-group">
+                <label for="phoneNumber" class="required">Phone Number (WhatsApp)</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+923XXXXXXXXX" required>
+                <div class="help-text">Please use the format: +923XXXXXXXXX (must start with +92). This should be your WhatsApp number to receive event auto updates.</div>
+                <div class="success-message" id="phoneNumberSuccess">✓ Valid phone number</div>
+                <div class="error-message" id="phoneNumberError">Please enter a valid phone number in the format +92 followed by 10 digits.</div>
+            </div>
+
+            <!-- LinkedIn Profile (Required) -->
+            <div class="form-group">
+                <label for="linkedinProfile" class="required">LinkedIn Profile</label>
+                <input type="url" id="linkedinProfile" name="linkedinProfile" placeholder="https://www.linkedin.com/in/yourprofile" required>
+                <div class="help-text">Please provide your LinkedIn profile URL. It should start with https://linkedin.com/in/ or https://www.linkedin.com/in/</div>
+                <div class="success-message" id="linkedinProfileSuccess">✓ Valid LinkedIn profile</div>
+                <div class="error-message" id="linkedinProfileError">Please provide a valid LinkedIn profile URL. It should start with https://linkedin.com/in/ or https://www.linkedin.com/in/</div>
+            </div>
+
+            <!-- Company Name (Optional) -->
+            <div class="form-group">
+                <label for="companyName">Company Name (Optional)</label>
+                <input type="text" id="companyName" name="companyName">
+            </div>
+
+            <!-- Job Title (Optional) -->
+            <div class="form-group">
+                <label for="jobTitle">Job Title (Optional)</label>
+                <input type="text" id="jobTitle" name="jobTitle">
+            </div>
+
+            <!-- Professional Experience (Required) -->
+            <div class="form-group">
+                <label for="professionalExperience" class="required">Professional Experience</label>
+                <select id="professionalExperience" name="professionalExperience" required>
+                    <option value="">Please select your experience level</option>
+                    <option value="Student">Student</option>
+                    <option value="0-1 Year">0-1 Year</option>
+                    <option value="1-3 year">1-3 year</option>
+                    <option value="3-5 year">3-5 year</option>
+                    <option value="5+ year">5+ year</option>
+                    <option value="10+ year">10+ year</option>
+                    <option value="15+ year">15+ year</option>
+                </select>
+                <div class="error-message" id="professionalExperienceError">Please select your professional experience level.</div>
+            </div>
+
+            <!-- AWS Certified (Required) -->
+            <div class="form-group">
+                <label class="required">Are you AWS Certified?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" id="awsCertifiedYes" name="awsCertified" value="yes" required>
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" id="awsCertifiedNo" name="awsCertified" value="no" required>
+                        No
+                    </label>
+                </div>
+                <div class="error-message" id="awsCertifiedError">Please let us know if you are AWS Certified.</div>
+            </div>
+
+            <!-- Motivation (Optional) -->
+            <div class="form-group">
+                <label for="motivation">What's your motivation towards attending the event? (Optional)</label>
+                <textarea id="motivation" name="motivation" rows="4" placeholder="Please share what motivates you to attend this event..."></textarea>
+            </div>
+
+            <!-- Referral Code (Optional) -->
+            <div class="form-group">
+                <label for="referralCode">Referral Code (Optional)</label>
+                <input type="text" id="referralCode" name="referralCode">
+                <div class="help-text">If you have a referral code, please enter it here. This is optional and won't affect your event invitation.</div>
+            </div>
+
+            <!-- Acknowledgment (Required) -->
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="acknowledgment" name="acknowledgment" value="yes" required>
+                    <label for="acknowledgment" class="checkbox-label required">I understand that this is an invite-only meetup, and I can join only if I get a shortlisting email.</label>
+                </div>
+                <div class="error-message" id="acknowledgmentError">Please acknowledge that you understand this is an invite-only event.</div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Submit Registration
+            </button>
+        </form>
+    </div>
+
+    <!-- Registration Form JavaScript -->
+    <script>
+        (function() {
+            // Webhook URL
+            const WEBHOOK_URL = 'https://n8n.sumamazaeem.com/webhook-test/42daae61-ea44-489f-ab92-e2e2115fb370';
+
+            // Get form elements
+            const form = document.getElementById('registrationForm');
+            if (!form) return; // Exit if form doesn't exist
+
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Validation patterns
+            const EMAIL_PATTERN = /^[a-zA-Z0-9._%+-]+@(?!gmail\.com)(?!yahoo\.com)(?!hotmail\.com)(?!outlook\.com)(?!icloud\.com)(?!protonmail\.com)(?!mail\.com)(?!aol\.com)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const PHONE_PATTERN = /^\+92[0-9]{10}$/;
+            const LINKEDIN_PATTERN = /^https?:\/\/(www\.)?linkedin\.com\/in\/.+/i;
+
+            // Personal email domains to block
+            const BLOCKED_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'protonmail.com', 'mail.com', 'aol.com'];
+
+            function validateEmail(email) {
+                if (!email) return false;
+                if (!EMAIL_PATTERN.test(email)) return false;
+                const domain = email.split('@')[1]?.toLowerCase();
+                if (!domain || BLOCKED_DOMAINS.includes(domain)) return false;
+                return true;
+            }
+
+            function validatePhone(phone) {
+                if (!phone) return false;
+                return PHONE_PATTERN.test(phone.trim());
+            }
+
+            function validateLinkedIn(url) {
+                if (!url) return false;
+                return LINKEDIN_PATTERN.test(url.trim());
+            }
+
+            function showFieldError(fieldId, message) {
+                const field = document.getElementById(fieldId);
+                const errorDiv = document.getElementById(fieldId + 'Error');
+                const successDiv = document.getElementById(fieldId + 'Success');
+                
+                // Show error message
+                if (errorDiv) {
+                    errorDiv.textContent = message;
+                    errorDiv.classList.add('show');
+                }
+                
+                // Add error class to field if it exists
+                if (field) {
+                    field.classList.add('error');
+                    field.classList.remove('valid');
+                    if (successDiv) {
+                        successDiv.classList.remove('show');
+                    }
+                }
+            }
+
+            function showFieldSuccess(fieldId) {
+                const field = document.getElementById(fieldId);
+                const errorDiv = document.getElementById(fieldId + 'Error');
+                const successDiv = document.getElementById(fieldId + 'Success');
+                
+                if (field) {
+                    field.classList.remove('error');
+                    field.classList.add('valid');
+                    if (errorDiv) {
+                        errorDiv.classList.remove('show');
+                    }
+                    if (successDiv) {
+                        successDiv.classList.add('show');
+                    }
+                }
+            }
+
+            function clearFieldError(fieldId) {
+                const field = document.getElementById(fieldId);
+                const errorDiv = document.getElementById(fieldId + 'Error');
+                const successDiv = document.getElementById(fieldId + 'Success');
+                
+                // Clear error message
+                if (errorDiv) {
+                    errorDiv.classList.remove('show');
+                }
+                
+                // Remove error class from field if it exists
+                if (field) {
+                    field.classList.remove('error');
+                    field.classList.remove('valid');
+                    if (successDiv) {
+                        successDiv.classList.remove('show');
+                    }
+                }
+            }
+
+            function hideMessages() {
+                if (successMessage) successMessage.classList.remove('show');
+                if (errorMessage) errorMessage.classList.remove('show');
+            }
+
+            function showSuccess(message) {
+                hideMessages();
+                if (successMessage) {
+                    successMessage.textContent = message;
+                    successMessage.classList.add('show');
+                }
+            }
+
+            function showError(message) {
+                hideMessages();
+                if (errorMessage) {
+                    errorMessage.textContent = message;
+                    errorMessage.classList.add('show');
+                }
+            }
+
+            function validateForm() {
+                let isValid = true;
+
+                const fullName = document.getElementById('fullName').value.trim();
+                if (!fullName) {
+                    showFieldError('fullName', 'We would appreciate it if you could provide your full name.');
+                    isValid = false;
+                } else {
+                    clearFieldError('fullName');
+                }
+
+                const workEmail = document.getElementById('workEmail').value.trim();
+                if (!workEmail) {
+                    showFieldError('workEmail', 'Please provide your work email address.');
+                    isValid = false;
+                } else if (!validateEmail(workEmail)) {
+                    showFieldError('workEmail', 'Please provide a valid work email address. Personal email domains are discouraged for this registration.');
+                    isValid = false;
+                } else {
+                    clearFieldError('workEmail');
+                }
+
+                const phoneNumber = document.getElementById('phoneNumber').value.trim();
+                if (!phoneNumber) {
+                    showFieldError('phoneNumber', 'Please provide your phone number.');
+                    isValid = false;
+                } else if (!validatePhone(phoneNumber)) {
+                    showFieldError('phoneNumber', 'Please enter a valid phone number in the format +92 followed by 10 digits.');
+                    isValid = false;
+                } else {
+                    clearFieldError('phoneNumber');
+                }
+
+                const linkedinProfile = document.getElementById('linkedinProfile').value.trim();
+                if (!linkedinProfile) {
+                    showFieldError('linkedinProfile', 'Please provide your LinkedIn profile URL.');
+                    isValid = false;
+                } else if (!validateLinkedIn(linkedinProfile)) {
+                    showFieldError('linkedinProfile', 'Please provide a valid LinkedIn profile URL. It should start with https://linkedin.com/in/ or https://www.linkedin.com/in/');
+                    isValid = false;
+                } else {
+                    clearFieldError('linkedinProfile');
+                }
+
+                // Professional Experience validation (required dropdown)
+                const professionalExperience = document.getElementById('professionalExperience').value;
+                if (!professionalExperience) {
+                    showFieldError('professionalExperience', 'Please select your professional experience level.');
+                    isValid = false;
+                } else {
+                    clearFieldError('professionalExperience');
+                }
+
+                // AWS Certified validation (required radio button)
+                const awsCertified = document.querySelector('input[name="awsCertified"]:checked');
+                if (!awsCertified) {
+                    showFieldError('awsCertified', 'Please let us know if you are AWS Certified.');
+                    isValid = false;
+                } else {
+                    clearFieldError('awsCertified');
+                }
+
+                // Acknowledgment validation (required checkbox)
+                const acknowledgment = document.getElementById('acknowledgment');
+                if (!acknowledgment.checked) {
+                    showFieldError('acknowledgment', 'Please acknowledge that you understand this is an invite-only event.');
+                    isValid = false;
+                } else {
+                    clearFieldError('acknowledgment');
+                }
+
+                return isValid;
+            }
+
+            function setupRealTimeValidation() {
+                // Email validation - real-time as user types
+                const emailField = document.getElementById('workEmail');
+                if (emailField) {
+                    let emailTimeout;
+                    emailField.addEventListener('input', function() {
+                        const email = this.value.trim();
+                        clearTimeout(emailTimeout);
+                        
+                        if (!email) {
+                            clearFieldError('workEmail');
+                            return;
+                        }
+                        
+                        // Debounce validation by 500ms
+                        emailTimeout = setTimeout(() => {
+                            if (!validateEmail(email)) {
+                                showFieldError('workEmail', 'Please provide a valid work email address. Personal email domains are discouraged for this registration.');
+                            } else {
+                                showFieldSuccess('workEmail');
+                            }
+                        }, 500);
+                    });
+                    
+                    emailField.addEventListener('blur', function() {
+                        const email = this.value.trim();
+                        if (email) {
+                            if (!validateEmail(email)) {
+                                showFieldError('workEmail', 'Please provide a valid work email address. Personal email domains are discouraged for this registration.');
+                            } else {
+                                showFieldSuccess('workEmail');
+                            }
+                        }
+                    });
+                }
+
+                // Phone validation - real-time as user types
+                const phoneField = document.getElementById('phoneNumber');
+                if (phoneField) {
+                    let phoneTimeout;
+                    phoneField.addEventListener('input', function() {
+                        const phone = this.value.trim();
+                        clearTimeout(phoneTimeout);
+                        
+                        if (!phone) {
+                            clearFieldError('phoneNumber');
+                            return;
+                        }
+                        
+                        // Debounce validation by 500ms
+                        phoneTimeout = setTimeout(() => {
+                            if (!validatePhone(phone)) {
+                                showFieldError('phoneNumber', 'Please enter a valid phone number in the format +92 followed by 10 digits.');
+                            } else {
+                                showFieldSuccess('phoneNumber');
+                            }
+                        }, 500);
+                    });
+                    
+                    phoneField.addEventListener('blur', function() {
+                        const phone = this.value.trim();
+                        if (phone) {
+                            if (!validatePhone(phone)) {
+                                showFieldError('phoneNumber', 'Please enter a valid phone number in the format +92 followed by 10 digits.');
+                            } else {
+                                showFieldSuccess('phoneNumber');
+                            }
+                        }
+                    });
+                }
+
+                // LinkedIn validation - real-time as user types
+                const linkedinField = document.getElementById('linkedinProfile');
+                if (linkedinField) {
+                    let linkedinTimeout;
+                    linkedinField.addEventListener('input', function() {
+                        const linkedin = this.value.trim();
+                        clearTimeout(linkedinTimeout);
+                        
+                        if (!linkedin) {
+                            clearFieldError('linkedinProfile');
+                            return;
+                        }
+                        
+                        // Debounce validation by 500ms
+                        linkedinTimeout = setTimeout(() => {
+                            if (!validateLinkedIn(linkedin)) {
+                                showFieldError('linkedinProfile', 'Please provide a valid LinkedIn profile URL. It should start with https://linkedin.com/in/ or https://www.linkedin.com/in/');
+                            } else {
+                                showFieldSuccess('linkedinProfile');
+                            }
+                        }, 500);
+                    });
+                    
+                    linkedinField.addEventListener('blur', function() {
+                        const linkedin = this.value.trim();
+                        if (linkedin) {
+                            if (!validateLinkedIn(linkedin)) {
+                                showFieldError('linkedinProfile', 'Please provide a valid LinkedIn profile URL. It should start with https://linkedin.com/in/ or https://www.linkedin.com/in/');
+                            } else {
+                                showFieldSuccess('linkedinProfile');
+                            }
+                        }
+                    });
+                }
+
+                // Full name validation on blur
+                const fullNameField = document.getElementById('fullName');
+                if (fullNameField) {
+                    fullNameField.addEventListener('blur', function() {
+                        const name = this.value.trim();
+                        if (!name) {
+                            showFieldError('fullName', 'We would appreciate it if you could provide your full name.');
+                        } else {
+                            clearFieldError('fullName');
+                        }
+                    });
+                }
+            }
+
+            function prepareFormData() {
+                const awsCertifiedRadio = document.querySelector('input[name="awsCertified"]:checked');
+                
+                return {
+                    fullName: document.getElementById('fullName').value.trim(),
+                    workEmail: document.getElementById('workEmail').value.trim(),
+                    phoneNumber: document.getElementById('phoneNumber').value.trim(),
+                    linkedinProfile: document.getElementById('linkedinProfile').value.trim(),
+                    companyName: document.getElementById('companyName').value.trim() || null,
+                    jobTitle: document.getElementById('jobTitle').value.trim() || null,
+                    professionalExperience: document.getElementById('professionalExperience').value,
+                    awsCertified: awsCertifiedRadio ? awsCertifiedRadio.value : null,
+                    motivation: document.getElementById('motivation').value.trim() || null,
+                    referralCode: document.getElementById('referralCode').value.trim() || null,
+                    acknowledgment: document.getElementById('acknowledgment').checked
+                };
+            }
+
+            async function submitForm(formData) {
+                try {
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+                    }
+
+                    const response = await fetch(WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json().catch(() => ({}));
+
+                    showSuccess('Thank you for registering! Your submission has been received successfully. You will receive a confirmation email, if shortlisted after review at your provided email address and contact number.');
+                    form.reset();
+                    
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    showError('We apologize, but there was an issue submitting your registration. Please try again in a moment. If the problem continues, please feel free to contact our support team.');
+                    
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Submit Registration';
+                    }
+                }
+            }
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                hideMessages();
+
+                if (!validateForm()) {
+                    showError('Please kindly review and correct the highlighted fields before submitting your registration.');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+
+                const formData = prepareFormData();
+                await submitForm(formData);
+            });
+
+            // Initialize real-time validation
+            setupRealTimeValidation();
+
+            // Send height updates to parent window (for iframe embedding)
+            function sendHeightToParent() {
+                if (window.parent && window.parent !== window) {
+                    const height = document.body.scrollHeight;
+                    window.parent.postMessage({
+                        type: 'resize',
+                        height: height
+                    }, '*');
+                }
+            }
+
+            // Send initial height
+            setTimeout(sendHeightToParent, 100);
+
+            // Send height on window resize
+            window.addEventListener('resize', sendHeightToParent);
+
+            // Send height when form content changes
+            const observer = new MutationObserver(sendHeightToParent);
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true,
+                attributes: true
+            });
+        })();
+    </script>
+</body>
+</html>
