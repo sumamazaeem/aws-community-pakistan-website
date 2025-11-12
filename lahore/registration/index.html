@@ -49,9 +49,11 @@
             max-width: 600px;
             margin: 20px auto;
             padding: 30px;
+            padding-bottom: 40px;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: visible;
         }
 
         .registration-form-wrapper .form-group {
@@ -233,10 +235,14 @@
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.1s;
-            margin-top: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
             display: block;
             margin-left: auto;
             margin-right: auto;
+            min-height: 48px;
+            position: relative;
+            z-index: 1;
         }
 
         .registration-form-wrapper .submit-btn:hover:not(:disabled) {
@@ -334,10 +340,6 @@
     </div>
 
     <div class="registration-form-wrapper">
-        <!-- Success/Error Messages -->
-        <div id="successMessage" class="message success"></div>
-        <div id="errorMessage" class="message error"></div>
-
         <form id="registrationForm" novalidate>
             <!-- Full Name (Required) -->
             <div class="form-group">
@@ -438,6 +440,10 @@
                 </div>
                 <div class="error-message" id="acknowledgmentError">Please acknowledge that you understand this is an invite-only event.</div>
             </div>
+
+            <!-- Success/Error Messages -->
+            <div id="successMessage" class="message success"></div>
+            <div id="errorMessage" class="message error"></div>
 
             <!-- Submit Button -->
             <button type="submit" class="submit-btn" id="submitBtn">
