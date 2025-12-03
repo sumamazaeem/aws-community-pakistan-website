@@ -339,7 +339,7 @@
         <p>Registration Form</p>
     </div>
 
-    <div class="registration-form-wrapper">
+    <div class="registration-form-wrapper" style="display: none;">
         <form id="registrationForm" novalidate>
             <!-- Full Name (Required) -->
             <div class="form-group">
@@ -450,6 +450,32 @@
                 Submit Registration
             </button>
         </form>
+    </div>
+
+    <!-- Google Form Registration Button -->
+    <div class="registration-form-wrapper" style="text-align: center; padding: 60px 30px;">
+        <h2 style="color: #232f3f; margin-bottom: 30px; font-size: 1.8rem;">Register for AWS Community Day Lahore 2025</h2>
+        <p style="color: #666; margin-bottom: 40px; font-size: 1.1rem;">Click the button below to complete your registration</p>
+        <a href="https://forms.gle/CBioGAVPbVBrnC236" target="_blank" style="display: inline-block; padding: 20px 50px; background-color: #ff9900; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1.3rem; transition: background-color 0.3s, transform 0.1s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); min-width: 300px;">
+            Register Now
+        </a>
+        <style>
+            a[href="https://forms.gle/CBioGAVPbVBrnC236"]:hover {
+                background-color: #e68900 !important;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            }
+            a[href="https://forms.gle/CBioGAVPbVBrnC236"]:active {
+                transform: translateY(0);
+            }
+            @media (max-width: 768px) {
+                a[href="https://forms.gle/CBioGAVPbVBrnC236"] {
+                    padding: 18px 40px;
+                    font-size: 1.2rem;
+                    min-width: 280px;
+                }
+            }
+        </style>
     </div>
 
     <!-- Registration Form JavaScript -->
