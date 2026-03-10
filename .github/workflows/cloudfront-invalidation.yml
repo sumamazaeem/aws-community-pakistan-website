@@ -1,0 +1,49 @@
+name: CloudFront Cache Invalidation
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  invalidate-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Check CodePipeline deployment status
+        id: pipeline-check
+        run: |
+          STATUS=$(aws codepipeline get-pipeline-state \
+            --name "${{ vars.CODEPIPELINE_NAME }}" \
+            --query "stageStates[?stageName=='Deploy'].latestExecution.status" \
+            --output text)
+          echo "Pipeline status: $STATUS"
+          if [ "$STATUS" != "Succeeded" ]; then
+            echo "CodePipeline has not completed successfully (status: $STATUS). Skipping invalidation."
+            exit 1
+          fi
+
+      - name: Invalidate CloudFront cache
+        id: invalidate
+        run: |
+          RESULT=$(aws cloudfront create-invalidation \
+            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*" \
+            --output json)
+          INVALIDATION_ID=$(echo "$RESULT" | jq -r '.Invalidation.Id')
+          echo "invalidation_id=$INVALIDATION_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Report status
+        if: always()
+        run: |
+          if [ "${{ steps.invalidate.outcome }}" == "success" ]; then
+            echo "### ✅ CloudFront Invalidation Succeeded" >> "$GITHUB_STEP_SUMMARY"
+            echo "Invalidation ID: ${{ steps.invalidate.outputs.invalidation_id }}" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "### ❌ CloudFront Invalidation Failed" >> "$GITHUB_STEP_SUMMARY"
+          fi
