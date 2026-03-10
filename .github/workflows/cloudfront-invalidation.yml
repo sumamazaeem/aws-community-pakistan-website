@@ -15,18 +15,30 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Check CodePipeline deployment status
+      - name: Wait for CodePipeline deployment to succeed
         id: pipeline-check
         run: |
-          STATUS=$(aws codepipeline get-pipeline-state \
-            --name "${{ vars.CODEPIPELINE_NAME }}" \
-            --query "stageStates[?stageName=='Deploy'].latestExecution.status" \
-            --output text)
-          echo "Pipeline status: $STATUS"
-          if [ "$STATUS" != "Succeeded" ]; then
-            echo "CodePipeline has not completed successfully (status: $STATUS). Skipping invalidation."
-            exit 1
-          fi
+          MAX_ATTEMPTS=20   # 20 x 30s = 10 minutes max wait
+          ATTEMPT=0
+          while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
+            STATUS=$(aws codepipeline get-pipeline-state \
+              --name "${{ vars.CODEPIPELINE_NAME }}" \
+              --query "stageStates[?stageName=='Deploy'].latestExecution.status" \
+              --output text)
+            echo "Attempt $((ATTEMPT+1))/$MAX_ATTEMPTS — Pipeline status: $STATUS"
+            if [ "$STATUS" = "Succeeded" ]; then
+              echo "CodePipeline deployment succeeded."
+              exit 0
+            elif [ "$STATUS" = "Failed" ] || [ "$STATUS" = "Stopped" ] || [ "$STATUS" = "Superseded" ]; then
+              echo "CodePipeline ended with non-recoverable status: $STATUS. Aborting invalidation."
+              exit 1
+            fi
+            ATTEMPT=$((ATTEMPT+1))
+            echo "Waiting 30s for pipeline to complete..."
+            sleep 30
+          done
+          echo "Timed out after $((MAX_ATTEMPTS * 30))s waiting for CodePipeline to succeed."
+          exit 1
 
       - name: Invalidate CloudFront cache
         id: invalidate
