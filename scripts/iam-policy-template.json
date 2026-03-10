@@ -1,0 +1,17 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCloudfrontInvalidationOnly",
+      "Effect": "Allow",
+      "Action": "cloudfront:CreateInvalidation",
+      "Resource": "arn:aws:cloudfront::<ACCOUNT_ID>:distribution/<DISTRIBUTION_ID>"
+    },
+    {
+      "Sid": "AllowCodePipelineStateCheck",
+      "Effect": "Allow",
+      "Action": "codepipeline:GetPipelineState",
+      "Resource": "arn:aws:codepipeline:<REGION>:<ACCOUNT_ID>:<PIPELINE_NAME>"
+    }
+  ]
+}
