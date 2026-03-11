@@ -182,6 +182,25 @@
     .navbar-cta:active {
       transform: translateY(0);
     }
+
+    .navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+    }
+
+    .navbar-cta-register {
+      background: transparent;
+      border: 1px solid var(--purple-mid);
+      color: var(--purple-light);
+    }
+
+    .navbar-cta-register:hover {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: var(--purple-light);
+      box-shadow: none;
+    }
     
     @media (min-width: 768px) {
       .navbar-container {
@@ -444,71 +463,25 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
-    
-    .video-placeholder {
+
+    .video-embed-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      background: linear-gradient(135deg, rgba(13, 13, 26, 0.9), rgba(26, 26, 46, 0.9));
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding-bottom: 56.25%;
     }
-    
-    .video-placeholder > * {
+
+    .video-embed-wrapper iframe {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-    .play-button {
-      width: 80px;
-      height: 80px;
-      background: var(--purple-dark);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: all var(--transition-base);
-      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
-      padding-left: 0.25rem; /* Optical alignment for play icon */
-    }
-    
-    .play-button:hover {
-      background: var(--purple-mid);
-      box-shadow: var(--shadow-glow-purple);
-      transform: translate(-50%, -50%) scale(1.1);
-    }
-    
-    .video-label {
-      top: auto;
-      bottom: var(--spacing-md);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      text-align: center;
-      padding: 0 var(--spacing-md);
+      top: 0;
+      left: 0;
       width: 100%;
+      height: 100%;
+      border: none;
     }
-    
+
     @media (min-width: 768px) {
       .kiro-description {
         font-size: 1.25rem;
-      }
-      
-      .play-button {
-        width: 100px;
-        height: 100px;
-        font-size: 2.5rem;
-      }
-      
-      .video-label {
-        font-size: 1.125rem;
-        bottom: var(--spacing-lg);
       }
     }
     
@@ -1476,9 +1449,14 @@
   <nav class="navbar">
     <div class="navbar-container">
       <div class="navbar-logo">Kirothon 2026</div>
-      <a href="https://awscommunity.pk/slack" target="_blank" rel="noopener noreferrer">
-        <button class="navbar-cta">Join Community</button>
-      </a>
+      <div class="navbar-actions">
+        <a href="https://forms.gle/Dy4zTT6h951BLL8m7" target="_blank" rel="noopener noreferrer">
+          <button class="navbar-cta navbar-cta-register">Register Now</button>
+        </a>
+        <a href="https://awscommunity.pk/slack" target="_blank" rel="noopener noreferrer">
+          <button class="navbar-cta">Join Community</button>
+        </a>
+      </div>
     </div>
   </nav>
   
@@ -1496,8 +1474,8 @@
       <div id="status-badge-container"></div>
       
       <div class="hero-cta-buttons">
-        <a href="https://awscommunity.pk/slack" target="_blank" rel="noopener noreferrer">
-          <button class="hero-cta-primary">Join Slack Community</button>
+        <a href="https://forms.gle/Dy4zTT6h951BLL8m7" target="_blank" rel="noopener noreferrer">
+          <button class="hero-cta-primary">Register Now</button>
         </a>
         <a href="#rules">
           <button class="hero-cta-secondary">View Rules & Guidelines</button>
@@ -1518,10 +1496,8 @@
       </p>
       
       <div class="video-card">
-        <!-- REPLACE: YouTube video ID -->
-        <div class="video-placeholder">
-          <div class="play-button">▶</div>
-          <div class="video-label">Kiro IDE — Introduction & How to Use</div>
+        <div class="video-embed-wrapper">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/JOqLp1adGO4?si=HQca7lzxZB_BSsWX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -1663,7 +1639,7 @@
         <a href="https://kiro.dev/docs" target="_blank" rel="noopener noreferrer" class="resource-btn">Kiro Documentation</a>
         <a href="https://kiro.dev/docs/getting-started" target="_blank" rel="noopener noreferrer" class="resource-btn">Kiro Getting Started</a>
         <a href="https://aws.amazon.com/free" target="_blank" rel="noopener noreferrer" class="resource-btn">AWS Free Tier</a>
-        <a href="rules.html" class="resource-btn">Rules &amp; Guidelines</a>
+        <a href="#rules" class="resource-btn">Rules &amp; Guidelines</a>
       </div>
     </div>
   </section>
@@ -1888,6 +1864,10 @@
           <h3 class="submission-title">Dev Logs</h3>
           <p class="submission-desc">Document your build process with Kiro throughout the hackathon</p>
         </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2.5rem;">
+        <a href="https://forms.gle/XpVba2pbDN5ix4qY8" target="_blank" rel="noopener noreferrer" class="winners-cta">Submit Your Project</a>
       </div>
     </div>
   </section>
