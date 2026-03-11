@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kirothon 2026 Season 1 - Build with Kiro, the Agentic AI IDE. Presented by AWS Community Pakistan.">
+  <meta name="keywords" content="Kirothon, hackathon, Kiro IDE, AWS, Pakistan, AI, development">
+  <title>Kirothon 2026 - Build with Kiro IDE</title>
+  
+  <!-- Google Fonts - Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== CSS Reset ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    button, input, textarea, select {
+      font: inherit;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    ul, ol {
+      list-style: none;
+    }
+    
+    /* ===== CSS Variables - Kiro Brand Colors ===== */
+    :root {
+      /* Background colors */
+      --bg-primary: #0d0d1a;
+      --bg-secondary: #1a1a2e;
+      --bg-tertiary: #16213e;
+      
+      /* Purple shades */
+      --purple-dark: #7c3aed;
+      --purple-mid: #8b5cf6;
+      --purple-light: #a78bfa;
+      --purple-lighter: #c4b5fd;
+      
+      /* Blue shades */
+      --blue: #3b82f6;
+      --blue-light: #60a5fa;
+      --electric-blue: #06b6d4;
+      
+      /* Text colors */
+      --text-primary: #f8fafc;
+      --text-secondary: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      /* Glassmorphism tokens */
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-bg-hover: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(139, 92, 246, 0.3);
+      --glass-border-light: rgba(139, 92, 246, 0.2);
+      
+      /* Status colors */
+      --status-blue: #3b82f6;
+      --status-green: #10b981;
+      --status-amber: #f59e0b;
+      --status-gold: #fbbf24;
+      
+      /* Spacing */
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 3rem;
+      --spacing-2xl: 4rem;
+      
+      /* Border radius */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-full: 9999px;
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-glow-purple: 0 0 20px rgba(124, 58, 237, 0.5);
+      --shadow-glow-blue: 0 0 20px rgba(59, 130, 246, 0.5);
+      
+      /* Transitions */
+      --transition-fast: 150ms ease;
+      --transition-base: 200ms ease;
+      --transition-slow: 300ms ease;
+    }
+    
+    /* ===== Base Styles ===== */
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+    
+    /* ===== Mobile-First Responsive Breakpoint ===== */
+    /* Base styles are mobile-first (< 768px) */
+    /* Desktop styles use min-width: 768px media query */
+    
+    /* ===== Navbar Styles ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(13, 13, 26, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--glass-border-light);
+    }
+    
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-sm) var(--spacing-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+    }
+    
+    .navbar-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+    
+    .navbar-cta {
+      padding: 0.5rem 1.25rem;
+      background: var(--purple-dark);
+      color: var(--text-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      white-space: nowrap;
+    }
+    
+    .navbar-cta:hover {
+      background: var(--purple-mid);
+      box-shadow: var(--shadow-glow-purple);
+      transform: translateY(-1px);
+    }
+    
+    .navbar-cta:active {
+      transform: translateY(0);
+    }
+    
+    @media (min-width: 768px) {
+      .navbar-container {
+        padding: var(--spacing-md) var(--spacing-xl);
+        flex-wrap: nowrap;
+      }
+      
+      .navbar-logo {
+        font-size: 1.5rem;
+      }
+      
+      .navbar-cta {
+        font-size: 1rem;
+        padding: 0.625rem 1.5rem;
+      }
+    }
+    
+    /* ===== Hero Section Styles ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-2xl) var(--spacing-md);
+      padding-top: calc(var(--spacing-2xl) + 60px); /* Account for fixed navbar */
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.15) 0%, rgba(13, 13, 26, 1) 70%);
+    }
+    
+    /* Pulsing glow animation overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.3) 0%, transparent 70%);
+      animation: pulse-glow 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    
+    .presenter-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .hero-headline {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: var(--spacing-sm) 0;
+    }
+    
+    .hero-subheadline {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    #status-badge-container {
+      margin: var(--spacing-md) 0;
+    }
+    
+    .hero-cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      width: 100%;
+      max-width: 400px;
+      margin-top: var(--spacing-sm);
+    }
+    
+    .hero-cta-primary,
+    .hero-cta-secondary {
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      border: none;
+      width: 100%;
+    }
+    
+    .hero-cta-primary {
+      background: var(--purple-dark);
+      color: var(--text-primary);
+    }
+    
+    .hero-cta-primary:hover {
+      background: var(--purple-mid);
+      box-shadow: var(--shadow-glow-purple);
+      transform: translateY(-2px);
+    }
+    
+    .hero-cta-secondary {
+      background: var(--glass-bg);
+      color: var(--text-primary);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .hero-cta-secondary:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--purple-mid);
+      transform: translateY(-2px);
+    }
+    
+    .hero-cta-primary:active,
+    .hero-cta-secondary:active {
+      transform: translateY(0);
+    }
+    
+    .timeline-pill {
+      display: inline-block;
+      padding: 0.625rem 1.25rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border-light);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: var(--spacing-md);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    @media (min-width: 768px) {
+      .hero {
+        padding: var(--spacing-2xl) var(--spacing-xl);
+        padding-top: calc(var(--spacing-2xl) + 60px);
+      }
+      
+      .hero-headline {
+        font-size: 4rem;
+      }
+      
+      .hero-subheadline {
+        font-size: 1.5rem;
+      }
+      
+      .hero-tagline {
+        font-size: 1.125rem;
+      }
+      
+      .presenter-badge {
+        font-size: 1rem;
+      }
+      
+      .hero-cta-buttons {
+        flex-direction: row;
+        max-width: none;
+      }
+      
+      .hero-cta-primary,
+      .hero-cta-secondary {
+        width: auto;
+        min-width: 200px;
+      }
+      
+      .timeline-pill {
+        font-size: 1rem;
+      }
+    }
+    
+    /* ===== Section Common Styles ===== */
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--spacing-2xl) var(--spacing-md);
+    }
+    
+    .section-heading {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+      color: var(--text-primary);
+    }
+    
+    @media (min-width: 768px) {
+      .section-container {
+        padding: var(--spacing-2xl) var(--spacing-xl);
+      }
+      
+      .section-heading {
+        font-size: 2.5rem;
+        margin-bottom: var(--spacing-xl);
+      }
+    }
+    
+    /* ===== What is Kiro? Section Styles ===== */
+    .what-is-kiro {
+      background-color: var(--bg-primary);
+    }
+    
+    .kiro-description {
+      text-align: center;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto var(--spacing-xl);
+    }
+    
+    .video-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .video-placeholder {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      background: linear-gradient(135deg, rgba(13, 13, 26, 0.9), rgba(26, 26, 46, 0.9));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .video-placeholder > * {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .play-button {
+      width: 80px;
+      height: 80px;
+      background: var(--purple-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+      padding-left: 0.25rem; /* Optical alignment for play icon */
+    }
+    
+    .play-button:hover {
+      background: var(--purple-mid);
+      box-shadow: var(--shadow-glow-purple);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    
+    .video-label {
+      top: auto;
+      bottom: var(--spacing-md);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+      padding: 0 var(--spacing-md);
+      width: 100%;
+    }
+    
+    @media (min-width: 768px) {
+      .kiro-description {
+        font-size: 1.25rem;
+      }
+      
+      .play-button {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+      }
+      
+      .video-label {
+        font-size: 1.125rem;
+        bottom: var(--spacing-lg);
+      }
+    }
+    
+    /* ===== Timeline Section Styles ===== */
+    .timeline-section {
+      background-color: var(--bg-secondary);
+    }
+    
+    .timeline-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .timeline-milestone {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      position: relative;
+    }
+    
+    .milestone-indicator {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--glass-bg);
+      border: 2px solid var(--purple-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .milestone-indicator::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--purple-mid);
+    }
+    
+    .milestone-content {
+      flex: 1;
+      padding-top: 0.25rem;
+    }
+    
+    .milestone-date {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--purple-light);
+      margin-bottom: 0.25rem;
+    }
+    
+    .milestone-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    
+    /* Connecting line for mobile (vertical) */
+    .timeline-milestone:not(:last-child) .milestone-indicator::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: calc(var(--spacing-lg) + 0.25rem);
+      background: linear-gradient(to bottom, var(--purple-mid), var(--glass-border));
+    }
+    
+    @media (min-width: 768px) {
+      .timeline-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0;
+        position: relative;
+      }
+      
+      /* Connecting line for desktop (horizontal) */
+      .timeline-container::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 5%;
+        right: 5%;
+        height: 2px;
+        background: linear-gradient(to right, var(--purple-mid), var(--glass-border), var(--purple-mid));
+        z-index: 1;
+      }
+      
+      .timeline-milestone {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+        gap: var(--spacing-sm);
+      }
+      
+      .timeline-milestone:not(:last-child) .milestone-indicator::after {
+        display: none;
+      }
+      
+      .milestone-indicator {
+        width: 48px;
+        height: 48px;
+      }
+      
+      .milestone-indicator::before {
+        width: 16px;
+        height: 16px;
+      }
+      
+      .milestone-content {
+        padding-top: 0;
+      }
+      
+      .milestone-date {
+        font-size: 0.875rem;
+        margin-bottom: 0.375rem;
+      }
+      
+      .milestone-name {
+        font-size: 0.9rem;
+        max-width: 140px;
+      }
+    }
+    
+    /* ===== What You Can Build Section Styles ===== */
+    .what-you-can-build {
+      background-color: var(--bg-primary);
+    }
+    
+    .build-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .build-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all var(--transition-base);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+    
+    .build-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--purple-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+    }
+    
+    .build-card-icon {
+      font-size: 3rem;
+      line-height: 1;
+    }
+    
+    .build-card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    
+    .build-card-description {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    
+    @media (min-width: 768px) {
+      .build-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .build-card-icon {
+        font-size: 3.5rem;
+      }
+      
+      .build-card-title {
+        font-size: 1.375rem;
+      }
+      
+      .build-card-description {
+        font-size: 1rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .build-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ===== Hackathon Tracks Section Styles ===== */
+    .hackathon-tracks {
+      background-color: var(--bg-secondary);
+    }
+
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .track-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all var(--transition-base);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .track-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--purple-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+    }
+
+    .track-card-icon {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .track-card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .track-card-description {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    @media (min-width: 768px) {
+      .tracks-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .track-card-icon {
+        font-size: 3.5rem;
+      }
+
+      .track-card-title {
+        font-size: 1.375rem;
+      }
+
+      .track-card-description {
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .tracks-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ===== Quick Start Section Styles ===== */
+    .quick-start {
+      background-color: var(--bg-primary);
+    }
+
+    .quick-start-code-card {
+      max-width: 800px;
+      margin: 0 auto var(--spacing-xl);
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .quick-start-code-text {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1rem;
+      color: var(--purple-light);
+      margin-bottom: var(--spacing-lg);
+      line-height: 1.6;
+    }
+
+    .quick-start-github-btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      background: var(--purple-dark);
+      color: var(--text-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-decoration: none;
+    }
+
+    .quick-start-github-btn:hover {
+      background: var(--purple-mid);
+      box-shadow: var(--shadow-glow-purple);
+      transform: translateY(-2px);
+    }
+
+    .quick-start-github-btn:active {
+      transform: translateY(0);
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .resource-btn {
+      display: block;
+      padding: 1rem 1.5rem;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      font-weight: 500;
+      font-size: 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .resource-btn:hover {
+      background: var(--glass-bg);
+      border-color: var(--purple-mid);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+    }
+
+    .resource-btn:active {
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .quick-start-code-text {
+        font-size: 1.125rem;
+      }
+
+      .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ===== Judging Criteria Section Styles ===== */
+    .judging-criteria {
+      background-color: var(--bg-secondary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--purple-light);
+      margin-top: calc(-1 * var(--spacing-md));
+      margin-bottom: var(--spacing-xl);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .criteria-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .criteria-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--purple-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+    }
+
+    .criteria-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .criteria-card-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .criteria-card-points {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--purple-light);
+      white-space: nowrap;
+    }
+
+    .criteria-progress-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--purple-dark), var(--purple-light));
+      border-radius: var(--radius-full);
+      transition: width var(--transition-slow);
+    }
+
+    .criteria-sub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .criteria-sub-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding: 0.25rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .criteria-sub-item:last-child {
+      border-bottom: none;
+    }
+
+    .criteria-sub-name {
+      color: var(--text-secondary);
+    }
+
+    .criteria-sub-points {
+      font-weight: 600;
+      color: var(--purple-lighter);
+      white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+      .criteria-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .criteria-card-title {
+        font-size: 1.25rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .criteria-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ===== Guest Judges Section Styles ===== */
+    .guest-judges {
+      background-color: var(--bg-primary);
+    }
+
+    .judges-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .judge-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all var(--transition-base);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .judge-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--purple-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+    }
+
+    .judge-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--glass-bg);
+      border: 2px solid var(--purple-mid);
+    }
+
+    .judge-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .judge-role {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    @media (min-width: 768px) {
+      .judges-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ===== Proud Partners Section Styles ===== */
+    .proud-partners {
+      background-color: var(--bg-secondary);
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .partner-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all var(--transition-base);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .partner-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--purple-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+    }
+
+    .partner-logo {
+      max-height: 80px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+      object-fit: contain;
+    }
+
+    .partner-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    @media (min-width: 768px) {
+      .partners-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .partners-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    /* ===== Submission Requirements Section Styles ===== */
+    .submission-section {
+      padding: var(--spacing-2xl) var(--spacing-sm);
+      background-color: var(--bg-secondary);
+    }
+
+    .submission-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .submission-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .submission-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-xl);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all var(--transition-base);
+      text-align: center;
+    }
+
+    .submission-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--purple-mid);
+      transform: translateY(-2px);
+    }
+
+    .submission-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-dark), var(--blue));
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .submission-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .submission-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ===== Rules & Regulations Section Styles ===== */
+    .rules-section {
+      background-color: var(--bg-primary);
+    }
+
+    .accordion {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+
+    .accordion-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: border-color var(--transition-base);
+    }
+
+    .accordion-item:hover {
+      border-color: var(--purple-mid);
+    }
+
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-md) var(--spacing-lg);
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: background var(--transition-base);
+      gap: var(--spacing-sm);
+    }
+
+    .accordion-header:hover {
+      background: var(--glass-bg-hover);
+    }
+
+    .accordion-icon {
+      flex-shrink: 0;
+      font-size: 1.25rem;
+      color: var(--purple-light);
+      transition: transform var(--transition-base);
+      line-height: 1;
+    }
+
+    .accordion-icon.open {
+      transform: rotate(45deg);
+    }
+
+    .accordion-body {
+      display: none;
+      padding: 0 var(--spacing-lg) var(--spacing-md);
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      border-top: 1px solid var(--glass-border-light);
+    }
+
+    @media (min-width: 768px) {
+      .accordion-header {
+        font-size: 1.125rem;
+        padding: var(--spacing-md) var(--spacing-xl);
+      }
+
+      .accordion-body {
+        padding: var(--spacing-md) var(--spacing-xl) var(--spacing-lg);
+        font-size: 1rem;
+      }
+    }
+
+    /* ===== Winners Section Styles ===== */
+    .winners-section {
+      background-color: var(--bg-primary);
+    }
+
+    .winners-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-2xl) var(--spacing-xl);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-lg);
+    }
+
+    .winners-trophy {
+      font-size: 5rem;
+      line-height: 1;
+    }
+
+    .winners-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .winners-subtext {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 420px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .winners-cta {
+      display: inline-block;
+      padding: 0.875rem 2rem;
+      background: var(--purple-dark);
+      color: var(--text-primary);
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-decoration: none;
+    }
+
+    .winners-cta:hover {
+      background: var(--purple-mid);
+      box-shadow: var(--shadow-glow-purple);
+      transform: translateY(-2px);
+    }
+
+    .winners-cta:active {
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .winners-trophy {
+        font-size: 6rem;
+      }
+
+      .winners-title {
+        font-size: 2rem;
+      }
+
+      .winners-subtext {
+        font-size: 1.125rem;
+      }
+    }
+
+    /* ===== Footer Styles ===== */
+    .site-footer {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--glass-border-light);
+      padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-xl);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      font-size: 1.125rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+    }
+
+    .footer-link {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition-base);
+    }
+
+    .footer-link:hover {
+      color: var(--purple-light);
+    }
+
+    .footer-collaborators {
+      border-top: 1px solid var(--glass-border-light);
+      padding-top: var(--spacing-lg);
+    }
+
+    .footer-collaborators-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-collaborators-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem var(--spacing-md);
+    }
+
+    .footer-collaborator {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border-light);
+      padding-top: var(--spacing-lg);
+      text-align: center;
+    }
+
+    .footer-copyright {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+
+    @media (min-width: 768px) {
+      .site-footer {
+        padding: var(--spacing-2xl) var(--spacing-xl) var(--spacing-xl);
+      }
+
+      .footer-top {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-brand {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- ===== Navbar ===== -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">Kirothon 2026</div>
+      <a href="https://awscommunity.pk/slack" target="_blank" rel="noopener noreferrer">
+        <button class="navbar-cta">Join Community</button>
+      </a>
+    </div>
+  </nav>
+  
+  <!-- ===== Hero Section ===== -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="presenter-badge">Presented by AWS Community Pakistan</div>
+      
+      <h1 class="hero-headline">Kirothon 2026</h1>
+      
+      <h2 class="hero-subheadline">Build with Kiro — The Agentic AI IDE</h2>
+      
+      <p class="hero-tagline">Turn your idea into a functional product using Kiro IDE and AWS</p>
+      
+      <div id="status-badge-container"></div>
+      
+      <div class="hero-cta-buttons">
+        <a href="https://awscommunity.pk/slack" target="_blank" rel="noopener noreferrer">
+          <button class="hero-cta-primary">Join Slack Community</button>
+        </a>
+        <a href="#rules">
+          <button class="hero-cta-secondary">View Rules & Guidelines</button>
+        </a>
+      </div>
+      
+      <div class="timeline-pill">Build Phase: March 15 – March 28, 2026</div>
+    </div>
+  </section>
+  
+  <!-- ===== What is Kiro? Section ===== -->
+  <section class="what-is-kiro">
+    <div class="section-container">
+      <h2 class="section-heading">What is Kiro?</h2>
+      
+      <p class="kiro-description">
+        Kiro is AWS's agentic AI IDE that turns prompts into specs, tasks, and working code. Built on VS Code, powered by Claude.
+      </p>
+      
+      <div class="video-card">
+        <!-- REPLACE: YouTube video ID -->
+        <div class="video-placeholder">
+          <div class="play-button">▶</div>
+          <div class="video-label">Kiro IDE — Introduction & How to Use</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ===== Timeline Section ===== -->
+  <section class="timeline-section">
+    <div class="section-container">
+      <h2 class="section-heading">Timeline</h2>
+      
+      <div class="timeline-container">
+        <div class="timeline-milestone">
+          <div class="milestone-indicator"></div>
+          <div class="milestone-content">
+            <div class="milestone-date">March 10</div>
+            <div class="milestone-name">Registration Open</div>
+          </div>
+        </div>
+        
+        <div class="timeline-milestone">
+          <div class="milestone-indicator"></div>
+          <div class="milestone-content">
+            <div class="milestone-date">March 15</div>
+            <div class="milestone-name">Build Phase Begins</div>
+          </div>
+        </div>
+        
+        <div class="timeline-milestone">
+          <div class="milestone-indicator"></div>
+          <div class="milestone-content">
+            <div class="milestone-date">March 28</div>
+            <div class="milestone-name">Build Phase Ends</div>
+          </div>
+        </div>
+        
+        <div class="timeline-milestone">
+          <div class="milestone-indicator"></div>
+          <div class="milestone-content">
+            <div class="milestone-date">March 29 – April 5</div>
+            <div class="milestone-name">Judging Period</div>
+          </div>
+        </div>
+        
+        <div class="timeline-milestone">
+          <div class="milestone-indicator"></div>
+          <div class="milestone-content">
+            <div class="milestone-date">TBA</div>
+            <div class="milestone-name">Winners Announced</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ===== What You Can Build Section ===== -->
+  <section class="what-you-can-build">
+    <div class="section-container">
+      <h2 class="section-heading">What You Can Build</h2>
+      
+      <div class="build-grid">
+        <div class="build-card">
+          <div class="build-card-icon">🌐</div>
+          <h3 class="build-card-title">Web Applications</h3>
+          <p class="build-card-description">Full-stack web apps with modern UI</p>
+        </div>
+        
+        <div class="build-card">
+          <div class="build-card-icon">🤖</div>
+          <h3 class="build-card-title">AI Agents</h3>
+          <p class="build-card-description">Autonomous agents powered by AWS AI</p>
+        </div>
+        
+        <div class="build-card">
+          <div class="build-card-icon">⚡</div>
+          <h3 class="build-card-title">CLI Tools</h3>
+          <p class="build-card-description">Command-line utilities and developer tools</p>
+        </div>
+        
+        <div class="build-card">
+          <div class="build-card-icon">🔗</div>
+          <h3 class="build-card-title">APIs & Microservices</h3>
+          <p class="build-card-description">RESTful APIs and serverless functions</p>
+        </div>
+        
+        <div class="build-card">
+          <div class="build-card-icon">⚙️</div>
+          <h3 class="build-card-title">Automation Tools</h3>
+          <p class="build-card-description">Workflow automation and scripting</p>
+        </div>
+        
+        <div class="build-card">
+          <div class="build-card-icon">📱</div>
+          <h3 class="build-card-title">Mobile Applications</h3>
+          <p class="build-card-description">Cross-platform mobile experiences</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ===== Hackathon Tracks Section ===== -->
+  <section class="hackathon-tracks">
+    <div class="section-container">
+      <h2 class="section-heading">Hackathon Tracks</h2>
+
+      <div class="tracks-grid">
+        <div class="track-card">
+          <div class="track-card-icon">🎓</div>
+          <h3 class="track-card-title">Student Track</h3>
+          <p class="track-card-description">For students currently enrolled in any educational institution</p>
+        </div>
+
+        <div class="track-card">
+          <div class="track-card-icon">💼</div>
+          <h3 class="track-card-title">Professional Track</h3>
+          <p class="track-card-description">For working professionals and developers</p>
+        </div>
+
+        <div class="track-card">
+          <div class="track-card-icon">👩‍💻</div>
+          <h3 class="track-card-title">Women in Tech Track</h3>
+          <p class="track-card-description">For women in technology</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Quick Start Section ===== -->
+  <section class="quick-start">
+    <div class="section-container">
+      <h2 class="section-heading">Quick Start</h2>
+
+      <div class="quick-start-code-card">
+        <p class="quick-start-code-text">Get started with the official Kirothon starter template</p>
+        <!-- REPLACE: GitHub repo URL -->
+        <a href="#" class="quick-start-github-btn">View Starter Template on GitHub</a>
+      </div>
+
+      <div class="resources-grid">
+        <a href="https://kiro.dev/docs" target="_blank" rel="noopener noreferrer" class="resource-btn">Kiro Documentation</a>
+        <a href="https://kiro.dev/docs/getting-started" target="_blank" rel="noopener noreferrer" class="resource-btn">Kiro Getting Started</a>
+        <a href="https://aws.amazon.com/free" target="_blank" rel="noopener noreferrer" class="resource-btn">AWS Free Tier</a>
+        <a href="rules.html" class="resource-btn">Rules &amp; Guidelines</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Judging Criteria Section ===== -->
+  <section class="judging-criteria">
+    <div class="section-container">
+      <h2 class="section-heading">Judging Criteria</h2>
+      <p class="section-subtitle">100 points total</p>
+
+      <div class="criteria-grid">
+
+        <!-- Application Quality: 40 pts -->
+        <div class="criteria-card">
+          <div class="criteria-card-header">
+            <h3 class="criteria-card-title">Application Quality</h3>
+            <span class="criteria-card-points">40 pts</span>
+          </div>
+          <div class="criteria-progress-bar">
+            <div class="progress-bar-fill" style="width: 40%"></div>
+          </div>
+          <ul class="criteria-sub-list">
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">Functionality</span>
+              <span class="criteria-sub-points">15 pts</span>
+            </li>
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">UX/Design</span>
+              <span class="criteria-sub-points">10 pts</span>
+            </li>
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">Code Quality</span>
+              <span class="criteria-sub-points">10 pts</span>
+            </li>
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">AWS Integration</span>
+              <span class="criteria-sub-points">5 pts</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kiro Usage: 20 pts -->
+        <div class="criteria-card">
+          <div class="criteria-card-header">
+            <h3 class="criteria-card-title">Kiro Usage</h3>
+            <span class="criteria-card-points">20 pts</span>
+          </div>
+          <div class="criteria-progress-bar">
+            <div class="progress-bar-fill" style="width: 20%"></div>
+          </div>
+          <ul class="criteria-sub-list">
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">Spec-driven dev</span>
+              <span class="criteria-sub-points">10 pts</span>
+            </li>
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">AI assistance</span>
+              <span class="criteria-sub-points">10 pts</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Documentation: 20 pts -->
+        <div class="criteria-card">
+          <div class="criteria-card-header">
+            <h3 class="criteria-card-title">Documentation</h3>
+            <span class="criteria-card-points">20 pts</span>
+          </div>
+          <div class="criteria-progress-bar">
+            <div class="progress-bar-fill" style="width: 20%"></div>
+          </div>
+          <ul class="criteria-sub-list">
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">README</span>
+              <span class="criteria-sub-points">10 pts</span>
+            </li>
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">Dev logs</span>
+              <span class="criteria-sub-points">10 pts</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Innovation: 15 pts -->
+        <div class="criteria-card">
+          <div class="criteria-card-header">
+            <h3 class="criteria-card-title">Innovation</h3>
+            <span class="criteria-card-points">15 pts</span>
+          </div>
+          <div class="criteria-progress-bar">
+            <div class="progress-bar-fill" style="width: 15%"></div>
+          </div>
+          <ul class="criteria-sub-list">
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">Originality</span>
+              <span class="criteria-sub-points">10 pts</span>
+            </li>
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">Impact</span>
+              <span class="criteria-sub-points">5 pts</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Presentation: 5 pts -->
+        <div class="criteria-card">
+          <div class="criteria-card-header">
+            <h3 class="criteria-card-title">Presentation</h3>
+            <span class="criteria-card-points">5 pts</span>
+          </div>
+          <div class="criteria-progress-bar">
+            <div class="progress-bar-fill" style="width: 5%"></div>
+          </div>
+          <ul class="criteria-sub-list">
+            <li class="criteria-sub-item">
+              <span class="criteria-sub-name">Demo video quality</span>
+              <span class="criteria-sub-points">5 pts</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Guest Judges Section ===== -->
+  <section class="guest-judges">
+    <div class="section-container">
+      <h2 class="section-heading">Guest Judges</h2>
+      <p class="section-subtitle">To Be Announced</p>
+
+      <div class="judges-grid">
+        <div class="judge-card">
+          <div class="judge-avatar"></div>
+          <p class="judge-name">Name TBA</p>
+          <p class="judge-role">Role TBA</p>
+        </div>
+
+        <div class="judge-card">
+          <div class="judge-avatar"></div>
+          <p class="judge-name">Name TBA</p>
+          <p class="judge-role">Role TBA</p>
+        </div>
+
+        <div class="judge-card">
+          <div class="judge-avatar"></div>
+          <p class="judge-name">Name TBA</p>
+          <p class="judge-role">Role TBA</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Proud Partners Section ===== -->
+  <section class="proud-partners">
+    <div class="section-container">
+      <h2 class="section-heading">Proud Partners</h2>
+
+      <div class="partners-grid">
+        <div class="partner-card">
+          <img src="logos/islamabad.jpeg" alt="AWS User Group Islamabad" class="partner-logo">
+          <p class="partner-name">AWS User Group Islamabad</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="logos/karachi.jpg" alt="AWS User Group Karachi" class="partner-logo">
+          <p class="partner-name">AWS User Group Karachi</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="logos/peshawar.avif" alt="AWS User Group Peshawar" class="partner-logo">
+          <p class="partner-name">AWS User Group Peshawar</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="logos/wit-lahore.avif" alt="AWS User Group Women in Tech Lahore" class="partner-logo">
+          <p class="partner-name">AWS User Group Women in Tech Lahore</p>
+        </div>
+
+        <div class="partner-card">
+          <img src="logos/faisalabad.png" alt="AWS User Group Faisalabad" class="partner-logo">
+          <p class="partner-name">AWS User Group Faisalabad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Winners Section ===== -->
+  <section class="winners-section">
+    <div class="section-container">
+      <h2 class="section-heading">Hackathon Winners</h2>
+
+      <div class="winners-card">
+        <div class="winners-trophy">🏆</div>
+        <h3 class="winners-title">Winners To Be Announced</h3>
+        <p class="winners-subtext">Stay tuned — winners will be revealed after the judging period</p>
+        <a href="https://awscommunity.pk/slack" target="_blank" rel="noopener noreferrer" class="winners-cta">Join Slack for Updates</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Submission Requirements Section ===== -->
+  <section class="submission-section">
+    <div class="section-container">
+      <h2 class="section-heading">Submission Requirements</h2>
+
+      <div class="submission-grid">
+        <div class="submission-card">
+          <div class="submission-number">1</div>
+          <h3 class="submission-title">Source Code</h3>
+          <p class="submission-desc">GitHub repo link with your complete project source code</p>
+        </div>
+
+        <div class="submission-card">
+          <div class="submission-number">2</div>
+          <h3 class="submission-title">Demo Video</h3>
+          <p class="submission-desc">Screen recording or YouTube video showcasing your project</p>
+        </div>
+
+        <div class="submission-card">
+          <div class="submission-number">3</div>
+          <h3 class="submission-title">Dev Logs</h3>
+          <p class="submission-desc">Document your build process with Kiro throughout the hackathon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Rules & Regulations Section ===== -->
+  <section id="rules" class="rules-section">
+    <div class="section-container">
+      <h2 class="section-heading">Rules &amp; Regulations</h2>
+
+      <div class="accordion">
+
+        <!-- Eligibility -->
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Eligibility</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Kirothon 2026 is a virtual hackathon open to all participants from Pakistan. Anyone from Pakistan can register and attend regardless of their city or location. Participants must be at least 18 years of age or have parental/guardian consent. Teams may consist of 1–4 members. Members of the AWS Community Pakistan organizing team and judges are not eligible to participate.
+          </div>
+        </div>
+
+        <!-- Original Work -->
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Original Work</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            All submissions must be original work created during the hackathon period. Pre-existing projects are not eligible.
+          </div>
+        </div>
+
+        <!-- Intellectual Property -->
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Intellectual Property</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Participants retain ownership of their work. By submitting, participants grant AWS Community Pakistan the right to showcase their project.
+          </div>
+        </div>
+
+        <!-- Code of Conduct -->
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Code of Conduct</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            All participants must adhere to the AWS Community Pakistan Code of Conduct. Harassment, discrimination, or disrespectful behavior will result in disqualification.
+          </div>
+        </div>
+
+        <!-- Disqualification -->
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Disqualification</span>
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            Projects that violate the rules, contain plagiarized code, or fail to meet submission requirements will be disqualified.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">Kirothon 2026 — Presented by AWS Community Pakistan</div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="https://awscommunity.pk/slack" target="_blank" rel="noopener noreferrer" class="footer-link">Join Slack</a>
+          <a href="https://kiro.dev/docs" target="_blank" rel="noopener noreferrer" class="footer-link">Kiro Docs</a>
+          <a href="#rules" class="footer-link">Rules &amp; Guidelines</a>
+        </nav>
+      </div>
+
+      <div class="footer-collaborators">
+        <p class="footer-collaborators-label">Collaborating User Groups</p>
+        <ul class="footer-collaborators-list">
+          <li class="footer-collaborator">AWS UG Karachi</li>
+          <li class="footer-collaborator">AWS UG Islamabad</li>
+          <li class="footer-collaborator">AWS UG Peshawar</li>
+          <li class="footer-collaborator">AWS UG Faisalabad</li>
+          <li class="footer-collaborator">AWS UG Women in Tech Lahore</li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 AWS Community Pakistan. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Valid values: "upcoming" | "active" | "judging" | "winners_announced"
+    const HACKATHON_STATUS = "judging";
+    
+    const STATUS_CONFIG = {
+      upcoming: {
+        text: "🗓 Registration Open",
+        color: "#3b82f6",
+        glow: false
+      },
+      active: {
+        text: "🚀 Build Phase Active",
+        color: "#10b981",
+        glow: true
+      },
+      judging: {
+        text: "🏆 Judging to be started",
+        color: "#f59e0b",
+        glow: true
+      },
+      winners_announced: {
+        text: "🎉 Winners Announced",
+        color: "#fbbf24",
+        glow: true
+      }
+    };
+    
+    function renderStatusBadge() {
+      const container = document.getElementById('status-badge-container');
+      if (!container) return;
+      
+      const config = STATUS_CONFIG[HACKATHON_STATUS];
+      
+      // Fallback for invalid status values
+      if (!config) {
+        container.innerHTML = `
+          <div style="
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: rgba(100, 116, 139, 0.2);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #94a3b8;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+          ">
+            ⚠️ Status Unknown
+          </div>
+        `;
+        return;
+      }
+      
+      const glowStyle = config.glow 
+        ? `box-shadow: 0 0 20px ${config.color}80, 0 0 40px ${config.color}40;` 
+        : '';
+      
+      container.innerHTML = `
+        <div style="
+          display: inline-block;
+          padding: 0.75rem 1.5rem;
+          background: ${config.color}20;
+          border: 2px solid ${config.color};
+          border-radius: 9999px;
+          font-size: 1rem;
+          font-weight: 600;
+          color: ${config.color};
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          ${glowStyle}
+        ">
+          ${config.text}
+        </div>
+      `;
+    }
+    
+    // Render status badge on page load
+    renderStatusBadge();
+
+    // ===== Accordion Toggle =====
+    document.querySelectorAll('.accordion-header').forEach(function(header) {
+      header.addEventListener('click', function() {
+        var body = this.nextElementSibling;
+        var icon = this.querySelector('.accordion-icon');
+        if (body.style.display === 'block') {
+          body.style.display = 'none';
+          icon.classList.remove('open');
+        } else {
+          body.style.display = 'block';
+          icon.classList.add('open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
