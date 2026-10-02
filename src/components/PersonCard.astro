@@ -3,7 +3,8 @@ import { assetUrl } from '../lib/assets';
 
 interface Props {
   name: string;
-  role: string;
+  /** Normalised role, where the record has one. Event volunteers do not. */
+  role?: string | null;
   label?: string | null;
   linkedin?: string | null;
   photo?: string | null;
@@ -15,9 +16,10 @@ const image = assetUrl(photo);
 
 // `label` is the wording the existing page used, so it is preferred over the
 // normalised role. Where the page gave no role at all the record says
-// `unspecified`, and that is stated plainly rather than invented.
+// `unspecified` (or nothing), and that is stated plainly rather than invented.
 const roleText =
-  label ?? (role === 'unspecified' ? 'Role not recorded' : role.replace(/-/g, ' '));
+  label ??
+  (!role || role === 'unspecified' ? 'Role not recorded' : role.replace(/-/g, ' '));
 ---
 
 <li class="person">

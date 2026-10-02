@@ -1,5 +1,12 @@
-Everything in this directory is GENERATED from content/user-groups/*.yml
-by .github/workflows/publish-user-group-pages.yml.
+Everything in these directories is GENERATED from the YAML records in content/
+by the Astro build (`npm run build`, see astro.config.mjs):
 
-Do not edit these files. Edit the YAML record instead; the next build
-overwrites anything changed here.
+    user-groups/   community-days/   student-builder-groups/   _assets/
+
+DO NOT EDIT THESE FILES. Edit the matching YAML record in content/ and run
+`npm run build`; the CI job .github/workflows/build-generated-pages.yml rebuilds
+and diffs every one of those directories against a fresh build, so a hand edit
+or a forgotten rebuild fails the check.
+
+These files are committed because the deployment pipeline syncs this repository
+to S3 verbatim and has no build step of its own. See docs/deployment.md.

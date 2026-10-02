@@ -7,9 +7,21 @@ interface Props {
   eyebrow?: string;
   heading: string;
   sub?: string | null;
+  /** Which nav item to mark as current. */
+  section?: 'user-groups' | 'community-days' | 'student-builder-groups';
 }
 
-const { title, description, eyebrow, heading, sub } = Astro.props;
+const { title, description, eyebrow, heading, sub, section } = Astro.props;
+
+const NAV: Array<{ href: string; label: string; key: Props['section'] }> = [
+  { href: '/user-groups/', label: 'User Groups', key: 'user-groups' },
+  { href: '/community-days/', label: 'Community Days', key: 'community-days' },
+  {
+    href: '/student-builder-groups/',
+    label: 'Student Builder Groups',
+    key: 'student-builder-groups',
+  },
+];
 ---
 
 <!doctype html>
@@ -25,6 +37,24 @@ const { title, description, eyebrow, heading, sub } = Astro.props;
   <body>
     <header class="masthead">
       <div class="wrap">
+        <nav class="nav" aria-label="Sections">
+          <a class="nav__home" href="/">AWS Community Pakistan</a>
+          <ul class="nav__list">
+            {
+              NAV.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class={item.key === section ? 'nav__link nav__link--current' : 'nav__link'}
+                    aria-current={item.key === section ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
         {eyebrow && <p class="masthead__eyebrow">{eyebrow}</p>}
         <h1 class="masthead__title">{heading}</h1>
         {sub && <p class="masthead__sub">{sub}</p>}
@@ -38,9 +68,9 @@ const { title, description, eyebrow, heading, sub } = Astro.props;
     <footer class="foot">
       <div class="wrap">
         <p>
-          These pages are generated from the YAML records in <code>content/user-groups/</code>.
-          To correct anything shown here, edit that file &mdash; no HTML or frontend knowledge
-          is needed. See <code>CONTRIBUTING.md</code>.
+          These pages are generated from the YAML records in <code>content/</code>. To correct
+          anything shown here, edit the matching file &mdash; no HTML or frontend knowledge is
+          needed. See <code>CONTRIBUTING.md</code>.
         </p>
       </div>
     </footer>
