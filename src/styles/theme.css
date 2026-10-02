@@ -1,0 +1,297 @@
+/*
+ * Theme tokens.
+ *
+ * These values are NOT design choices -- they are the colours measured by
+ * frequency across the existing pages and recorded as binding in
+ * docs/architecture.md. #ff9900 and #232f3f are the AWS brand pair and must not
+ * be substituted with approximations.
+ *
+ * #fc9701 is recorded there as almost certainly an accidental duplicate of
+ * #ff9900. It is deliberately NOT used here, and consolidating it on the legacy
+ * pages remains a separate, visible change needing sign-off.
+ */
+:root {
+  --awspk-orange: #ff9900;
+  --awspk-squid-ink: #232f3f;
+  --awspk-white: #ffffff;
+  --awspk-surface: #f3f3f3;
+  --awspk-border: #dddddd;
+  --awspk-muted: #6f6f6f;
+  --awspk-slate: #5d6c7c;
+  --awspk-success: #28a745;
+  --awspk-danger: #dc3545;
+
+  --awspk-max-width: 1100px;
+  --awspk-radius: 6px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--awspk-white);
+  color: var(--awspk-squid-ink);
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--awspk-squid-ink);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--awspk-orange);
+  text-decoration: underline;
+}
+
+.wrap {
+  max-width: var(--awspk-max-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ---------- masthead ---------- */
+
+.masthead {
+  background: var(--awspk-squid-ink);
+  color: var(--awspk-white);
+  padding: 2.5rem 0 2rem;
+  border-bottom: 4px solid var(--awspk-orange);
+}
+
+.masthead a {
+  color: var(--awspk-white);
+}
+
+.masthead a:hover,
+.masthead a:focus-visible {
+  color: var(--awspk-orange);
+}
+
+.masthead__eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--awspk-orange);
+}
+
+.masthead__title {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.2;
+}
+
+.masthead__sub {
+  margin: 0.5rem 0 0;
+  color: #d7dde4;
+}
+
+/* ---------- generic blocks ---------- */
+
+main {
+  padding: 2.5rem 0 3.5rem;
+}
+
+.section-title {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--awspk-orange);
+}
+
+.muted {
+  color: var(--awspk-muted);
+}
+
+.note {
+  background: var(--awspk-surface);
+  color: var(--awspk-squid-ink);
+  border-left: 4px solid var(--awspk-slate);
+  border-radius: 0 var(--awspk-radius) var(--awspk-radius) 0;
+  padding: 0.9rem 1.1rem;
+  margin: 0 0 1.75rem;
+}
+
+.banner-verify {
+  background: #fff6e5;
+  color: #6b4a00;
+  border-left: 4px solid var(--awspk-orange);
+  border-radius: 0 var(--awspk-radius) var(--awspk-radius) 0;
+  padding: 0.9rem 1.1rem;
+  margin: 0 0 1.75rem;
+}
+
+/* ---------- status pills ---------- */
+
+.pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+
+.pill--active {
+  color: var(--awspk-success);
+  background: var(--awspk-white);
+}
+
+.pill--dormant {
+  color: var(--awspk-muted);
+  background: var(--awspk-white);
+}
+
+.pill--archived {
+  color: var(--awspk-slate);
+  background: var(--awspk-white);
+}
+
+.pill--verify {
+  color: var(--awspk-danger);
+  background: var(--awspk-white);
+}
+
+/* ---------- group index ---------- */
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.group-card {
+  background: var(--awspk-white);
+  color: var(--awspk-squid-ink);
+  border: 1px solid var(--awspk-border);
+  border-top: 3px solid var(--awspk-orange);
+  border-radius: var(--awspk-radius);
+  padding: 1.1rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.group-card__logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  background: var(--awspk-surface);
+  border-radius: var(--awspk-radius);
+}
+
+.group-card__name {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+.group-card__meta {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--awspk-muted);
+}
+
+/* ---------- people ---------- */
+
+.people {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0 0 2rem;
+  list-style: none;
+}
+
+.person {
+  background: var(--awspk-white);
+  color: var(--awspk-squid-ink);
+  border: 1px solid var(--awspk-border);
+  border-radius: var(--awspk-radius);
+  padding: 1rem;
+  text-align: center;
+}
+
+.person__photo {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--awspk-surface);
+  border: 3px solid var(--awspk-orange);
+}
+
+.person__photo--empty {
+  display: inline-block;
+}
+
+.person__name {
+  margin: 0.75rem 0 0.2rem;
+  font-size: 1rem;
+}
+
+.person__name a {
+  color: var(--awspk-orange);
+}
+
+.person__role {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--awspk-muted);
+}
+
+/* ---------- social links ---------- */
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  list-style: none;
+}
+
+.social a {
+  display: inline-block;
+  background: var(--awspk-squid-ink);
+  color: var(--awspk-white);
+  border-radius: var(--awspk-radius);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+.social a:hover,
+.social a:focus-visible {
+  background: var(--awspk-orange);
+  color: var(--awspk-squid-ink);
+  text-decoration: none;
+}
+
+/* ---------- footer ---------- */
+
+.foot {
+  border-top: 1px solid var(--awspk-border);
+  background: var(--awspk-white);
+  color: var(--awspk-muted);
+  padding: 1.5rem 0 2.5rem;
+  font-size: 0.875rem;
+}
+
+.foot code {
+  background: var(--awspk-surface);
+  color: var(--awspk-squid-ink);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}

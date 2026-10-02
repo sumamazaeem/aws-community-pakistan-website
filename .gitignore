@@ -1,6 +1,9 @@
 /node_modules
 /sample
 
+# Astro
+.astro/
+
 # Python
 __pycache__/
 *.py[cod]
