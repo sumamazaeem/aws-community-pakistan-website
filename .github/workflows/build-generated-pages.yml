@@ -1,0 +1,121 @@
+name: Build generated pages
+
+# Builds content/**/*.yml into static pages and proves three things:
+#   1. every record renders,
+#   2. every asset the rendered pages point at exists in this repository,
+#   3. the committed generated directories match a fresh build.
+#
+# (3) is the important one. CodePipeline syncs this repository to S3 verbatim
+# with no build step, so the generated HTML has to be committed for the site to
+# serve it -- and committed build output is exactly the kind of thing that goes
+# stale when somebody edits a YAML record and forgets to rebuild. This job makes
+# that a failing check instead of a silently wrong page.
+#
+# No secrets are used, so this runs on forked pull requests too.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'restructure/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Every content record must produce a page
+        run: |
+          set -euo pipefail
+          status=0
+          for section in user-groups events student-builder-groups; do
+            case "$section" in
+              events) route=community-days ;;
+              *) route="$section" ;;
+            esac
+            # A section with no records still publishes its index page.
+            test -f "dist/$route/index.html" || {
+              echo "::error::no index page was generated for $route"
+              status=1
+            }
+            for file in content/$section/*.yml; do
+              [ -e "$file" ] || continue
+              name="$(basename "$file" .yml)"
+              case "$name" in _*) continue ;; esac
+              if [ ! -f "dist/$route/$name/index.html" ]; then
+                echo "::error file=$file::no page was generated for '$name'"
+                status=1
+              fi
+            done
+          done
+          exit $status
+
+      - name: Every asset a generated page references must exist
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import re
+          import sys
+          import urllib.parse
+
+          root = pathlib.Path('.')
+          reference = re.compile(r'(?:href|src)="(/[^"]+)"')
+          generated = ('/user-groups/', '/community-days/', '/student-builder-groups/', '/_assets/')
+          missing = []
+
+          for page in sorted(pathlib.Path('dist').rglob('index.html')):
+              html = page.read_text(encoding='utf-8')
+              for ref in sorted(set(reference.findall(html))):
+                  if ref == '/':
+                      continue
+                  # Links between generated pages are checked by the staleness
+                  # diff; here we care about assets that live in the repository.
+                  if ref.startswith(generated):
+                      continue
+                  target = root / urllib.parse.unquote(ref.lstrip('/'))
+                  if not target.exists():
+                      missing.append((page, ref))
+
+          for page, ref in missing:
+              print(f"::error file={page}::referenced asset does not exist: {ref}")
+
+          print(f"{len(missing)} missing asset reference(s)")
+          sys.exit(1 if missing else 0)
+          PY
+
+      - name: The committed generated pages must match a fresh build
+        run: |
+          set -euo pipefail
+          status=0
+          for dir in _assets user-groups community-days student-builder-groups; do
+            if [ ! -d "$dir" ]; then
+              echo "::error::$dir/ is not committed, so the site cannot serve it"
+              status=1
+              continue
+            fi
+            if ! diff -r -x '.generated' "dist/$dir" "$dir"; then
+              echo "::error::$dir/ is STALE. Run 'npm run build' and commit dist/ -- never hand-edit generated files. See user-groups/.generated"
+              status=1
+            fi
+          done
+          exit $status
+
+      - name: Upload the generated pages
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-pages
+          path: dist
+          if-no-files-found: error
