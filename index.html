@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AWS Community Day Events</title>
+    <title>AWS Community Pakistan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @font-face {
@@ -66,16 +66,13 @@
                     },
                 ],
             });
-            if (new Date("2025-02-22") < new Date()) {
-                document.getElementById("registration-open").style.display = "none";
-            }
         };
     </script>
 </head>
 
-<body class="bg-gray-100 font-sans relative">
-    <!-- Top Navigation Bar -->
-    <nav class="bg-[#232f3f] text-white relative z-30 shadow-lg border-b border-[#ff9900]">
+<body class="bg-gray-100 font-sans relative pt-16">
+    <!-- Fixed Top Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#232f3f] text-white shadow-lg border-b border-[#ff9900]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center space-x-3">
@@ -102,10 +99,13 @@
                         </div>
                     </div>
 
-                    <!-- Community Days Dropdown -->
+                    <!-- Student Builder Groups -->
+                    <a href="#student-builders" class="text-gray-200 hover:text-[#ff9900] font-medium">Student Builders</a>
+
+                    <!-- Past Community Days Dropdown -->
                     <div class="relative group">
                         <button class="flex items-center space-x-1 py-2 text-gray-200 hover:text-[#ff9900] font-medium focus:outline-none">
-                            <span>Community Days</span>
+                            <span>Community Days Archive</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="absolute left-0 w-64 rounded-md shadow-lg bg-[#232f3f] border border-gray-700 hidden group-hover:block transition-all duration-200 z-50">
@@ -120,10 +120,7 @@
                         </div>
                     </div>
 
-                    <!-- Student Builder Groups -->
-                    <a href="#student-builders" class="text-gray-200 hover:text-[#ff9900] font-medium">Student Builders</a>
-
-                    <!-- Hackathons / Events -->
+                    <!-- Events / Kirothon -->
                     <a href="kirothon/index.html" class="text-gray-200 hover:text-[#ff9900] font-medium">Kirothon 2026</a>
 
                     <!-- Code of Conduct -->
@@ -148,7 +145,7 @@
             <a href="karachi/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Karachi UG</a>
             <a href="lahore/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Lahore UG</a>
 
-            <div class="font-bold text-[#ff9900] text-sm uppercase mt-3">Community Days</div>
+            <div class="font-bold text-[#ff9900] text-sm uppercase mt-3">Community Days Archive</div>
             <a href="lahore/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Lahore 2025</a>
             <a href="karachi/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Karachi 2025</a>
             <a href="islamabad/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Islamabad 2024</a>
@@ -163,110 +160,130 @@
 
     <canvas class="background"></canvas>
     <div id="particles-js" class="absolute inset-0 z-0"></div>
-    <div class="container mx-auto p-4 text-center p-8 relative z-10">
+
+    <div class="container mx-auto px-4 py-8 text-center relative z-10 max-w-4xl">
         <img src="images/aws-community-pk-logo.png" alt="AWS Community Day Pakistan"
-            class="w-[200px] h-auto mx-auto mb-6" />
-        <h1 class="text-4xl font-bold text-center text-gray-800 mb-6 text-white">
+            class="w-[180px] h-auto mx-auto mb-6 mt-4" />
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
             AWS Community Pakistan
         </h1>
-        <p class="text-lg text-center text-gray-600 mb-8 text-white">
-            Explore the power of AWS technologies and cloud innovations across
-            Pakistan!
+        <p class="text-lg md:text-xl text-center text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Connecting cloud developers, solution architects, student builders, and technology leaders across Pakistan.
         </p>
 
-        <a href="kirothon/index.html">
-            <div
-                class="flex flex-col md:flex-row items-center bg-purple-700 p-4 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-4 cursor-pointer hover:bg-purple-800 border-2 border-purple-400">
-                <div class="w-32 h-auto md:w-48 md:h-auto rounded-lg bg-purple-900 flex items-center justify-center py-6 px-4">
-                    <span class="text-white text-3xl font-bold">Kirothon</span>
+        <!-- User Groups Section -->
+        <div class="mb-10 text-left">
+            <h2 class="text-2xl font-bold text-white mb-6 text-center border-b border-gray-700 pb-3">AWS User Groups in Pakistan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Lahore UG Card -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-[#ff9900] flex flex-col justify-between hover:shadow-xl transition-shadow">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <img src="images/aws-community-pk-logo150-150x.png" alt="AWS UG Lahore" class="h-12 w-auto bg-[#232f3f] p-1 rounded" />
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Lahore</h3>
+                                <p class="text-xs text-[#ff9900] font-semibold">AWS User Group</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Connecting cloud enthusiasts in Lahore through monthly meetups, technical sessions, and community days.</p>
+                    </div>
+                    <a href="lahore/index.html" class="block text-center bg-[#232f3f] text-[#ff9900] hover:bg-[#ff9900] hover:text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
+                        Explore Lahore Chapter →
+                    </a>
                 </div>
-                <div class="flex-1 md:ml-6 text-center md:text-left mt-4 md:mt-0">
-                    <h3 class="text-xl font-semibold text-white">Kirothon 2026</h3>
-                    <p class="text-purple-200 mt-2 text-sm">Join the Kirothon — a hackathon powered by AWS Community Pakistan. Build, innovate, and compete with the best builders across the country.</p>
-                    <p class="text-purple-300 mt-1 text-sm"><span class="text-yellow-300">🚀 Event:</span> Kirothon 2026</p>
+
+                <!-- Karachi UG Card -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-[#ff9900] flex flex-col justify-between hover:shadow-xl transition-shadow">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <img src="simages/Karachi_CommunityDay_logo-01.png" alt="AWS UG Karachi" class="h-12 w-auto bg-[#232f3f] p-1 rounded" />
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Karachi</h3>
+                                <p class="text-xs text-[#ff9900] font-semibold">AWS User Group</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Bringing together developers, startups, and cloud professionals across Karachi for tech talks and networking.</p>
+                    </div>
+                    <a href="karachi/index.html" class="block text-center bg-[#232f3f] text-[#ff9900] hover:bg-[#ff9900] hover:text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
+                        Explore Karachi Chapter →
+                    </a>
                 </div>
-            </div>
-        </a>
 
-        <a href="lahore/index.html">
-            <div
-                class="flex flex-col md:flex-row items-center bg-white p-4 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-4 cursor-pointer hover:bg-gray-200">
-                <img src="simages/Aws community day pak 2025 logo(dark background).png"
-                    alt="AWS Community Day Pakistan" class="w-32 h-auto md:w-48 md:h-auto rounded-lg bg-[#252f3e]" />
-
-                <div class="flex-1 md:ml-6 text-center md:text-left mt-4 md:mt-0">
-                    <h3 class="text-xl font-semibold text-gray-800">AWS Community Day Lahore</h3>
-                    <p class="text-gray-600 mt-2 text-sm">AWS User Group Lahore is back to host the most awaited event,
-                        AWS
-                        Community Day Lahore 2025, unveiling success stories, use cases & much more from industry
-                        leaders.
-                    </p>
-                    <p class="text-gray-500 mt-1 text-sm"><span class="text-[#ff9900]">📅 Date:</span> 20th Dec, 2025
-                        (Saturday)</p>
-                    <p class="text-gray-500 text-sm"><span class="text-[#ff9900]">📍 Location:</span> Auditorium, 6th floor, One World Tower, Lahore</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="karachi/index.html">
-            <div
-                class="flex flex-col md:flex-row items-center bg-white p-4 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-4 cursor-pointer hover:bg-gray-200">
-                <img src="simages/Karachi_CommunityDay_logo-01.png" alt="AWS Community Day Pakistan"
-                    class="w-32 h-auto md:w-48 md:h-auto rounded-lg" />
-
-                <div class="flex-1 md:ml-6 text-center md:text-left mt-4 md:mt-0 relative">
-                    <h3 class="text-xl font-semibold text-gray-800">AWS Community Day Karachi</h3>
-                    <p class="text-gray-600 mt-2 text-sm">AWS User Group Karachi is back to host the most awaited event,
-                        AWS
-                        Community Day Karachi 2025, unveiling success stories, use cases & much more from industry
-                        leaders.
-                    </p>
-                    <p class="text-gray-500 mt-1 text-sm"><span class="text-[#ff9900]">📅 Date:</span> 22th Feb, 2025
-                        (Saturday)</p>
-                    <p class="text-gray-500 text-sm"><span class="text-[#ff9900]">📍 Location:</span> MAJU, Karachi</p>
-                    <span id="registration-open"
-                        class="text-center text-red-500 text-sm font-semibold ml-2 bottom-0 right-0 md:absolute">●
-                        <span class="animate-pulse animate-pulse-fast ml-1">Registration Open</span></span>
-                </div>
-            </div>
-        </a>
-
-
-        <a href="islamabad/index.html">
-            <div
-                class="flex flex-col md:flex-row items-center bg-white p-4 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-4 cursor-pointer hover:bg-gray-200">
-                <img src="islamabad/images/isb_community_day_2024-removebg-preview.png" alt="AWS Community Day Pakistan"
-                    class="w-32 h-auto md:w-48 md:h-auto rounded-lg bg-[#252f3e] py-10" />
-
-                <div class="flex-1 md:ml-6 text-center md:text-left mt-4 md:mt-0">
-                    <h3 class="text-xl font-semibold text-gray-800">AWS Community Day Islamabad</h3>
-                    <p class="text-gray-600 mt-2 text-sm">Join us on August 24th, 2024, for an unforgettable day of all
-                        things AWS! Get ready for a day filled with insights, learning, networking, and excitement!</p>
-                    <p class="text-gray-500 mt-1 text-sm"><span class="text-[#ff9900]">📅 Date:</span> 24th August 2024,
-                        Saturday</p>
-                    <p class="text-gray-500 text-sm"><span class="text-[#ff9900]">📍 Location:</span> National
-                        Incubation
-                        Centre,
-                        Islamabad</p>
+                <!-- Islamabad UG Card -->
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-[#ff9900] flex flex-col justify-between hover:shadow-xl transition-shadow">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <img src="islamabad/images/aws-ug-isl.png" alt="AWS UG Islamabad" class="h-12 w-auto bg-[#232f3f] p-1 rounded" />
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Islamabad</h3>
+                                <p class="text-xs text-[#ff9900] font-semibold">AWS User Group</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Fostering cloud adoption and builder communities across Islamabad and Rawalpindi.</p>
+                    </div>
+                    <a href="islamabad/index.html" class="block text-center bg-[#232f3f] text-[#ff9900] hover:bg-[#ff9900] hover:text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
+                        Explore Islamabad Chapter →
+                    </a>
                 </div>
             </div>
-        </a>
+        </div>
 
         <!-- Student Builder Groups & Leaders Section -->
-        <div id="student-builders" class="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-6 text-left relative z-10 border-t-4 border-[#ff9900]">
+        <div id="student-builders" class="bg-white p-6 md:p-8 rounded-lg shadow-md w-full mx-auto mb-10 text-left border-t-4 border-[#ff9900]">
             <h2 class="text-2xl font-bold text-gray-800 mb-2">AWS Student Builder Groups & Cloud Clubs</h2>
-            <p class="text-gray-600 text-sm mb-4">Empowering student developers and cloud enthusiasts across universities in Pakistan. Connect with Student Builder Leaders, attend workshops, and build your AWS journey.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <h3 class="font-bold text-gray-800 text-base mb-1">🎓 AWS Cloud Clubs</h3>
-                    <p class="text-xs text-gray-600 mb-2">Student-led university chapters inspiring the next generation of cloud builders.</p>
-                    <span class="inline-block bg-[#232f3f] text-[#ff9900] text-xs px-2 py-1 rounded font-semibold">Active Chapters</span>
+            <p class="text-gray-600 text-sm mb-6">Empowering student developers and cloud enthusiasts across universities in Pakistan. Connect with Student Builder Leaders, attend workshops, and build your AWS journey.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="p-5 bg-gray-50 rounded-lg border border-gray-200">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-2xl">🎓</span>
+                        <h3 class="font-bold text-gray-800 text-lg">AWS Cloud Clubs</h3>
+                    </div>
+                    <p class="text-gray-600 text-xs mb-3 leading-relaxed">Student-led university chapters inspiring the next generation of cloud builders. Learn cloud fundamentals, hands-on labs, and certification paths.</p>
+                    <span class="inline-block bg-[#232f3f] text-[#ff9900] text-xs px-3 py-1 rounded font-semibold">Active University Chapters</span>
                 </div>
-                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                    <h3 class="font-bold text-gray-800 text-base mb-1">🚀 Student Builder Leaders</h3>
-                    <p class="text-xs text-gray-600 mb-2">Recognized student leaders driving cloud innovation and technical workshops.</p>
-                    <span class="inline-block bg-[#232f3f] text-[#ff9900] text-xs px-2 py-1 rounded font-semibold">Community Mentors</span>
+                
+                <div class="p-5 bg-gray-50 rounded-lg border border-gray-200">
+                    <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-2xl">🚀</span>
+                        <h3 class="font-bold text-gray-800 text-lg">Student Builder Leaders</h3>
+                    </div>
+                    <p class="text-gray-600 text-xs mb-3 leading-relaxed">Recognized student leaders driving cloud innovation, organizing university hackathons, and delivering technical sessions.</p>
+                    <span class="inline-block bg-[#232f3f] text-[#ff9900] text-xs px-3 py-1 rounded font-semibold">Community Mentors</span>
                 </div>
+            </div>
+        </div>
+
+        <!-- Community Days Archive & Past Events Section -->
+        <div class="bg-[#232f3f] bg-opacity-90 p-6 md:p-8 rounded-lg shadow-md text-left text-white border border-gray-700 mb-8">
+            <h2 class="text-2xl font-bold mb-3 text-[#ff9900]">Community Days & Events Archive</h2>
+            <p class="text-gray-300 text-sm mb-6">Explore highlights, keynotes, speaker sessions, and agendas from our past flagship events across Pakistan:</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                <a href="lahore/index.html" class="p-3 bg-gray-800 rounded border border-gray-700 hover:border-[#ff9900] transition-colors block">
+                    <span class="font-bold text-white block">CD Lahore 2025</span>
+                    <span class="text-xs text-gray-400">Auditorium, One World Tower</span>
+                </a>
+                <a href="karachi/index.html" class="p-3 bg-gray-800 rounded border border-gray-700 hover:border-[#ff9900] transition-colors block">
+                    <span class="font-bold text-white block">CD Karachi 2025</span>
+                    <span class="text-xs text-gray-400">MAJU, Karachi</span>
+                </a>
+                <a href="islamabad/index.html" class="p-3 bg-gray-800 rounded border border-gray-700 hover:border-[#ff9900] transition-colors block">
+                    <span class="font-bold text-white block">CD Islamabad 2024</span>
+                    <span class="text-xs text-gray-400">National Incubation Centre</span>
+                </a>
+                <a href="kirothon/index.html" class="p-3 bg-gray-800 rounded border border-gray-700 hover:border-[#ff9900] transition-colors block">
+                    <span class="font-bold text-white block">Kirothon 2026</span>
+                    <span class="text-xs text-purple-300">AWS Pakistan Hackathon</span>
+                </a>
+                <a href="lahore/aws-community-day-lahore-2024/index.html" class="p-3 bg-gray-800 rounded border border-gray-700 hover:border-[#ff9900] transition-colors block">
+                    <span class="font-bold text-white block">CD Lahore 2024</span>
+                    <span class="text-xs text-gray-400">Past Edition</span>
+                </a>
+                <a href="old-website/aws-community-day-pakistan-2021/index.html" class="p-3 bg-gray-800 rounded border border-gray-700 hover:border-[#ff9900] transition-colors block">
+                    <span class="font-bold text-white block">CD Pakistan 2021</span>
+                    <span class="text-xs text-gray-400">First National Event</span>
+                </a>
             </div>
         </div>
 
