@@ -74,6 +74,93 @@
 </head>
 
 <body class="bg-gray-100 font-sans relative">
+    <!-- Top Navigation Bar -->
+    <nav class="bg-[#232f3f] text-white relative z-30 shadow-lg border-b border-[#ff9900]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <img src="images/aws-community-pk-logo.png" alt="AWS Community PK" class="h-10 w-auto" />
+                        <span class="font-bold text-lg text-white">AWS Community <span class="text-[#ff9900]">Pakistan</span></span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <!-- User Groups Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1 py-2 text-gray-200 hover:text-[#ff9900] font-medium focus:outline-none">
+                            <span>User Groups</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 w-56 rounded-md shadow-lg bg-[#232f3f] border border-gray-700 hidden group-hover:block transition-all duration-200 z-50">
+                            <div class="py-1">
+                                <a href="islamabad/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Islamabad User Group</a>
+                                <a href="karachi/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Karachi User Group</a>
+                                <a href="lahore/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Lahore User Group</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Community Days Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1 py-2 text-gray-200 hover:text-[#ff9900] font-medium focus:outline-none">
+                            <span>Community Days</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 w-64 rounded-md shadow-lg bg-[#232f3f] border border-gray-700 hidden group-hover:block transition-all duration-200 z-50">
+                            <div class="py-1">
+                                <a href="lahore/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Lahore 2025</a>
+                                <a href="karachi/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Karachi 2025</a>
+                                <a href="islamabad/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Islamabad 2024</a>
+                                <a href="lahore/aws-community-day-lahore-2024/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Lahore 2024</a>
+                                <a href="lahore/aws-community-day-lahore-2022/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Lahore 2022</a>
+                                <a href="old-website/aws-community-day-pakistan-2021/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Pakistan 2021</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Builder Groups -->
+                    <a href="#student-builders" class="text-gray-200 hover:text-[#ff9900] font-medium">Student Builders</a>
+
+                    <!-- Hackathons / Events -->
+                    <a href="kirothon/index.html" class="text-gray-200 hover:text-[#ff9900] font-medium">Kirothon 2026</a>
+
+                    <!-- Code of Conduct -->
+                    <a href="codeofconduct.html" class="text-gray-200 hover:text-[#ff9900] font-medium">Code of Conduct</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#232f3f] border-t border-gray-700 px-4 pt-2 pb-4 space-y-2">
+            <div class="font-bold text-[#ff9900] text-sm uppercase mt-2">User Groups</div>
+            <a href="islamabad/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Islamabad UG</a>
+            <a href="karachi/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Karachi UG</a>
+            <a href="lahore/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Lahore UG</a>
+
+            <div class="font-bold text-[#ff9900] text-sm uppercase mt-3">Community Days</div>
+            <a href="lahore/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Lahore 2025</a>
+            <a href="karachi/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Karachi 2025</a>
+            <a href="islamabad/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Islamabad 2024</a>
+            <a href="old-website/aws-community-day-pakistan-2021/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Pakistan 2021</a>
+
+            <div class="font-bold text-[#ff9900] text-sm uppercase mt-3">More</div>
+            <a href="#student-builders" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Student Builders</a>
+            <a href="kirothon/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Kirothon 2026</a>
+            <a href="codeofconduct.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Code of Conduct</a>
+        </div>
+    </nav>
+
     <canvas class="background"></canvas>
     <div id="particles-js" class="absolute inset-0 z-0"></div>
     <div class="container mx-auto p-4 text-center p-8 relative z-10">
@@ -165,13 +252,33 @@
             </div>
         </a>
 
-
-
+        <!-- Student Builder Groups & Leaders Section -->
+        <div id="student-builders" class="bg-white p-6 rounded-lg shadow-md w-full max-w-2xl mx-auto mb-6 text-left relative z-10 border-t-4 border-[#ff9900]">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">AWS Student Builder Groups & Cloud Clubs</h2>
+            <p class="text-gray-600 text-sm mb-4">Empowering student developers and cloud enthusiasts across universities in Pakistan. Connect with Student Builder Leaders, attend workshops, and build your AWS journey.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-800 text-base mb-1">🎓 AWS Cloud Clubs</h3>
+                    <p class="text-xs text-gray-600 mb-2">Student-led university chapters inspiring the next generation of cloud builders.</p>
+                    <span class="inline-block bg-[#232f3f] text-[#ff9900] text-xs px-2 py-1 rounded font-semibold">Active Chapters</span>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <h3 class="font-bold text-gray-800 text-base mb-1">🚀 Student Builder Leaders</h3>
+                    <p class="text-xs text-gray-600 mb-2">Recognized student leaders driving cloud innovation and technical workshops.</p>
+                    <span class="inline-block bg-[#232f3f] text-[#ff9900] text-xs px-2 py-1 rounded font-semibold">Community Mentors</span>
+                </div>
+            </div>
+        </div>
 
     </div>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+    <script>
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', function () {
+            var menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 
 </html>
