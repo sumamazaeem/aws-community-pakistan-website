@@ -42,14 +42,28 @@ const externalLinks: Array<[string, string]> = (
   section="community-days"
 >
   {
-    data.needs_verification && (
-      <p class="banner-verify">
-        <strong>This event is not yet announced.</strong> The record for it exists so the page
-        can be built the moment details are confirmed, but no date, venue or host has been
-        decided. Nothing below has been guessed. Fill in
-        <code>content/events/{entry.id}.yml</code> and this page fills itself in.
-      </p>
-    )
+    /*
+      `needs_verification` means "a question about this record is unresolved", which
+      is a different statement for an event that has not been announced yet and one
+      that happened years ago. Using one wording for both produced a page that
+      claimed Lahore 2022 was "not yet announced" directly above its date, venue
+      and host.
+    */
+    data.needs_verification &&
+      (data.status === 'upcoming' ? (
+        <p class="banner-verify">
+          <strong>This event is not yet announced.</strong> The record for it exists so the
+          page can be built the moment details are confirmed, but no date, venue or host has
+          been decided. Nothing below has been guessed. Fill in{' '}
+          <code>content/events/{entry.id}.yml</code> and this page fills itself in.
+        </p>
+      ) : (
+        <p class="banner-verify">
+          <strong>This record has an unresolved question.</strong> Everything shown below was
+          taken from the event's own page and nothing has been guessed, but something about
+          this event still needs a human answer &mdash; see the note at the foot of the page.
+        </p>
+      ))
   }
 
   <p>
@@ -131,7 +145,7 @@ const externalLinks: Array<[string, string]> = (
           <script is:inline src={`https://sessionize.com/api/v2/${widget}/view/Sessions`}></script>
           <noscript>
             <p class="sessionize__fallback">
-              The session grid needs JavaScript. The same schedule is available on
+              The session grid needs JavaScript. The same schedule is available on{' '}
               <a
                 href={`https://sessionize.com/api/v2/${widget}/view/Sessions`}
                 target="_blank"

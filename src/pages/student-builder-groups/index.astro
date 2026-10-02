@@ -37,15 +37,15 @@ const sorted = [...sbgs].sort((a, b) => a.data.university.localeCompare(b.data.u
         </p>
         <h2 class="section-title">Adding a group</h2>
         <p>
-          Copy <code>content/student-builder-groups/_TEMPLATE.yml</code> to
+          Copy <code>content/student-builder-groups/_TEMPLATE.yml</code> to{' '}
           <code>content/student-builder-groups/&lt;slug&gt;.yml</code>, fill it in, and open a
-          pull request. The slug must match the filename, every URL must be
-          <code>https://</code>, and <code>parent_user_group</code> must name a real group in
+          pull request. The slug must match the filename, every URL must be{' '}
+          <code>https://</code>, and <code>parent_user_group</code> must name a real group in{' '}
           <code>content/user-groups/</code> &mdash; the build fails if it does not, so a typo
           cannot ship a dead link.
         </p>
         <p>
-          See <code>content/student-builder-groups/README.md</code> and
+          See <code>content/student-builder-groups/README.md</code> and{' '}
           <code>CONTRIBUTING.md</code>. No HTML or frontend knowledge is needed; this page is
           generated from those files.
         </p>
