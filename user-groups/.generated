@@ -1,0 +1,9 @@
+Everything in this directory is GENERATED from content/user-groups/*.yml by the
+Astro build (`npm run build`, see astro.config.mjs).
+
+DO NOT EDIT THESE FILES. Edit the YAML record instead and run `npm run build`;
+the CI job .github/workflows/build-user-group-pages.yml fails if what is
+committed here disagrees with a fresh build, so a hand edit will be caught.
+
+These files are committed because the deployment pipeline syncs this repository
+to S3 verbatim and has no build step of its own. See docs/deployment.md.

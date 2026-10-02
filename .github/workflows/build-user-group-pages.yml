@@ -1,9 +1,17 @@
 name: Build user group pages
 
-# Builds content/user-groups/*.yml into static pages and proves that every
-# record renders and that every asset the rendered pages point at actually
-# exists in this repository. No secrets are used, so this runs on forked pull
-# requests too.
+# Builds content/user-groups/*.yml into static pages and proves three things:
+#   1. every record renders,
+#   2. every asset the rendered pages point at exists in this repository,
+#   3. the committed user-groups/ directory matches a fresh build.
+#
+# (3) is the important one. CodePipeline syncs this repository to S3 verbatim
+# with no build step, so the generated HTML has to be committed for the site to
+# serve it -- and committed build output is exactly the kind of thing that goes
+# stale when somebody edits a YAML record and forgets to rebuild. This job makes
+# that a failing check instead of a silently wrong page.
+#
+# No secrets are used, so this runs on forked pull requests too.
 
 on:
   pull_request:
@@ -58,9 +66,6 @@ jobs:
           for page in sorted(pathlib.Path('dist/user-groups').rglob('index.html')):
               html = page.read_text(encoding='utf-8')
               for ref in sorted(set(reference.findall(html))):
-                  # Links between generated pages are resolved by the build itself.
-                  if ref.startswith('/user-groups/'):
-                      continue
                   target = root / urllib.parse.unquote(ref.lstrip('/'))
                   if not target.exists():
                       missing.append((page, ref))
@@ -71,6 +76,19 @@ jobs:
           print(f"{len(missing)} missing asset reference(s)")
           sys.exit(1 if missing else 0)
           PY
+
+      - name: The committed user-groups/ must match a fresh build
+        run: |
+          set -euo pipefail
+          if [ ! -d user-groups ]; then
+            echo "::error::user-groups/ is not committed, so the site cannot serve these pages"
+            exit 1
+          fi
+          if ! diff -r -x '.generated' dist/user-groups user-groups; then
+            echo "::error::user-groups/ is STALE. Run 'npm run build' and commit dist/user-groups/ -- do not hand-edit user-groups/."
+            exit 1
+          fi
+          echo "committed pages match the build"
 
       - name: Upload the generated pages
         uses: actions/upload-artifact@v4

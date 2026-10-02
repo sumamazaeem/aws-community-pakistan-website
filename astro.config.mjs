@@ -1,9 +1,10 @@
 import { defineConfig } from 'astro/config';
 
 // The existing CodePipeline syncs this repository to S3 verbatim, with no build
-// step. So the built output has to be self-contained and committed: CSS is
-// inlined into every page and `format: 'directory'` emits
-// user-groups/<slug>/index.html, which the S3 website origin serves directly.
+// step. So the built output is committed: `format: 'directory'` emits
+// user-groups/<slug>/index.html, and the one shared stylesheet is emitted inside
+// user-groups/_assets/ so the whole generated tree lives under a single
+// directory the S3 website origin serves directly.
 //
 // Nothing here changes how the site deploys. See docs/restructure-plan.md.
 export default defineConfig({
@@ -11,7 +12,8 @@ export default defineConfig({
   outDir: './dist',
   build: {
     format: 'directory',
-    inlineStylesheets: 'always',
+    inlineStylesheets: 'never',
+    assets: 'user-groups/_assets',
   },
   devToolbar: { enabled: false },
 });
