@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { formatDateRange } from '../../lib/dates';
+import { resolveGroups } from '../../lib/crossref';
+
+const groups = await getCollection('user-groups');
+const events = await getCollection('events');
+
+// Fail the build on a bad cross-reference rather than render a dead link.
+for (const entry of events) {
+  resolveGroups(entry.data.user_groups, groups, `content/events/${entry.id}.yml`);
+}
+
+const STATUS_ORDER = { upcoming: 0, active: 1, archived: 2 } as const;
+
+const sorted = [...events].sort((a, b) => {
+  const byStatus = STATUS_ORDER[a.data.status] - STATUS_ORDER[b.data.status];
+  if (byStatus !== 0) return byStatus;
+  if (a.data.year !== b.data.year) return b.data.year - a.data.year;
+  const at = a.data.date ? a.data.date.getTime() : 0;
+  const bt = b.data.date ? b.data.date.getTime() : 0;
+  return bt - at;
+});
+
+const upcoming = sorted.filter((entry) => entry.data.status !== 'archived');
+const archived = sorted.filter((entry) => entry.data.status === 'archived');
+
+// Archived events are grouped by year, newest year first.
+const years = [...new Set(archived.map((entry) => entry.data.year))].sort((a, b) => b - a);
+---
+
+<Base
+  title="AWS Community Days in Pakistan | AWS Community Pakistan"
+  description="Every AWS Community Day and community event held in Pakistan, from 2022 onwards."
+  eyebrow="AWS Community Pakistan"
+  heading="Community Days"
+  sub={`${events.length} events on record`}
+  section="community-days"
+>
+  {
+    upcoming.length > 0 && (
+      <>
+        <h2 class="section-title">Upcoming</h2>
+        <ul class="events">
+          {
+            upcoming.map((entry) => {
+              const when = formatDateRange(entry.data.date, entry.data.end_date);
+              return (
+                <li>
+                  <a class="event-card" href={`/community-days/${entry.id}/`}>
+                    <h3 class="event-card__name">{entry.data.name}</h3>
+                    <p class="event-card__meta">
+                      {when ?? 'Date not announced'}
+                      {entry.data.venue ? ` \u00b7 ${entry.data.venue}` : ''}
+                    </p>
+                    <p>
+                      <span class={`pill pill--${entry.data.status}`}>{entry.data.status}</span>
+                      {entry.data.needs_verification && (
+                        <span class="pill pill--verify">needs verification</span>
+                      )}
+                    </p>
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </>
+    )
+  }
+
+  <h2 class="section-title">Past events</h2>
+  {
+    years.map((year) => (
+      <>
+        <h3 class="year-heading">{year}</h3>
+        <ul class="events">
+          {
+            archived
+              .filter((entry) => entry.data.year === year)
+              .map((entry) => {
+                const when = formatDateRange(entry.data.date, entry.data.end_date);
+                return (
+                  <li>
+                    <a class="event-card" href={`/community-days/${entry.id}/`}>
+                      <h4 class="event-card__name">{entry.data.name}</h4>
+                      <p class="event-card__meta">
+                        {when ?? 'Date not recorded'}
+                        {entry.data.venue ? ` \u00b7 ${entry.data.venue}` : ''}
+                      </p>
+                    </a>
+                  </li>
+                );
+              })
+          }
+        </ul>
+      </>
+    ))
+  }
+
+  <p class="note">
+    Past event pages are kept exactly as they were published, including their original
+    styling. Each event below links to its own archived page where one exists.
+  </p>
+</Base>

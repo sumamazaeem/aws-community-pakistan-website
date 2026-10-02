@@ -1,0 +1,187 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PersonCard from '../../components/PersonCard.astro';
+import { assetUrl } from '../../lib/assets';
+import { formatDateRange, isoDate } from '../../lib/dates';
+import { resolveGroups } from '../../lib/crossref';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+
+const groups = await getCollection('user-groups');
+const hosts = resolveGroups(data.user_groups, groups, `content/events/${entry.id}.yml`);
+
+const when = formatDateRange(data.date, data.end_date);
+const widget = data.links.sessionize_widget_id;
+
+const externalLinks: Array<[string, string]> = (
+  [
+    ['Event site', data.links.site],
+    ['Registration', data.links.registration],
+    ['Call for speakers', data.links.call_for_speakers],
+    ['Repository', data.links.repository],
+  ] as Array<[string, string | null]>
+).filter((pair): pair is [string, string] => Boolean(pair[1]));
+---
+
+<Base
+  title={`${data.name} | AWS Community Pakistan`}
+  description={`${data.name}${when ? ` \u2014 ${when}` : ''}${data.venue ? `, ${data.venue}` : ''}.`}
+  eyebrow={data.kind === 'hackathon' ? 'Hackathon' : 'AWS Community Day'}
+  heading={data.name}
+  sub={when}
+  section="community-days"
+>
+  {
+    data.needs_verification && (
+      <p class="banner-verify">
+        <strong>This event is not yet announced.</strong> The record for it exists so the page
+        can be built the moment details are confirmed, but no date, venue or host has been
+        decided. Nothing below has been guessed. Fill in
+        <code>content/events/{entry.id}.yml</code> and this page fills itself in.
+      </p>
+    )
+  }
+
+  <p>
+    <span class={`pill pill--${data.status}`}>{data.status}</span>
+    {data.needs_verification && <span class="pill pill--verify">needs verification</span>}
+  </p>
+
+  <dl class="facts">
+    <dt>When</dt>
+    <dd>
+      {
+        data.date ? (
+          <time datetime={isoDate(data.date)}>{when}</time>
+        ) : (
+          <span class="muted">Not announced</span>
+        )
+      }
+    </dd>
+
+    <dt>Where</dt>
+    <dd>{data.venue ?? <span class="muted">Not announced</span>}</dd>
+
+    <dt>Scope</dt>
+    <dd>
+      {
+        data.scope === 'national'
+          ? 'National'
+          : data.scope === 'city'
+            ? `City edition${data.city ? ` \u2014 ${data.city}` : ''}`
+            : <span class="muted">Not decided</span>
+      }
+    </dd>
+
+    <dt>Hosted by</dt>
+    <dd>
+      {
+        hosts.length > 0 ? (
+          hosts.map((group, index) => (
+            <>
+              {index > 0 && ', '}
+              <a href={`/user-groups/${group.id}/`}>{group.data.name}</a>
+            </>
+          ))
+        ) : (
+          <span class="muted">Not recorded</span>
+        )
+      }
+    </dd>
+  </dl>
+
+  {
+    externalLinks.length > 0 && (
+      <>
+        <h2 class="section-title">Links</h2>
+        <ul class="social">
+          {
+            externalLinks.map(([label, href]) => (
+              <li>
+                <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </>
+    )
+  }
+
+  {
+    widget && (
+      <>
+        <h2 class="section-title">Sessions</h2>
+        <div class="sessionize">
+          {/*
+            Speaker and session data is not stored in this repository -- it lives in
+            Sessionize, and the existing event pages embed it exactly this way. The
+            widget id comes from the content record, so session.html can no longer
+            drift to the wrong view the way karachi/session.html did.
+          */}
+          <script is:inline src={`https://sessionize.com/api/v2/${widget}/view/Sessions`}></script>
+          <noscript>
+            <p class="sessionize__fallback">
+              The session grid needs JavaScript. The same schedule is available on
+              <a
+                href={`https://sessionize.com/api/v2/${widget}/view/Sessions`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Sessionize
+              </a>.
+            </p>
+          </noscript>
+        </div>
+      </>
+    )
+  }
+
+  {
+    data.team.length > 0 && (
+      <>
+        <h2 class="section-title">Organizers and volunteers</h2>
+        <ul class="people">
+          {
+            data.team.map((member) => (
+              <PersonCard
+                name={member.name}
+                label={member.label}
+                linkedin={member.linkedin}
+                photo={member.photo}
+              />
+            ))
+          }
+        </ul>
+      </>
+    )
+  }
+
+  {
+    data.page && (
+      <>
+        <h2 class="section-title">Original event page</h2>
+        <p>
+          This event's own page is kept exactly as it was published, with its original
+          styling: <a href={assetUrl(data.page)}>/{data.page}</a>. It has not been changed or
+          removed.
+        </p>
+      </>
+    )
+  }
+
+  {data.notes && <p class="note">{data.notes}</p>}
+
+  <p class="muted">
+    Source: <code>content/events/{entry.id}.yml</code> &middot; last updated {isoDate(data.last_updated)}
+  </p>
+</Base>

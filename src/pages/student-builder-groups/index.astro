@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { assetUrl } from '../../lib/assets';
+import { resolveGroup } from '../../lib/crossref';
+
+const groups = await getCollection('user-groups');
+const sbgs = await getCollection('student-builder-groups');
+
+for (const entry of sbgs) {
+  resolveGroup(
+    entry.data.parent_user_group,
+    groups,
+    `content/student-builder-groups/${entry.id}.yml`,
+  );
+}
+
+const sorted = [...sbgs].sort((a, b) => a.data.university.localeCompare(b.data.university));
+---
+
+<Base
+  title="AWS Student Builder Groups in Pakistan | AWS Community Pakistan"
+  description="AWS Student Builder Groups at universities across Pakistan."
+  eyebrow="AWS Community Pakistan"
+  heading="Student Builder Groups"
+  sub={sorted.length > 0 ? `${sorted.length} groups` : 'No groups recorded yet'}
+  section="student-builder-groups"
+>
+  {
+    sorted.length === 0 ? (
+      <>
+        <p class="banner-verify">
+          <strong>No Student Builder Groups are recorded yet.</strong> A search of every HTML
+          and CSS file in this repository found no mention of a Student Builder Group, so
+          there was nothing to migrate and nothing has been invented. This page is live and
+          will list them as soon as the records exist.
+        </p>
+        <h2 class="section-title">Adding a group</h2>
+        <p>
+          Copy <code>content/student-builder-groups/_TEMPLATE.yml</code> to
+          <code>content/student-builder-groups/&lt;slug&gt;.yml</code>, fill it in, and open a
+          pull request. The slug must match the filename, every URL must be
+          <code>https://</code>, and <code>parent_user_group</code> must name a real group in
+          <code>content/user-groups/</code> &mdash; the build fails if it does not, so a typo
+          cannot ship a dead link.
+        </p>
+        <p>
+          See <code>content/student-builder-groups/README.md</code> and
+          <code>CONTRIBUTING.md</code>. No HTML or frontend knowledge is needed; this page is
+          generated from those files.
+        </p>
+      </>
+    ) : (
+      <ul class="groups">
+        {
+          sorted.map((entry) => {
+            const logo = assetUrl(entry.data.logo);
+            const count = entry.data.leaders.length;
+            return (
+              <li>
+                <a class="group-card" href={`/student-builder-groups/${entry.id}/`}>
+                  {
+                    logo && (
+                      <img
+                        class="group-card__logo"
+                        src={logo}
+                        alt=""
+                        loading="lazy"
+                        width="56"
+                        height="56"
+                      />
+                    )
+                  }
+                  <h2 class="group-card__name">{entry.data.university}</h2>
+                  <p class="group-card__meta">{entry.data.city}</p>
+                  <p class="group-card__meta">
+                    {
+                      count > 0
+                        ? `${count} ${count === 1 ? 'person' : 'people'} listed`
+                        : 'No leadership recorded'
+                    }
+                  </p>
+                  <p>
+                    <span class={`pill pill--${entry.data.status}`}>{entry.data.status}</span>
+                    {entry.data.needs_verification && (
+                      <span class="pill pill--verify">needs verification</span>
+                    )}
+                  </p>
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    )
+  }
+</Base>

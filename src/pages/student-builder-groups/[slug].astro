@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PersonCard from '../../components/PersonCard.astro';
+import { assetUrl } from '../../lib/assets';
+import { isoDate } from '../../lib/dates';
+import { resolveGroup } from '../../lib/crossref';
+
+export async function getStaticPaths() {
+  const sbgs = await getCollection('student-builder-groups');
+  return sbgs.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+
+const groups = await getCollection('user-groups');
+const parent = resolveGroup(
+  data.parent_user_group,
+  groups,
+  `content/student-builder-groups/${entry.id}.yml`,
+);
+
+const logo = assetUrl(data.logo);
+
+const links: Array<[string, string]> = (
+  [
+    ['LinkedIn', data.links.linkedin],
+    ['Community', data.links.community],
+    ['Instagram', data.links.instagram],
+  ] as Array<[string, string | null]>
+).filter((pair): pair is [string, string] => Boolean(pair[1]));
+---
+
+<Base
+  title={`${data.university} | AWS Student Builder Groups | AWS Community Pakistan`}
+  description={`AWS Student Builder Group at ${data.university}, ${data.city}.`}
+  eyebrow="AWS Student Builder Group"
+  heading={data.university}
+  sub={data.short_name ? `${data.short_name} \u00b7 ${data.city}` : data.city}
+  section="student-builder-groups"
+>
+  {
+    data.needs_verification && (
+      <p class="banner-verify">
+        <strong>This record is incomplete.</strong> The details below are everything that is
+        actually known &mdash; nothing has been invented. Editing
+        <code>content/student-builder-groups/{entry.id}.yml</code> is a genuinely useful
+        contribution.
+      </p>
+    )
+  }
+
+  <p>
+    <span class={`pill pill--${data.status}`}>{data.status}</span>
+    {data.needs_verification && <span class="pill pill--verify">needs verification</span>}
+  </p>
+
+  {logo && <p><img src={logo} alt={`${data.university} logo`} width="96" height="96" class="group-card__logo" /></p>}
+
+  <dl class="facts">
+    <dt>City</dt>
+    <dd>{data.city}</dd>
+
+    <dt>Term</dt>
+    <dd>
+      {/* Student leadership turns over yearly, so the term the roster covers matters. */}
+      {data.term ?? <span class="muted">Not recorded</span>}
+    </dd>
+
+    <dt>Parent group</dt>
+    <dd>
+      {
+        parent ? (
+          <a href={`/user-groups/${parent.id}/`}>{parent.data.name}</a>
+        ) : (
+          <span class="muted">Not recorded</span>
+        )
+      }
+    </dd>
+  </dl>
+
+  <h2 class="section-title">Links</h2>
+  {
+    links.length > 0 ? (
+      <ul class="social">
+        {
+          links.map(([label, href]) => (
+            <li>
+              <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    ) : (
+      <p class="muted">No accounts are recorded for this group.</p>
+    )
+  }
+
+  <h2 class="section-title">People</h2>
+  {
+    data.leaders.length > 0 ? (
+      <ul class="people">
+        {
+          data.leaders.map((person) => (
+            <PersonCard
+              name={person.name}
+              label={person.label}
+              linkedin={person.linkedin}
+              photo={person.photo}
+            />
+          ))
+        }
+      </ul>
+    ) : (
+      <p class="muted">No leadership is recorded for this group.</p>
+    )
+  }
+
+  {data.notes && <p class="note">{data.notes}</p>}
+
+  <p class="muted">
+    Source: <code>content/student-builder-groups/{entry.id}.yml</code> &middot; last updated
+    {' '}{isoDate(data.last_updated)}
+  </p>
+</Base>
