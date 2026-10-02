@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import PersonCard from '../../components/PersonCard.astro';
 import SocialLinks from '../../components/SocialLinks.astro';
 import { assetUrl } from '../../lib/assets';
+import { isoDate } from '../../lib/dates';
 
 export async function getStaticPaths() {
   const groups = await getCollection('user-groups');
@@ -15,6 +16,20 @@ export async function getStaticPaths() {
 
 const { group } = Astro.props;
 const data = group.data;
+
+// Resolve the group's events so they link to their Community Day pages. A slug
+// that does not exist fails the build rather than rendering a dead link.
+const allEvents = await getCollection('events');
+const eventsById = new Map(allEvents.map((entry) => [entry.id, entry]));
+const missingEvents = data.events.filter((slug) => !eventsById.has(slug));
+if (missingEvents.length > 0) {
+  throw new Error(
+    `content/user-groups/${group.id}.yml: event slug(s) ${missingEvents
+      .map((slug) => `"${slug}"`)
+      .join(', ')} do not exist in content/events/`,
+  );
+}
+const events = data.events.map((slug) => eventsById.get(slug)!);
 
 // Leadership is shown in role precedence, not file order, so the people who
 // lead a group appear first regardless of how the record was written.
@@ -38,10 +53,11 @@ const lastUpdated = data.last_updated.toISOString().slice(0, 10);
 
 <Base
   title={`${data.name} | AWS Community Pakistan`}
-  description={`${data.name} — ${data.city}, ${data.province}.`}
+  description={`${data.name} \u2014 ${data.city}, ${data.province}.`}
   eyebrow="AWS User Group"
   heading={data.name}
   sub={`${data.city}, ${data.province}`}
+  section="user-groups"
 >
   {
     data.needs_verification && (
@@ -88,11 +104,22 @@ const lastUpdated = data.last_updated.toISOString().slice(0, 10);
   }
 
   {
-    data.events.length > 0 && (
+    events.length > 0 && (
       <>
         <h2 class="section-title">Community Days</h2>
-        <ul>
-          {data.events.map((event) => <li>{event}</li>)}
+        <ul class="events">
+          {
+            events.map((entry) => (
+              <li>
+                <a class="event-card" href={`/community-days/${entry.id}/`}>
+                  <h3 class="event-card__name">{entry.data.name}</h3>
+                  <p class="event-card__meta">
+                    {entry.data.venue ?? 'Venue not recorded'}
+                  </p>
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </>
     )
