@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { assetUrl } from '../../lib/assets';
+
+const groups = (await getCollection('user-groups')).sort((a, b) => {
+  // Confirmed records first, then the ones still awaiting human verification.
+  const aPending = a.data.needs_verification ? 1 : 0;
+  const bPending = b.data.needs_verification ? 1 : 0;
+  if (aPending !== bPending) return aPending - bPending;
+  return a.data.name.localeCompare(b.data.name);
+});
+
+const pending = groups.filter((group) => group.data.needs_verification).length;
+---
+
+<Base
+  title="AWS User Groups in Pakistan | AWS Community Pakistan"
+  description="The AWS User Groups across Pakistan, their leadership and their links."
+  eyebrow="AWS Community Pakistan"
+  heading="AWS User Groups"
+  sub={`${groups.length} groups across Pakistan`}
+>
+  {
+    pending > 0 && (
+      <p class="banner-verify">
+        <strong>{pending} of these {groups.length} records are incomplete.</strong> They are
+        listed because the group appears in the Kirothon&nbsp;2026 logo strip, but no page,
+        URL or leader is recorded for them anywhere in this repository. Nothing has been
+        guessed. Filling one in is a genuinely useful contribution &mdash; edit the matching
+        file in <code>content/user-groups/</code>.
+      </p>
+    )
+  }
+
+  <ul class="groups">
+    {
+      groups.map((group) => {
+        const logo = assetUrl(group.data.logo);
+        const leaderCount = group.data.leaders.length;
+        return (
+          <li>
+            <a class="group-card" href={`/user-groups/${group.id}/`}>
+              {
+                logo && (
+                  <img
+                    class="group-card__logo"
+                    src={logo}
+                    alt=""
+                    loading="lazy"
+                    width="56"
+                    height="56"
+                  />
+                )
+              }
+              <h2 class="group-card__name">{group.data.name}</h2>
+              <p class="group-card__meta">{group.data.city}, {group.data.province}</p>
+              <p class="group-card__meta">
+                {
+                  leaderCount > 0
+                    ? `${leaderCount} ${leaderCount === 1 ? 'person' : 'people'} listed`
+                    : 'No leadership recorded'
+                }
+              </p>
+              <p>
+                <span class={`pill pill--${group.data.status}`}>{group.data.status}</span>
+                {group.data.needs_verification && <span class="pill pill--verify">needs verification</span>}
+              </p>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Base>

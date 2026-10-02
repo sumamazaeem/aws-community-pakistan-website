@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PersonCard from '../../components/PersonCard.astro';
+import SocialLinks from '../../components/SocialLinks.astro';
+import { assetUrl } from '../../lib/assets';
+
+export async function getStaticPaths() {
+  const groups = await getCollection('user-groups');
+  return groups.map((group) => ({
+    params: { slug: group.id },
+    props: { group },
+  }));
+}
+
+const { group } = Astro.props;
+const data = group.data;
+
+// Leadership is shown in role precedence, not file order, so the people who
+// lead a group appear first regardless of how the record was written.
+const ROLE_ORDER = [
+  'lead',
+  'co-lead',
+  'mentor',
+  'organizer',
+  'co-organizer',
+  'core-team',
+  'unspecified',
+];
+
+const leaders = [...data.leaders].sort(
+  (a, b) => ROLE_ORDER.indexOf(a.role) - ROLE_ORDER.indexOf(b.role),
+);
+
+const logo = assetUrl(data.logo);
+const lastUpdated = data.last_updated.toISOString().slice(0, 10);
+---
+
+<Base
+  title={`${data.name} | AWS Community Pakistan`}
+  description={`${data.name} — ${data.city}, ${data.province}.`}
+  eyebrow="AWS User Group"
+  heading={data.name}
+  sub={`${data.city}, ${data.province}`}
+>
+  {
+    data.needs_verification && (
+      <p class="banner-verify">
+        <strong>This record is incomplete.</strong> This group appears in the
+        Kirothon&nbsp;2026 User Group logo strip, but no page, URL, leader or confirmed
+        status is recorded for it anywhere in this repository. The details below are
+        everything that is actually known &mdash; nothing has been invented. If you know
+        the real values, editing <code>content/user-groups/{group.id}.yml</code> is a
+        genuinely useful contribution.
+      </p>
+    )
+  }
+
+  <p>
+    <span class={`pill pill--${data.status}`}>{data.status}</span>
+    {data.needs_verification && <span class="pill pill--verify">needs verification</span>}
+  </p>
+
+  {logo && <p><img src={logo} alt={`${data.name} logo`} width="96" height="96" class="group-card__logo" /></p>}
+
+  <h2 class="section-title">Links</h2>
+  <SocialLinks links={data.links} />
+
+  <h2 class="section-title">People</h2>
+  {
+    leaders.length > 0 ? (
+      <ul class="people">
+        {
+          leaders.map((person) => (
+            <PersonCard
+              name={person.name}
+              role={person.role}
+              label={person.label}
+              linkedin={person.linkedin}
+              photo={person.photo}
+            />
+          ))
+        }
+      </ul>
+    ) : (
+      <p class="muted">No leadership is recorded for this group.</p>
+    )
+  }
+
+  {
+    data.events.length > 0 && (
+      <>
+        <h2 class="section-title">Community Days</h2>
+        <ul>
+          {data.events.map((event) => <li>{event}</li>)}
+        </ul>
+      </>
+    )
+  }
+
+  {
+    data.page && (
+      <>
+        <h2 class="section-title">Existing page</h2>
+        <p>
+          This group still has a hand-written page at{' '}
+          <a href={assetUrl(data.page)}>/{data.page}</a>. It has not been changed or
+          removed.
+        </p>
+      </>
+    )
+  }
+
+  {data.notes && <p class="note">{data.notes}</p>}
+
+  <p class="muted">
+    Source: <code>content/user-groups/{group.id}.yml</code> &middot; last updated {lastUpdated}
+  </p>
+</Base>

@@ -1,0 +1,44 @@
+---
+interface Links {
+  linkedin?: string | null;
+  meetup?: string | null;
+  instagram?: string | null;
+  facebook?: string | null;
+  x?: string | null;
+}
+
+interface Props {
+  links: Links;
+}
+
+const { links } = Astro.props;
+
+const LABELS: Array<[keyof Links, string]> = [
+  ['linkedin', 'LinkedIn'],
+  ['meetup', 'Meetup'],
+  ['instagram', 'Instagram'],
+  ['facebook', 'Facebook'],
+  ['x', 'X'],
+];
+
+// Only accounts that exist are rendered. A group with no recorded accounts gets
+// an explicit statement instead of empty icons, because "we have no record of
+// this" and "this group has no social presence" are different claims.
+const present = LABELS.filter(([key]) => Boolean(links?.[key]));
+---
+
+{
+  present.length > 0 ? (
+    <ul class="social">
+      {
+        present.map(([key, label]) => (
+          <li>
+            <a href={links[key] as string} target="_blank" rel="noopener noreferrer">{label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  ) : (
+    <p class="muted">No social accounts are recorded for this group.</p>
+  )
+}

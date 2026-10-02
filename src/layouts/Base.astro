@@ -1,0 +1,48 @@
+---
+import '../styles/theme.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  eyebrow?: string;
+  heading: string;
+  sub?: string | null;
+}
+
+const { title, description, eyebrow, heading, sub } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {/* The same icon karachi/index.html already uses. Verified to exist. */}
+    <link rel="icon" type="image/png" href="/images/aws-community-pk-logo150-150x.png" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap">
+        {eyebrow && <p class="masthead__eyebrow">{eyebrow}</p>}
+        <h1 class="masthead__title">{heading}</h1>
+        {sub && <p class="masthead__sub">{sub}</p>}
+      </div>
+    </header>
+
+    <main class="wrap">
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <p>
+          These pages are generated from the YAML records in <code>content/user-groups/</code>.
+          To correct anything shown here, edit that file &mdash; no HTML or frontend knowledge
+          is needed. See <code>CONTRIBUTING.md</code>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
