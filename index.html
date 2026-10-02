@@ -90,11 +90,14 @@
                             <span>User Groups</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div class="absolute left-0 w-56 rounded-md shadow-lg bg-[#232f3f] border border-gray-700 hidden group-hover:block transition-all duration-200 z-50">
+                        <div class="absolute left-0 w-64 rounded-md shadow-lg bg-[#232f3f] border border-[#ff9900] hidden group-hover:block transition-all duration-200 z-50">
                             <div class="py-1">
-                                <a href="islamabad/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Islamabad User Group</a>
-                                <a href="karachi/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Karachi User Group</a>
                                 <a href="lahore/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Lahore User Group</a>
+                                <a href="karachi/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Karachi User Group</a>
+                                <a href="islamabad/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Islamabad User Group</a>
+                                <a href="#chapters" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Faisalabad User Group</a>
+                                <a href="#chapters" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Women in Tech Lahore</a>
+                                <a href="#chapters" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Women in Tech Islamabad</a>
                             </div>
                         </div>
                     </div>
@@ -108,7 +111,7 @@
                             <span>Community Days Archive</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div class="absolute left-0 w-64 rounded-md shadow-lg bg-[#232f3f] border border-gray-700 hidden group-hover:block transition-all duration-200 z-50">
+                        <div class="absolute left-0 w-64 rounded-md shadow-lg bg-[#232f3f] border border-[#ff9900] hidden group-hover:block transition-all duration-200 z-50">
                             <div class="py-1">
                                 <a href="lahore/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Lahore 2025</a>
                                 <a href="karachi/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Karachi 2025</a>
@@ -141,9 +144,12 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#232f3f] border-t border-gray-700 px-4 pt-2 pb-4 space-y-2">
             <div class="font-bold text-[#ff9900] text-sm uppercase mt-2">User Groups</div>
-            <a href="islamabad/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Islamabad UG</a>
-            <a href="karachi/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Karachi UG</a>
             <a href="lahore/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Lahore UG</a>
+            <a href="karachi/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Karachi UG</a>
+            <a href="islamabad/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Islamabad UG</a>
+            <a href="#chapters" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Faisalabad UG</a>
+            <a href="#chapters" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Women in Tech Lahore</a>
+            <a href="#chapters" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Women in Tech Islamabad</a>
 
             <div class="font-bold text-[#ff9900] text-sm uppercase mt-3">Community Days Archive</div>
             <a href="lahore/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Lahore 2025</a>
@@ -161,7 +167,7 @@
     <canvas class="background"></canvas>
     <div id="particles-js" class="absolute inset-0 z-0"></div>
 
-    <div class="container mx-auto px-4 py-8 text-center relative z-10 max-w-4xl">
+    <div class="container mx-auto px-4 py-8 text-center relative z-10 max-w-5xl">
         <img src="images/aws-community-pk-logo.png" alt="AWS Community Day Pakistan"
             class="w-[180px] h-auto mx-auto mb-6 mt-4" />
         <h1 class="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
@@ -172,20 +178,22 @@
         </p>
 
         <!-- User Groups Section -->
-        <div class="mb-10 text-left">
+        <div id="chapters" class="mb-10 text-left">
             <h2 class="text-2xl font-bold text-white mb-6 text-center border-b border-gray-700 pb-3">AWS User Groups in Pakistan</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <!-- Lahore UG Card -->
-                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-[#ff9900] flex flex-col justify-between hover:shadow-xl transition-shadow">
+                <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-[#ff9900] flex flex-col justify-between hover:shadow-xl transition-shadow relative">
                     <div>
+                        <span class="inline-block bg-[#ff9900] text-black font-bold text-xs px-2 py-1 rounded mb-3">⭐ Est. 2020</span>
                         <div class="flex items-center space-x-3 mb-4">
                             <img src="images/aws-community-pk-logo150-150x.png" alt="AWS UG Lahore" class="h-12 w-auto bg-[#232f3f] p-1 rounded" />
                             <div>
-                                <h3 class="text-xl font-bold text-gray-800">Lahore</h3>
+                                <h3 class="text-xl font-bold text-gray-800">Lahore Chapter</h3>
                                 <p class="text-xs text-[#ff9900] font-semibold">AWS User Group</p>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">Connecting cloud enthusiasts in Lahore through monthly meetups, technical sessions, and community days.</p>
+                        <p class="text-gray-600 text-sm mb-3">Connecting cloud enthusiasts in Lahore through monthly meetups, technical sessions, and community days.</p>
+                        <p class="text-xs text-gray-500 font-semibold mb-4 bg-orange-50 p-2 rounded border border-orange-200">🏆 Contributing since 2020 — One of the oldest & most active chapters in Pakistan.</p>
                     </div>
                     <a href="lahore/index.html" class="block text-center bg-[#232f3f] text-[#ff9900] hover:bg-[#ff9900] hover:text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
                         Explore Lahore Chapter →
@@ -195,10 +203,11 @@
                 <!-- Karachi UG Card -->
                 <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-[#ff9900] flex flex-col justify-between hover:shadow-xl transition-shadow">
                     <div>
+                        <span class="inline-block bg-blue-100 text-blue-800 font-bold text-xs px-2 py-1 rounded mb-3">Active Chapter</span>
                         <div class="flex items-center space-x-3 mb-4">
                             <img src="simages/Karachi_CommunityDay_logo-01.png" alt="AWS UG Karachi" class="h-12 w-auto bg-[#232f3f] p-1 rounded" />
                             <div>
-                                <h3 class="text-xl font-bold text-gray-800">Karachi</h3>
+                                <h3 class="text-xl font-bold text-gray-800">Karachi Chapter</h3>
                                 <p class="text-xs text-[#ff9900] font-semibold">AWS User Group</p>
                             </div>
                         </div>
@@ -212,10 +221,11 @@
                 <!-- Islamabad UG Card -->
                 <div class="bg-white rounded-lg p-6 shadow-md border-t-4 border-[#ff9900] flex flex-col justify-between hover:shadow-xl transition-shadow">
                     <div>
+                        <span class="inline-block bg-blue-100 text-blue-800 font-bold text-xs px-2 py-1 rounded mb-3">Active Chapter</span>
                         <div class="flex items-center space-x-3 mb-4">
                             <img src="islamabad/images/aws-ug-isl.png" alt="AWS UG Islamabad" class="h-12 w-auto bg-[#232f3f] p-1 rounded" />
                             <div>
-                                <h3 class="text-xl font-bold text-gray-800">Islamabad</h3>
+                                <h3 class="text-xl font-bold text-gray-800">Islamabad Chapter</h3>
                                 <p class="text-xs text-[#ff9900] font-semibold">AWS User Group</p>
                             </div>
                         </div>
@@ -224,6 +234,42 @@
                     <a href="islamabad/index.html" class="block text-center bg-[#232f3f] text-[#ff9900] hover:bg-[#ff9900] hover:text-black font-semibold py-2 px-4 rounded transition-colors text-sm">
                         Explore Islamabad Chapter →
                     </a>
+                </div>
+            </div>
+
+            <!-- Additional Chapters (Faisalabad, Women in Tech Lahore, Women in Tech Islamabad) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Faisalabad UG Card -->
+                <div class="bg-white rounded-lg p-5 shadow border-t-4 border-gray-400 flex flex-col justify-between">
+                    <div>
+                        <span class="inline-block bg-purple-100 text-purple-800 font-semibold text-xs px-2 py-1 rounded mb-2">Expanding Chapter</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">AWS UG Faisalabad</h3>
+                        <p class="text-xs text-gray-500 font-semibold mb-2">Faisalabad Region</p>
+                        <p class="text-gray-600 text-xs mb-3">Expanding AWS developer presence and hosting community workshops for builders in Faisalabad.</p>
+                    </div>
+                    <span class="text-xs text-gray-400 font-semibold italic">Upcoming Activities</span>
+                </div>
+
+                <!-- Women in Tech Lahore Card -->
+                <div class="bg-white rounded-lg p-5 shadow border-t-4 border-pink-500 flex flex-col justify-between">
+                    <div>
+                        <span class="inline-block bg-pink-100 text-pink-800 font-semibold text-xs px-2 py-1 rounded mb-2">Women in Tech</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Women in Tech Lahore</h3>
+                        <p class="text-xs text-pink-600 font-semibold mb-2">AWS Women in Tech</p>
+                        <p class="text-gray-600 text-xs mb-3">Empowering female cloud engineers, developers, and tech leaders across Lahore with dedicated mentorship.</p>
+                    </div>
+                    <span class="text-xs text-pink-500 font-semibold italic">Community Chapter</span>
+                </div>
+
+                <!-- Women in Tech Islamabad Card -->
+                <div class="bg-white rounded-lg p-5 shadow border-t-4 border-pink-500 flex flex-col justify-between">
+                    <div>
+                        <span class="inline-block bg-pink-100 text-pink-800 font-semibold text-xs px-2 py-1 rounded mb-2">Women in Tech</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-1">Women in Tech Islamabad</h3>
+                        <p class="text-xs text-pink-600 font-semibold mb-2">AWS Women in Tech</p>
+                        <p class="text-gray-600 text-xs mb-3">Promoting women in cloud computing, DevOps, and AI across Islamabad and the capital region.</p>
+                    </div>
+                    <span class="text-xs text-pink-500 font-semibold italic">Upcoming Chapter</span>
                 </div>
             </div>
         </div>
