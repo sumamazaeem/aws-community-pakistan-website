@@ -1,0 +1,80 @@
+name: Build user group pages
+
+# Builds content/user-groups/*.yml into static pages and proves that every
+# record renders and that every asset the rendered pages point at actually
+# exists in this repository. No secrets are used, so this runs on forked pull
+# requests too.
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'restructure/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      - name: Every content record must produce a page
+        run: |
+          set -euo pipefail
+          test -f dist/user-groups/index.html
+          status=0
+          for file in content/user-groups/*.yml; do
+            slug="$(basename "$file" .yml)"
+            if [ ! -f "dist/user-groups/$slug/index.html" ]; then
+              echo "::error file=$file::no page was generated for '$slug'"
+              status=1
+            fi
+          done
+          exit $status
+
+      - name: Every asset a generated page references must exist
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import re
+          import sys
+          import urllib.parse
+
+          root = pathlib.Path('.')
+          reference = re.compile(r'(?:href|src)="(/[^"]+)"')
+          missing = []
+
+          for page in sorted(pathlib.Path('dist/user-groups').rglob('index.html')):
+              html = page.read_text(encoding='utf-8')
+              for ref in sorted(set(reference.findall(html))):
+                  # Links between generated pages are resolved by the build itself.
+                  if ref.startswith('/user-groups/'):
+                      continue
+                  target = root / urllib.parse.unquote(ref.lstrip('/'))
+                  if not target.exists():
+                      missing.append((page, ref))
+
+          for page, ref in missing:
+              print(f"::error file={page}::referenced asset does not exist: {ref}")
+
+          print(f"{len(missing)} missing asset reference(s)")
+          sys.exit(1 if missing else 0)
+          PY
+
+      - name: Upload the generated pages
+        uses: actions/upload-artifact@v4
+        with:
+          name: user-group-pages
+          path: dist/user-groups
+          if-no-files-found: error

@@ -4,7 +4,14 @@
   "description": "AWS Community Pakistan website with Kirothon 2026 landing page",
   "type": "module",
   "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "test": "node --test tests/kirothon/*.test.js"
+  },
+  "dependencies": {
+    "astro": "7.3.5",
+    "js-yaml": "5.4.2"
   },
   "devDependencies": {
     "fast-check": "^3.15.0",
