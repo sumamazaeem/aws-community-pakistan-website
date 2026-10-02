@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWS Community Day Pakistan 2026</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/aws-community-pk-logo150-150x.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/aws-community-pk-logo150-150x.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/aws-community-pk-logo150-150x.png" />
+    <link rel="shortcut icon" href="../images/aws-community-pk-logo150-150x.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @font-face {
+            font-family: "JosefinSans";
+            src: url(../karachi/fonts/JosefinSans-Regular.ttf);
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #0d1117;
+            color: #ffffff;
+            font-family: "JosefinSans", sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(35, 47, 63, 0.9), rgba(13, 17, 23, 0.95)), url('../images/bg_banner.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .background {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .aws-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            transition: all 0.3s ease;
+        }
+
+        .aws-card:hover {
+            border-color: #ff9900;
+            transform: translateY(-2px);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js"></script>
+    <script>
+        window.onload = function () {
+            Particles.init({
+                selector: ".background",
+                maxParticles: 350,
+                color: "#ff9900",
+                speed: 1.5,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        options: {
+                            maxParticles: 200,
+                            connectParticles: false,
+                        },
+                    },
+                ],
+            });
+        };
+    </script>
+</head>
+
+<body class="pt-16">
+
+    <!-- Fixed Top Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#232f3f] text-white shadow-lg border-b border-[#ff9900]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="../index.html" class="flex items-center space-x-2">
+                        <img src="../images/aws-community-pk-logo.png" alt="AWS Community PK" class="h-10 w-auto" />
+                        <span class="font-bold text-lg text-white">AWS Community <span class="text-[#ff9900]">Pakistan</span></span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="../index.html" class="text-gray-200 hover:text-[#ff9900] font-medium">Home</a>
+                    
+                    <!-- User Groups Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1 py-2 text-gray-200 hover:text-[#ff9900] font-medium focus:outline-none">
+                            <span>User Groups</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 w-64 rounded-md shadow-lg bg-[#232f3f] border border-[#ff9900] hidden group-hover:block transition-all duration-200 z-50">
+                            <div class="py-1">
+                                <a href="../lahore/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Lahore User Group</a>
+                                <a href="../karachi/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Karachi User Group</a>
+                                <a href="../islamabad/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Islamabad User Group</a>
+                                <a href="../index.html#chapters" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Faisalabad User Group</a>
+                                <a href="../index.html#chapters" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Peshawar User Group</a>
+                                <a href="../index.html#chapters" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Women in Tech Lahore</a>
+                                <a href="../index.html#chapters" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">Women in Tech Islamabad</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Builder Groups -->
+                    <a href="../index.html#student-builders" class="text-gray-200 hover:text-[#ff9900] font-medium">Student Builders</a>
+
+                    <!-- Past Community Days Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center space-x-1 py-2 text-gray-200 hover:text-[#ff9900] font-medium focus:outline-none">
+                            <span>Community Days Archive</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 w-64 rounded-md shadow-lg bg-[#232f3f] border border-[#ff9900] hidden group-hover:block transition-all duration-200 z-50">
+                            <div class="py-1">
+                                <a href="../lahore/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Lahore 2025</a>
+                                <a href="../karachi/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Karachi 2025</a>
+                                <a href="../islamabad/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Islamabad 2024</a>
+                                <a href="../lahore/aws-community-day-lahore-2024/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Lahore 2024</a>
+                                <a href="../lahore/aws-community-day-lahore-2022/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Lahore 2022</a>
+                                <a href="../old-website/aws-community-day-pakistan-2021/index.html" class="block px-4 py-2 text-sm text-gray-200 hover:bg-[#ff9900] hover:text-black">CD Pakistan 2021</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Events / Kirothon -->
+                    <a href="../kirothon/index.html" class="text-gray-200 hover:text-[#ff9900] font-medium">Kirothon 2026</a>
+
+                    <!-- Code of Conduct -->
+                    <a href="../codeofconduct.html" class="text-gray-200 hover:text-[#ff9900] font-medium">Code of Conduct</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#232f3f] border-t border-gray-700 px-4 pt-2 pb-4 space-y-2">
+            <a href="../index.html" class="block py-1 text-sm text-gray-200 hover:text-[#ff9900]">Home</a>
+            <div class="font-bold text-[#ff9900] text-sm uppercase mt-2">User Groups</div>
+            <a href="../lahore/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Lahore UG</a>
+            <a href="../karachi/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Karachi UG</a>
+            <a href="../islamabad/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Islamabad UG</a>
+
+            <div class="font-bold text-[#ff9900] text-sm uppercase mt-3">Community Days Archive</div>
+            <a href="../lahore/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Lahore 2025</a>
+            <a href="../karachi/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Karachi 2025</a>
+            <a href="../islamabad/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">CD Islamabad 2024</a>
+
+            <div class="font-bold text-[#ff9900] text-sm uppercase mt-3">More</div>
+            <a href="../index.html#student-builders" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Student Builders</a>
+            <a href="../kirothon/index.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Kirothon 2026</a>
+            <a href="../codeofconduct.html" class="block pl-3 py-1 text-sm text-gray-200 hover:text-[#ff9900]">Code of Conduct</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg relative py-20 px-4 text-center min-h-[75vh] flex items-center justify-center">
+        <canvas class="background"></canvas>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <img src="../images/aws-community-pk-logo.png" alt="AWS Community PK" class="w-44 h-auto mx-auto mb-6 drop-shadow-lg" />
+            
+            <span class="inline-block bg-[#ff9900] text-black font-bold text-sm px-4 py-1.5 rounded-full mb-4 shadow">
+                🚀 Upcoming Flagship Event 2026
+            </span>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
+                AWS Community Day <span class="text-[#ff9900]">Pakistan 2026</span>
+            </h1>
+
+            <p class="text-lg md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+                The premier annual conference uniting AWS cloud practitioners, solutions architects, developers, and tech leaders across Pakistan.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-left max-w-2xl mx-auto mb-10">
+                <div class="bg-[#232f3f] bg-opacity-90 border border-[#ff9900] p-4 rounded-lg flex items-center space-x-3 w-full sm:w-1/2">
+                    <span class="text-3xl">📅</span>
+                    <div>
+                        <span class="text-xs text-gray-400 block uppercase font-semibold">Event Date</span>
+                        <span class="text-base font-bold text-white">26th December, 2026</span>
+                    </div>
+                </div>
+
+                <div class="bg-[#232f3f] bg-opacity-90 border border-gray-700 p-4 rounded-lg flex items-center space-x-3 w-full sm:w-1/2">
+                    <span class="text-3xl">📍</span>
+                    <div>
+                        <span class="text-xs text-gray-400 block uppercase font-semibold">Venue</span>
+                        <span class="text-base font-bold text-[#ff9900]">To Be Announced (TBA)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="#about" class="bg-[#ff9900] hover:bg-orange-600 text-black font-bold py-3 px-8 rounded-lg shadow-lg transition-colors text-base">
+                    Learn More
+                </a>
+                <a href="#cfp" class="bg-[#232f3f] hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-lg border border-gray-600 hover:border-[#ff9900] transition-colors text-base">
+                    Call for Speakers (CFP)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What to Expect at Community Day 2026</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-base">
+                Community-led, community-driven. Experience technical talks, hands-on workshops, and networking with top cloud engineering experts.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="aws-card p-6 rounded-lg text-left">
+                <div class="text-4xl mb-4">☁️</div>
+                <h3 class="text-xl font-bold text-white mb-2">Cloud & Architecture</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Deep dives into Serverless, Microservices, Multi-region resilient architectures, and infrastructure as code on AWS.
+                </p>
+            </div>
+
+            <div class="aws-card p-6 rounded-lg text-left">
+                <div class="text-4xl mb-4">🤖</div>
+                <h3 class="text-xl font-bold text-white mb-2">Generative AI & Data</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Building next-gen applications with Amazon Bedrock, SageMaker, LLM orchestration, and modern data pipelines.
+                </p>
+            </div>
+
+            <div class="aws-card p-6 rounded-lg text-left">
+                <div class="text-4xl mb-4">🔒</div>
+                <h3 class="text-xl font-bold text-white mb-2">DevOps & Security</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Best practices for Zero-Trust security, CI/CD automation, Kubernetes on AWS (EKS), and cloud cost optimization.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call for Speakers Teaser -->
+    <section id="cfp" class="py-16 px-4 bg-[#161b22] border-t border-b border-gray-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="inline-block bg-purple-900 text-purple-200 text-xs px-3 py-1 rounded-full font-bold uppercase mb-4">
+                🎤 Speak at Community Day
+            </span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Call For Speakers (CFP)</h2>
+            <p class="text-gray-300 text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+                Have an innovative AWS use case, architecture breakdown, or hands-on cloud experience to share? CFP applications will open soon!
+            </p>
+            <div class="inline-block bg-[#232f3f] border border-[#ff9900] p-4 rounded-lg text-[#ff9900] font-semibold text-sm">
+                📢 CFP Opening Announcement Coming Soon
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue & Date Announcement Teaser -->
+    <section class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="aws-card p-8 md:p-12 rounded-xl text-center border-2 border-[#ff9900]">
+            <h2 class="text-3xl font-bold text-white mb-4">Save the Date: 26th December 2026</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto text-base mb-6">
+                Venue details and city selection for Community Day 2026 will be officially announced shortly. Mark your calendars and stay tuned!
+            </p>
+            <div class="flex items-center justify-center space-x-2 text-[#ff9900] font-bold text-lg">
+                <span>📍 Location: To Be Announced</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#232f3f] text-gray-400 py-10 px-4 border-t border-gray-700 text-sm text-center">
+        <div class="max-w-6xl mx-auto">
+            <img src="../images/aws-community-pk-logo.png" alt="AWS Community PK" class="h-12 w-auto mx-auto mb-4" />
+            <p class="text-gray-300 font-semibold mb-4">AWS Community Pakistan — Empowering Cloud Builders Nationwide</p>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-6 text-xs text-gray-300">
+                <a href="../index.html" class="hover:text-[#ff9900]">Home</a>
+                <a href="../lahore/index.html" class="hover:text-[#ff9900]">Lahore UG</a>
+                <a href="../karachi/index.html" class="hover:text-[#ff9900]">Karachi UG</a>
+                <a href="../islamabad/index.html" class="hover:text-[#ff9900]">Islamabad UG</a>
+                <a href="../index.html#student-builders" class="hover:text-[#ff9900]">Student Builders</a>
+                <a href="../codeofconduct.html" class="hover:text-[#ff9900]">Code of Conduct</a>
+            </div>
+
+            <p class="text-xs text-gray-500">© 2026 AWS Community Pakistan. AWS is a trademark of Amazon.com, Inc. or its affiliates.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('mobile-menu-btn')?.addEventListener('click', function () {
+            var menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>
