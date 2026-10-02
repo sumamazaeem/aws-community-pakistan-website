@@ -1,0 +1,37 @@
+# Code owners — who reviews what.
+#
+# The point of this file is that a contributor editing one YAML file in content/
+# gets the right reviewer automatically, and does not need to know who maintains
+# the frontend.
+#
+# NOTE: only @sumamazaeem is listed. Other contributors to this repository
+# (@muhammadawaisshaikh, @m-haris-n, @alitariqdev, @AbdullahYaqub72) have NOT been
+# added, because adding someone as a code owner assigns them review duty and that
+# is their decision to make, not something to configure on their behalf.
+#
+# When this moves to the organization, replace the individual with a team, e.g.
+#   /content/   @AWS-Community-Pakistan/organizers
+
+# Default owner for anything not matched below.
+*                                   @sumamazaeem
+
+# Community data — the contributor surface. Low-risk, data-only changes.
+/content/                           @sumamazaeem
+/content/user-groups/               @sumamazaeem
+/content/student-builder-groups/    @sumamazaeem
+/content/events/                    @sumamazaeem
+
+# Documentation.
+/docs/                              @sumamazaeem
+/README.md                          @sumamazaeem
+/CONTRIBUTING.md                    @sumamazaeem
+
+# Infrastructure and CI — changes here can break or mis-deploy the live site.
+/.github/                           @sumamazaeem
+/scripts/                           @sumamazaeem
+
+# Archived events are historical records and should not normally change at all.
+/old-website/                       @sumamazaeem
+/lahore/aws-community-day-lahore-2022/  @sumamazaeem
+/lahore/aws-community-day-lahore-2024/  @sumamazaeem
+/islamabad/community-day-2024/      @sumamazaeem

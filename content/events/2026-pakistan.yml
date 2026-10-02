@@ -1,0 +1,33 @@
+# AWS Community Day Pakistan 2026 — UPCOMING, NOT YET ANNOUNCED
+#
+# This file is the placeholder for the 2026 event. No page exists for it yet and
+# the repository contains no details, so the fields below are null rather than
+# guessed. Fill these in and the event page can be built from this file.
+#
+# status: upcoming | active | archived
+
+slug: 2026-pakistan
+name: AWS Community Day Pakistan 2026
+year: 2026
+status: upcoming
+
+# TODO (human decision): is 2026 a single national event or per-city editions?
+# If per-city, split this into 2026-<city>.yml files instead.
+scope: null             # national | city
+city: null
+venue: null
+date: null              # YYYY-MM-DD
+end_date: null
+
+user_groups: []         # which groups are hosting
+
+links:
+  site: null
+  registration: null
+  call_for_speakers: null
+  sessionize_widget_id: null
+
+assets_dir: null
+
+needs_verification: true
+last_updated: 2026-10-02

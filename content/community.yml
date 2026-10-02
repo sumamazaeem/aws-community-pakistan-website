@@ -1,0 +1,30 @@
+# AWS Community Pakistan — national identity and accounts
+#
+# These are the NATIONAL accounts. They appear on lahore/index.html, which is why
+# the Lahore User Group file deliberately leaves its own links null rather than
+# claiming these as city-specific.
+
+name: AWS Community Pakistan
+site: https://awscommunity.pk
+logo: images/aws-community-pk-logo.png
+
+links:
+  linkedin: https://www.linkedin.com/company/aws-community-pakistan/
+  facebook: https://www.facebook.com/AWScommunityPakistan
+  x: https://twitter.com/AWSCommunityPK
+  instagram: https://instagram.com/awscommunitypakistan
+  youtube: null
+
+code_of_conduct: codeofconduct.html
+
+# Cities with a dedicated page on the site today.
+cities_with_pages:
+  - karachi
+  - lahore
+  - islamabad
+
+notes: >
+  www.awscommunity.pk returns HTTP 403 while awscommunity.pk returns 200 — the www
+  hostname looks misconfigured at the CDN or DNS layer and should be checked.
+
+last_updated: 2026-10-02

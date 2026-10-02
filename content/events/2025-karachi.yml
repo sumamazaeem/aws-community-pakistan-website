@@ -1,0 +1,34 @@
+# AWS Community Day Karachi 2025
+# Date and venue taken from karachi/index.html.
+
+slug: 2025-karachi
+name: AWS Community Day Karachi 2025
+year: 2025
+status: archived        # held 22 February 2025
+kind: community-day
+scope: city
+city: Karachi
+venue: Mohammad Ali Jinnah University (MAJU), Karachi
+date: 2025-02-22
+end_date: null
+
+user_groups:
+  - karachi
+
+links:
+  site: https://awscommunity.pk/karachi/
+  sessionize_widget_id: q3gfsob1
+
+page: karachi/index.html
+assets_dir: karachi
+
+notes: >
+  The national landing page still advertises this event as "Registration Open",
+  more than a year after it was held — see docs/restructure-plan.md.
+  The page writes the date as "22th Feb" (should be 22nd).
+  karachi/session.html and karachi/speaker.html were byte-identical, both loading
+  the Sessionize Speakers view; session.html has been corrected to load Sessions.
+  This event also introduced the attendee-banner tool at karachi/attendee-banner/.
+
+needs_verification: false
+last_updated: 2026-10-02

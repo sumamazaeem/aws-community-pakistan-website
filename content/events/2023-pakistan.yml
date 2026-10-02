@@ -1,0 +1,44 @@
+# AWS Community Day Pakistan 2023 — LIVES IN A DIFFERENT REPOSITORY
+#
+# Recorded here so 2023 is not a silent gap in the event history. The site for this
+# event is NOT in this repository; it is in
+# AWS-Community-Pakistan/AWS-Community-Day-Pakistan-2023.github.io
+#
+# Some of its assets did end up here, however:
+#   simages/                                            speaker images (Sessionize exports,
+#                                                       filenames timestamped July 2023)
+#   simages/Aws community day pak 2023 logo(dark background)-ai.png
+#   simages/Aws community day pak 2023 logo(white background)-ai.png
+#
+# One of those 2023 logos is used by the Lahore 2024 page, which is why the
+# directory cannot simply be moved.
+
+slug: 2023-pakistan
+name: AWS Community Day Pakistan 2023
+year: 2023
+status: archived
+kind: community-day
+scope: national
+city: null
+venue: null
+date: null              # not recorded in this repository
+end_date: null
+
+user_groups: []
+
+links:
+  site: null
+  repository: https://github.com/AWS-Community-Pakistan/AWS-Community-Day-Pakistan-2023.github.io
+  sessionize_widget_id: null
+
+page: null
+assets_dir: simages
+
+notes: >
+  Whether this event's site should be imported into this repository as an archive is
+  an open question in docs/restructure-plan.md. Note also that the one-line README
+  this repository had before this change read "# AWS-Community-Day-Pakistan-2023" —
+  it appears to have been copied from that repository.
+
+needs_verification: true
+last_updated: 2026-10-02

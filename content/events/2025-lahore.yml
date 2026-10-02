@@ -1,0 +1,34 @@
+# AWS Community Day Lahore 2025
+# Date and venue taken from lahore/index.html.
+
+slug: 2025-lahore
+name: AWS Community Day Lahore 2025
+year: 2025
+status: archived        # held 20 December 2025
+kind: community-day
+scope: city
+city: Lahore
+venue: Auditorium, 6th floor, One World Tower, Lahore
+date: 2025-12-20
+end_date: null
+
+user_groups:
+  - lahore
+
+links:
+  site: https://awscommunity.pk/lahore/
+  call_for_speakers: https://sessionize.com/aws-community-day-lahore-2025
+  sessionize_widget_id: aeseyim7
+
+page: lahore/index.html
+assets_dir: lahore
+
+notes: >
+  This event's page is still served as the CURRENT /lahore/ page, so the Lahore
+  User Group has no durable page separate from its most recent event. The page also
+  embeds a second Sessionize widget (od6gjdhn, the 2024 event) alongside aeseyim7;
+  whether that is intentional is unconfirmed. Registration moved to a Google Form
+  during the event cycle (PR #29).
+
+needs_verification: false
+last_updated: 2026-10-02

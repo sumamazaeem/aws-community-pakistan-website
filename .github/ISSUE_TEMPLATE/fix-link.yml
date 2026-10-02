@@ -1,0 +1,52 @@
+name: Report a broken link or outdated content
+description: Something on the site is wrong, stale, or points nowhere.
+title: "[Fix] "
+labels: ["bug", "content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Small reports are very welcome — a single wrong URL is worth reporting.
+
+        **Archived events:** if the problem is on a past Community Day page, please
+        report it rather than fixing it. Those pages are historical records and are
+        deliberately left as they were published.
+
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      description: The URL, or the file path if you know it.
+      placeholder: https://awscommunity.pk/islamabad/
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem?
+      options:
+        - A link is broken or goes to the wrong place
+        - Information is out of date (a past event shown as upcoming, old dates)
+        - A person's name, role or profile is wrong
+        - An image is missing or broken
+        - A typo
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: What is wrong, and what should it say?
+      placeholder: |
+        The homepage still shows "Registration Open" for Community Day Karachi,
+        which was held on 22 February 2025.
+    validations:
+      required: true
+
+  - type: input
+    id: correct
+    attributes:
+      label: Correct value, if you know it
+      placeholder: https://www.linkedin.com/in/correct-profile/

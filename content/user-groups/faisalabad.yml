@@ -1,0 +1,34 @@
+# AWS User Group Faisalabad
+#
+# INCOMPLETE ON PURPOSE. This group's only trace in the repository is a logo and
+# alt text in kirothon/index.html:
+#     <img src="logos/faisalabad.png" alt="AWS User Group Faisalabad">
+# There is no page, no URL, no leader and no status recorded anywhere. Nothing has
+# been guessed. If you know the real values, filling them in and removing
+# needs_verification is a genuinely useful contribution.
+
+slug: faisalabad
+name: AWS User Group Faisalabad
+city: Faisalabad
+province: Punjab
+status: active          # assumed from being listed; NOT confirmed
+logo: kirothon/logos/faisalabad.png
+page: null
+
+links:
+  linkedin: null
+  meetup: null
+  instagram: null
+  facebook: null
+  x: null
+
+leaders: []
+
+events: []
+
+notes: >
+  Appears only in the Kirothon 2026 User Group logo strip. No dedicated page
+  exists. Group leadership and links are unknown.
+
+needs_verification: true
+last_updated: 2026-10-02

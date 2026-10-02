@@ -1,0 +1,45 @@
+# TEMPLATE — copy this file to <slug>.yml and fill it in.
+# Example: content/student-builder-groups/uol-lahore.yml
+#
+# The filename must match the slug below, and must be lowercase letters, digits
+# and hyphens only. A good slug is <university-abbreviation>-<city>.
+#
+# Delete this header and every TODO comment before opening your pull request.
+# Do not leave a field you do not know filled with a guess — use null.
+
+slug: null                      # e.g. uol-lahore  (must equal the filename)
+university: null                # full official name, e.g. University of Lahore
+short_name: null                # e.g. UOL
+city: null
+province: null
+
+# active     — currently running, has a leader
+# inactive   — paused, no current leader
+# graduated  — leadership has moved on, kept for the record
+status: active
+
+term: null                      # academic year this leadership covers, e.g. 2026
+logo: null                      # path to an existing file, e.g. <city>/images/<slug>.png
+                                # keep it under 300 KB; null is fine if you have none
+
+links:
+  linkedin: null                # https://www.linkedin.com/company/...
+  community: null               # meetup, Discord, WhatsApp community, etc.
+  instagram: null
+
+# At least one leader with role: lead. Use co-lead for the others.
+leaders:
+  - name: null
+    role: lead                  # lead | co-lead
+    linkedin: null              # https://www.linkedin.com/in/...
+    term: null                  # the year THIS person leads; keeps past leaders accurate
+    photo: null                 # path to an existing file, or null
+
+# Must match a file in content/user-groups/ — one of:
+#   karachi | lahore | islamabad | faisalabad | peshawar | wit-lahore
+parent_user_group: null
+
+notes: null
+
+needs_verification: false
+last_updated: null              # YYYY-MM-DD, the date you make the change

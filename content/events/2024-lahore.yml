@@ -1,0 +1,92 @@
+# AWS Community Day Lahore 2024
+# Date, venue and volunteer roster taken from
+# lahore/aws-community-day-lahore-2024/index.html.
+
+slug: 2024-lahore
+name: AWS Community Day Lahore 2024
+year: 2024
+status: archived        # held 25 February 2024
+kind: community-day
+scope: city
+city: Lahore
+venue: FAST NUCES, Lahore
+date: 2024-02-25
+end_date: null
+
+user_groups:
+  - lahore
+
+links:
+  site: https://awscommunity.pk/lahore/aws-community-day-lahore-2024/
+  sessionize_widget_id: od6gjdhn
+
+page: lahore/aws-community-day-lahore-2024/index.html
+assets_dir: vimages
+
+# Event volunteers, recorded against the EVENT rather than promoted to standing
+# User Group leadership. Only the first two carry an explicit role on the page.
+team:
+  - name: Sumama Zaeem
+    label: Organizer
+    linkedin: https://www.linkedin.com/in/sumamazaeem/
+    photo: vimages/sumama.jpg
+  - name: M Waqas Rashid
+    label: Co Organizer
+    linkedin: https://www.linkedin.com/in/waqas-aly07
+    photo: vimages/waqas.jpg
+  - name: M Usman Bin Farid
+    label: null
+    linkedin: https://www.linkedin.com/in/muhammad-usman-bin-farid/
+    photo: vimages/usman.jpg
+  - name: Faizan Afzal
+    label: null
+    linkedin: https://www.linkedin.com/in/faizan-afzal-mobile-app-developer/
+    photo: vimages/faizan.jpg
+  - name: Anam Zakir
+    label: null
+    linkedin: https://www.linkedin.com/in/anamzakir/
+    photo: vimages/anam.jpeg
+  - name: M Abdullah
+    label: null
+    linkedin: https://www.linkedin.com/in/muhammad-abdullah-kasuri
+    photo: vimages/abdullah.jpg
+  - name: Ghania Shahzad
+    label: null
+    linkedin: https://www.linkedin.com/in/ghania-shahzad-5b052227a
+    photo: vimages/ghania.jpg
+  - name: Ayesha Munawar
+    label: null
+    linkedin: https://www.linkedin.com/in/ayesha-munawar-34aab9237/
+    photo: vimages/ayesha.jpeg
+  - name: Umer Farooq
+    label: null
+    linkedin: https://www.linkedin.com/in/umer-farooq
+    photo: vimages/umer.jpeg
+  - name: Hadia Siddiqui
+    label: null
+    linkedin: https://www.linkedin.com/in/hadia-siddiqui-a312bb188
+    photo: vimages/hadia.jpg
+  - name: Sibgha Bhatti
+    label: null
+    linkedin: https://www.linkedin.com/in/sibgha-bhatti-563102273/
+    photo: vimages/sibgha.jpg
+  - name: Amber Sultan
+    label: null
+    linkedin: https://www.linkedin.com/in/amber-sultan-a5b864275/
+    photo: vimages/amber.jpeg
+  - name: Hasnaat Iftikhar
+    label: null
+    linkedin: https://www.linkedin.com/in/hasnaat-iftikhar/
+    photo: vimages/hasnaat.jpg
+
+notes: >
+  Three LinkedIn URLs on the source page carried mobile-app share tracking
+  parameters (utm_source=share&utm_campaign=share_via...); those have been stripped
+  here, which changes nothing about where the links point.
+  The source page also contains unrendered Laravel/Blade placeholders
+  ({{$advisorPerson->name}}, {{$speakerPerson->picture}}) and leftover text from
+  the Indian AWS Community Day template this site descends from ("27th July 2019",
+  "Bengaluru, Karnataka 560008"). As an archive it is left exactly as published.
+
+needs_verification: false
+last_updated: 2026-10-02

@@ -1,0 +1,91 @@
+# AWS User Group Karachi
+# Every value below was taken from karachi/index.html — nothing is invented.
+# status: active | dormant | archived
+# role:   lead | co-lead | mentor | organizer | co-organizer | core-team | unspecified
+
+slug: karachi
+name: AWS User Group Karachi
+city: Karachi
+province: Sindh
+status: active
+logo: kirothon/logos/karachi.jpg
+page: karachi/index.html
+
+links:
+  linkedin: https://www.linkedin.com/company/aws-ug-karachi/
+  instagram: https://www.instagram.com/awsugkhi
+  facebook: https://www.facebook.com/awsugkarachi
+  meetup: null
+  x: null
+
+# The page labels two people "User Group Leader"; both are recorded as lead.
+leaders:
+  - name: Mobeen Ahmed
+    role: lead
+    label: User Group Leader
+    linkedin: https://www.linkedin.com/in/mobeen-ahmed-dev/
+    photo: karachi/images/team/mobeen-ahmed.jpg
+
+  - name: Raheel Siddiqui
+    role: lead
+    label: User Group Leader
+    linkedin: https://www.linkedin.com/in/rawheel/
+    photo: karachi/images/team/raheel-siddiqui.jpg
+
+  - name: Muhammad Awais
+    role: core-team
+    label: Core Team Member
+    linkedin: https://www.linkedin.com/in/muhammadawaisshaikh/
+    photo: karachi/images/team/muhammad-awais.jpg
+
+  - name: Qasim Hassan
+    role: core-team
+    label: Core Team Member
+    linkedin: https://www.linkedin.com/in/qasimhassan/
+    photo: karachi/images/team/qasim.jpg
+
+  - name: Ayan Hussain
+    role: core-team
+    label: Core Team Member
+    linkedin: https://www.linkedin.com/in/ayan-hussain/
+    photo: karachi/images/team/ayan.jpg
+
+  - name: Muhammad Uzair Khan
+    role: core-team
+    label: Core Team Member
+    linkedin: https://www.linkedin.com/in/muhammaduzairkhan1/
+    photo: karachi/images/team/uzair-khan.jpg
+
+  - name: Muhammad Souhaib
+    role: core-team
+    label: Core Team Member
+    linkedin: https://www.linkedin.com/in/muhammad-souhaib/
+    photo: karachi/images/team/souhaib.jpg
+
+  - name: Bahameen Majeed
+    role: core-team
+    label: Core Team Member
+    linkedin: https://www.linkedin.com/in/bahameen-majeed-160174219/
+    photo: karachi/images/team/bahameen.png
+
+  - name: Ahad Ali
+    role: core-team
+    label: Core Team Member
+    linkedin: https://www.linkedin.com/in/ahad--ali/
+    photo: karachi/images/team/ahad-ali.jpg
+
+  - name: Ghous Ahmed
+    role: core-team
+    label: Core Team Member
+    linkedin: https://www.linkedin.com/in/ghousahmed/
+    photo: karachi/images/team/ghous.jpeg
+
+events:
+  - 2025-karachi
+
+notes: >
+  karachi/images/team/ also contains bahameen.jpg alongside bahameen.png; the page
+  uses the .png. Both files are retained.
+
+needs_verification: false
+last_updated: 2026-10-02

@@ -1,0 +1,50 @@
+# AWS User Group Lahore
+# Every value below was taken from lahore/index.html — nothing is invented.
+# status: active | dormant | archived
+# role:   lead | co-lead | mentor | organizer | co-organizer | core-team | unspecified
+
+slug: lahore
+name: AWS User Group Lahore
+city: Lahore
+province: Punjab
+status: active
+logo: images/aws_ug_lahore1.png
+page: lahore/index.html
+
+# The social links printed on lahore/index.html are the NATIONAL AWS Community
+# Pakistan accounts, not a Lahore-specific group account. They are recorded in
+# content/community.yml instead. No Lahore-only handle exists in the repository.
+links:
+  linkedin: null
+  meetup: null
+  instagram: null
+  facebook: null
+  x: null
+
+# lahore/index.html names one organizer. The larger volunteer roster on the 2024
+# event page belongs to that event, and is recorded in content/events/2024-lahore.yml
+# rather than being promoted to standing User Group leadership.
+leaders:
+  - name: Sumama Zaeem
+    role: organizer
+    label: Organizer
+    linkedin: https://www.linkedin.com/in/sumamazaeem/
+    photo: images/sumama-favicon.png
+
+events:
+  - 2025-lahore
+  - 2024-lahore
+  - 2022-lahore
+
+notes: >
+  AWS User Group Lahore does not appear in the User Group logo strip on
+  kirothon/index.html, which lists Women in Tech Lahore instead. Whether that
+  omission is deliberate is unresolved. The photo referenced above
+  (images/sumama-favicon.png) is a 1.97 MB PNG being used as both a favicon and a
+  portrait and should be replaced with a properly sized portrait.
+  lahore/index.html also still contains unrendered Laravel/Blade placeholders
+  ({{$advisorPerson->name}}, {{$speakerPerson->picture}}) and leftover text from
+  the template this site descends from; see docs/restructure-plan.md item 2f.
+
+needs_verification: false
+last_updated: 2026-10-02

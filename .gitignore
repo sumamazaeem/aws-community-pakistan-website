@@ -24,14 +24,44 @@ Gemfile.lock
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# IDE
+# IDE / editor state
 .idea/
 .vscode/
 *.swp
 *.swo
 
+# Visual Studio local state.
+# NOTE: this repository is synced to S3 verbatim, so anything committed here is
+# PUBLICLY DOWNLOADABLE on awscommunity.pk. .vs/slnx.sqlite (282 KB) and
+# .vs/.../applicationhost.config (82 KB) are currently served live. These rules
+# stop NEW ones appearing; removing the already-committed files is a separate
+# decision tracked in docs/restructure-plan.md item 2a.
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Browser / Electron caches that have been committed here before
+GPUCache/
+*.sqlite
+*.sqlite3
+
+# Logs
+debug.log
+*.log
+
+# Archives — the repository already carries a 16.6 MB .rar of an old site
+*.rar
+*.zip
+*.7z
+*.tar.gz
+
 # Temp / secrets (never commit real credentials)
 /tmp/
 *.env
 .env*
+*.pem
+*.key
+credentials

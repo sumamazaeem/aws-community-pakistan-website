@@ -1,0 +1,35 @@
+# AWS User Group Peshawar
+#
+# INCOMPLETE ON PURPOSE. This group's only trace in the repository is a logo and
+# alt text in kirothon/index.html:
+#     <img src="logos/peshawar.avif" alt="AWS User Group Peshawar">
+# There is no page, no URL, no leader and no status recorded anywhere. Nothing has
+# been guessed.
+
+slug: peshawar
+name: AWS User Group Peshawar
+city: Peshawar
+province: Khyber Pakhtunkhwa
+status: active          # assumed from being listed; NOT confirmed
+logo: kirothon/logos/peshawar.avif
+page: null
+
+links:
+  linkedin: null
+  meetup: null
+  instagram: null
+  facebook: null
+  x: null
+
+leaders: []
+
+events: []
+
+notes: >
+  Appears only in the Kirothon 2026 User Group logo strip. No dedicated page
+  exists. Group leadership and links are unknown. The logo is .avif while other
+  group logos are .png/.jpg/.jpeg — formats should be unified when the set is
+  consolidated.
+
+needs_verification: true
+last_updated: 2026-10-02

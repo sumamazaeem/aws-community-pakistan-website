@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: How to contribute
+    url: https://github.com/sumamazaeem/aws-community-pakistan-website/blob/main/CONTRIBUTING.md
+    about: Most changes are one small YAML file in content/ — start here.
+  - name: Repository architecture
+    url: https://github.com/sumamazaeem/aws-community-pakistan-website/blob/main/docs/architecture.md
+    about: Repository layout, what each asset directory holds, and the theme tokens.
+  - name: AWS Community Pakistan
+    url: https://awscommunity.pk
+    about: The live site.

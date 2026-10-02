@@ -1,0 +1,35 @@
+# AWS User Group Women in Tech Lahore
+#
+# INCOMPLETE ON PURPOSE. This group's only trace in the repository is a logo and
+# alt text in kirothon/index.html:
+#     <img src="logos/wit-lahore.avif" alt="AWS User Group Women in Tech Lahore">
+# There is no page, no URL, no leader and no status recorded anywhere. Nothing has
+# been guessed.
+
+slug: wit-lahore
+name: AWS User Group Women in Tech Lahore
+city: Lahore
+province: Punjab
+status: active          # assumed from being listed; NOT confirmed
+logo: kirothon/logos/wit-lahore.avif
+page: null
+
+links:
+  linkedin: null
+  meetup: null
+  instagram: null
+  facebook: null
+  x: null
+
+leaders: []
+
+events: []
+
+notes: >
+  Appears only in the Kirothon 2026 User Group logo strip, where it is listed
+  INSTEAD OF AWS User Group Lahore rather than alongside it. Whether these are
+  separate groups, or whether the strip is simply missing UG Lahore, is unresolved
+  and needs a human answer.
+
+needs_verification: true
+last_updated: 2026-10-02

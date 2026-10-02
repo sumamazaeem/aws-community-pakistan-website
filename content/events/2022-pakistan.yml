@@ -1,0 +1,40 @@
+# AWS Community Day Pakistan (national) — YEAR UNRESOLVED
+#
+# This file covers old-website/aws-community-day-pakistan-2021/.
+# The directory name says 2021. The page itself says "October 1st, 2022".
+# The slug below uses 2022 because that is what the PAGE says — the directory name
+# is the less reliable of the two — but this is flagged for a human to confirm
+# before anything is renamed or moved.
+
+slug: 2022-pakistan
+name: AWS Community Day Pakistan
+year: 2022              # per the page; directory says 2021
+status: archived
+kind: community-day
+scope: national
+city: null
+venue: null
+date: 2022-10-01        # per the page
+end_date: null
+
+user_groups: []
+
+links:
+  site: https://awscommunity.pk/old-website/aws-community-day-pakistan-2021/
+  sessionize_widget_id: null
+
+page: old-website/aws-community-day-pakistan-2021/index.html
+assets_dir: old-website/aws-community-day-pakistan-2021
+
+notes: >
+  Largest archive in the repository: 4,060 files, about 162 MiB. Contains a further
+  nested archive at oldwebsite/ (an archive inside an archive) and a 16.6 MB
+  aws-website.rar of the site inside that. FontAwesome is vendored 6 to 14 times
+  across its subdirectories, which is most of the repository's duplicate weight.
+
+  It advertises the same 1 October 2022 date as 2022-lahore.yml, so these two files
+  may describe one event rather than two. Nothing has been merged or renamed on that
+  suspicion. All files retained exactly as published.
+
+needs_verification: true
+last_updated: 2026-10-02

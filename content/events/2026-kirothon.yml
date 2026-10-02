@@ -1,0 +1,38 @@
+# Kirothon 2026
+# Dates taken from kirothon/index.html.
+
+slug: 2026-kirothon
+name: Kirothon 2026
+year: 2026
+status: archived        # build phase ended 20 May 2026
+kind: hackathon
+scope: national
+city: null
+venue: online
+date: 2026-04-01
+end_date: 2026-05-20
+
+user_groups:
+  - karachi
+  - islamabad
+  - faisalabad
+  - peshawar
+  - wit-lahore
+
+links:
+  site: https://awscommunity.pk/kirothon/
+  repository: https://github.com/sumamazaeem/kirothon-2026
+  sessionize_widget_id: null
+
+page: kirothon/index.html
+assets_dir: kirothon/logos
+
+notes: >
+  The User Group logo strip on this page is currently the only list of Pakistan's
+  AWS User Groups anywhere on the site, which is why the user_groups list above was
+  derived from it. AWS User Group Lahore is not in that strip. The page still shows
+  a build phase of 1 April to 20 May 2026, now past, and a judging timeline that
+  has also elapsed.
+
+needs_verification: false
+last_updated: 2026-10-02

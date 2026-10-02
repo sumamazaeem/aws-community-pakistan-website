@@ -1,0 +1,106 @@
+name: Add or update a Student Builder Group
+description: Register your university's AWS Student Builder Group, or update its leader.
+title: "[Student Builder Group] "
+labels: ["community-data", "student-builder-group"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The website currently has **no** Student Builder Group content at all, so
+        every submission here is genuinely new information. No YAML needed — fill
+        this in and a maintainer will add it.
+
+  - type: input
+    id: university
+    attributes:
+      label: University
+      description: Full official name.
+      placeholder: University of Lahore
+    validations:
+      required: true
+
+  - type: input
+    id: short_name
+    attributes:
+      label: Common abbreviation
+      placeholder: UOL
+    validations:
+      required: true
+
+  - type: input
+    id: city
+    attributes:
+      label: City
+      placeholder: Lahore
+    validations:
+      required: true
+
+  - type: input
+    id: term
+    attributes:
+      label: Academic year this leadership covers
+      description: Past leaders are kept on record rather than overwritten, so this matters.
+      placeholder: "2026"
+    validations:
+      required: true
+
+  - type: textarea
+    id: leaders
+    attributes:
+      label: Leaders
+      description: One per line, as `Name — lead or co-lead — LinkedIn URL`.
+      placeholder: |
+        Arslan Ahmed — lead — https://www.linkedin.com/in/example/
+      render: text
+    validations:
+      required: true
+
+  - type: dropdown
+    id: parent
+    attributes:
+      label: Nearest AWS User Group
+      description: Which city User Group does this group sit under?
+      options:
+        - Karachi
+        - Lahore
+        - Islamabad
+        - Faisalabad
+        - Peshawar
+        - Women in Tech Lahore
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - active — currently running, has a leader
+        - inactive — paused, no current leader
+        - graduated — leadership has moved on
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: Group LinkedIn page, community link (Meetup, Discord, WhatsApp), Instagram.
+      render: text
+
+  - type: markdown
+    attributes:
+      value: |
+        **University logo:** attach it to this issue if you have one. Keep it under
+        300 KB.
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: This group is officially recognised as an AWS Student Builder Group.
+          required: true
+        - label: The people named are happy to be listed publicly with these links.
+          required: true

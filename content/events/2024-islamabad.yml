@@ -1,0 +1,35 @@
+# AWS Community Day Islamabad 2024
+# Date and venue taken from islamabad/community-day-2024/index.html.
+
+slug: 2024-islamabad
+name: AWS Community Day Islamabad 2024
+year: 2024
+status: archived        # held 24 August 2024
+kind: community-day
+scope: city
+city: Islamabad
+venue: National Incubation Centre, Islamabad
+date: 2024-08-24
+end_date: null
+
+user_groups:
+  - islamabad
+
+links:
+  site: https://awscommunity.pk/islamabad/
+  sessionize_widget_id: null
+
+page: islamabad/community-day-2024/index.html
+assets_dir: islamabad/community-day-2024/images
+
+notes: >
+  This page is byte-identical to islamabad/index.html, so the same file serves as
+  both the archived 2024 event and the current Islamabad User Group page. Its
+  images directory is duplicated too (islamabad/images/community-day-2024/ holds
+  the same eight photos). Both copies are retained; separating the User Group page
+  from the event is tracked in docs/restructure-plan.md item 2e.
+  The page also contains placeholder text ("Event Name 12 August, 2022",
+  "Lorem, ipsum dolor sit a...") in an upcoming-events section.
+
+needs_verification: false
+last_updated: 2026-10-02

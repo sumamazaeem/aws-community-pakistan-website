@@ -1,8 +1,30 @@
 name: CloudFront Cache Invalidation
 
+# Invalidates the CloudFront cache after AWS CodePipeline has deployed THIS commit.
+#
+# WHY THIS WAS REWRITTEN
+# ----------------------
+# The previous version read the Deploy stage's latestExecution.status immediately
+# after the push. If the new pipeline execution had not started yet, that returned
+# the PREVIOUS execution's "Succeeded" -- so the job invalidated the cache straight
+# away and exited 0, before the new files reached S3. CloudFront then re-fetched and
+# re-cached the OLD content. That is exactly the stale-content failure this workflow
+# exists to prevent.
+#
+# The fix: find the pipeline execution whose source revision IS this commit, and
+# only invalidate once THAT execution has succeeded. An execution for a different
+# commit can never satisfy the wait.
+#
+# See docs/deployment.md.
+
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  # id-token: write        # uncomment when moving to OIDC (see below)
 
 jobs:
   invalidate-cache:
@@ -11,51 +33,123 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
+          # TODO (recommended): replace these long-lived keys with OIDC role
+          # assumption and delete the two secrets. See docs/deployment.md.
+          #   role-to-assume: arn:aws:iam::<account-id>:role/<github-actions-role>
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          # CloudFront's API is global and only accepts us-east-1. The old version
+          # read this from a secret, which is unnecessary -- a region is not secret.
+          aws-region: us-east-1
 
-      - name: Wait for CodePipeline deployment to succeed
-        id: pipeline-check
+      - name: Wait for CodePipeline to deploy THIS commit
+        id: pipeline
+        env:
+          PIPELINE_NAME: ${{ vars.CODEPIPELINE_NAME }}
+          COMMIT_SHA: ${{ github.sha }}
         run: |
-          MAX_ATTEMPTS=20   # 20 x 30s = 10 minutes max wait
+          set -uo pipefail
+
+          if [ -z "${PIPELINE_NAME:-}" ]; then
+            echo "::error::CODEPIPELINE_NAME repository variable is not set."
+            exit 1
+          fi
+
+          MAX_ATTEMPTS=40          # 40 x 30s = 20 minutes
           ATTEMPT=0
-          while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
-            STATUS=$(aws codepipeline get-pipeline-state \
-              --name "${{ vars.CODEPIPELINE_NAME }}" \
-              --query "stageStates[?stageName=='Deploy'].latestExecution.status" \
-              --output text)
-            echo "Attempt $((ATTEMPT+1))/$MAX_ATTEMPTS — Pipeline status: $STATUS"
-            if [ "$STATUS" = "Succeeded" ]; then
-              echo "CodePipeline deployment succeeded."
-              exit 0
-            elif [ "$STATUS" = "Failed" ] || [ "$STATUS" = "Stopped" ] || [ "$STATUS" = "Superseded" ]; then
-              echo "CodePipeline ended with non-recoverable status: $STATUS. Aborting invalidation."
-              exit 1
+
+          echo "Waiting for a pipeline execution whose source revision is ${COMMIT_SHA}"
+
+          while [ "$ATTEMPT" -lt "$MAX_ATTEMPTS" ]; do
+            ATTEMPT=$((ATTEMPT + 1))
+
+            # Look at recent executions and select the one built from THIS commit.
+            # Matching on revisionId is what makes a previous execution's success
+            # unable to satisfy this wait.
+            EXECUTION=$(aws codepipeline list-pipeline-executions \
+              --pipeline-name "$PIPELINE_NAME" \
+              --max-items 25 \
+              --query "pipelineExecutionSummaries[?sourceRevisions[?revisionId=='${COMMIT_SHA}']] | [0].{id:pipelineExecutionId,status:status}" \
+              --output json 2>/dev/null)
+
+            STATUS=$(echo "$EXECUTION" | python3 -c \
+              'import json,sys; d=json.load(sys.stdin) or {}; print((d or {}).get("status") or "")' \
+              2>/dev/null || echo "")
+            EXEC_ID=$(echo "$EXECUTION" | python3 -c \
+              'import json,sys; d=json.load(sys.stdin) or {}; print((d or {}).get("id") or "")' \
+              2>/dev/null || echo "")
+
+            if [ -z "$STATUS" ]; then
+              echo "Attempt ${ATTEMPT}/${MAX_ATTEMPTS} — no execution for this commit yet; waiting 30s"
+              sleep 30
+              continue
             fi
-            ATTEMPT=$((ATTEMPT+1))
-            echo "Waiting 30s for pipeline to complete..."
-            sleep 30
+
+            echo "Attempt ${ATTEMPT}/${MAX_ATTEMPTS} — execution ${EXEC_ID} status: ${STATUS}"
+
+            case "$STATUS" in
+              Succeeded)
+                echo "CodePipeline deployed ${COMMIT_SHA} successfully."
+                echo "execution_id=${EXEC_ID}" >> "$GITHUB_OUTPUT"
+                exit 0
+                ;;
+              Failed|Stopped|Stopping)
+                echo "::error::Pipeline execution ${EXEC_ID} ended as ${STATUS}. Not invalidating."
+                exit 1
+                ;;
+              Superseded)
+                # A newer commit is being deployed. Invalidating for this one is
+                # pointless and would cache an intermediate state; the newer run
+                # will do its own invalidation.
+                echo "::warning::Execution ${EXEC_ID} was superseded by a newer commit. Skipping."
+                echo "skipped=true" >> "$GITHUB_OUTPUT"
+                exit 0
+                ;;
+              *)
+                sleep 30
+                ;;
+            esac
           done
-          echo "Timed out after $((MAX_ATTEMPTS * 30))s waiting for CodePipeline to succeed."
+
+          echo "::error::Timed out after $((MAX_ATTEMPTS * 30))s waiting for ${COMMIT_SHA} to deploy."
           exit 1
 
       - name: Invalidate CloudFront cache
         id: invalidate
+        if: steps.pipeline.outputs.skipped != 'true'
+        env:
+          DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
         run: |
+          set -euo pipefail
           RESULT=$(aws cloudfront create-invalidation \
-            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --distribution-id "$DISTRIBUTION_ID" \
             --paths "/*" \
             --output json)
-          INVALIDATION_ID=$(echo "$RESULT" | jq -r '.Invalidation.Id')
-          echo "invalidation_id=$INVALIDATION_ID" >> "$GITHUB_OUTPUT"
+          INVALIDATION_ID=$(echo "$RESULT" | python3 -c \
+            'import json,sys; print(json.load(sys.stdin)["Invalidation"]["Id"])')
+          echo "invalidation_id=${INVALIDATION_ID}" >> "$GITHUB_OUTPUT"
+          echo "Created invalidation ${INVALIDATION_ID}"
 
       - name: Report status
         if: always()
         run: |
-          if [ "${{ steps.invalidate.outcome }}" == "success" ]; then
-            echo "### ✅ CloudFront Invalidation Succeeded" >> "$GITHUB_STEP_SUMMARY"
-            echo "Invalidation ID: ${{ steps.invalidate.outputs.invalidation_id }}" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "### ❌ CloudFront Invalidation Failed" >> "$GITHUB_STEP_SUMMARY"
-          fi
+          {
+            if [ "${{ steps.pipeline.outputs.skipped }}" = "true" ]; then
+              echo "### Invalidation skipped"
+              echo "This commit's pipeline execution was superseded by a newer commit."
+            elif [ "${{ steps.invalidate.outcome }}" = "success" ]; then
+              echo "### CloudFront invalidation succeeded"
+              echo ""
+              echo "- Commit: \`${{ github.sha }}\`"
+              echo "- Pipeline execution: \`${{ steps.pipeline.outputs.execution_id }}\`"
+              echo "- Invalidation: \`${{ steps.invalidate.outputs.invalidation_id }}\`"
+            else
+              echo "### CloudFront invalidation did not run"
+              echo ""
+              echo "Pipeline wait outcome: \`${{ steps.pipeline.outcome }}\`"
+              echo "See docs/deployment.md for troubleshooting."
+            fi
+            echo ""
+            echo "> Note: Cloudflare sits in front of CloudFront. A CloudFront"
+            echo "> invalidation does not purge Cloudflare's cache."
+          } >> "$GITHUB_STEP_SUMMARY"

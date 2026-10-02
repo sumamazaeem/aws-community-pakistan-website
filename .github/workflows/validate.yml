@@ -1,0 +1,122 @@
+name: Validate
+
+# Runs on every pull request and on pushes to the production branch.
+#
+# Deliberately requires NO secrets, so it also runs safely on pull requests from
+# forks -- which is the prerequisite for accepting public community contributions.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  content:
+    name: Content data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install PyYAML
+        run: pip install --quiet 'pyyaml==6.0.*'
+
+      - name: Validate content/
+        run: python3 scripts/validate_content.py
+
+  html:
+    name: HTML sanity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Catches the class of bug that has actually shipped here before:
+      # unrendered server-template placeholders left in static HTML.
+      # Scoped to the ACTIVE pages only -- archived event pages are historical
+      # records and are intentionally not held to current standards.
+      - name: Check active pages for unrendered template placeholders
+        run: |
+          set -euo pipefail
+          active=(index.html karachi/index.html islamabad/index.html kirothon/index.html)
+          failed=0
+          for f in "${active[@]}"; do
+            [ -f "$f" ] || continue
+            if grep -nE '\{\{[^}]*\}\}' "$f"; then
+              echo "::error file=$f::unrendered template placeholder found"
+              failed=1
+            fi
+          done
+          # lahore/index.html is a KNOWN offender (23 placeholders), tracked in
+          # docs/restructure-plan.md item 2f. Reported as a warning so this check
+          # can be enabled now without blocking unrelated work.
+          if [ -f lahore/index.html ] && grep -qE '\{\{[^}]*\}\}' lahore/index.html; then
+            echo "::warning file=lahore/index.html::known unrendered placeholders - see docs/restructure-plan.md item 2f"
+          fi
+          exit $failed
+
+      - name: Check active pages are parseable and have a title
+        run: |
+          python3 - <<'PY'
+          import pathlib, sys
+          from html.parser import HTMLParser
+
+          class P(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.title = False
+              def handle_starttag(self, tag, attrs):
+                  if tag == "title":
+                      self.title = True
+
+          bad = []
+          for name in ["index.html", "karachi/index.html", "lahore/index.html",
+                       "islamabad/index.html", "kirothon/index.html"]:
+              path = pathlib.Path(name)
+              if not path.is_file():
+                  continue
+              parser = P()
+              try:
+                  parser.feed(path.read_text(encoding="utf-8", errors="replace"))
+              except Exception as exc:
+                  bad.append(f"{name}: parse error {exc}")
+                  continue
+              if not parser.title:
+                  bad.append(f"{name}: no <title>")
+          for line in bad:
+              print(f"::error::{line}")
+          sys.exit(1 if bad else 0)
+          PY
+
+  tests:
+    name: Existing test suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # These tests existed in tests/ but no workflow ever ran them.
+      # continue-on-error while their current state is unknown -- the point is to
+      # make the result visible, not to block on a suite nobody has run yet.
+      - name: Kirothon tests
+        continue-on-error: true
+        run: npm test --if-present
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Workflow and IAM policy tests
+        continue-on-error: true
+        run: |
+          pip install --quiet pytest pyyaml
+          pytest tests/ -q || true

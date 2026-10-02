@@ -1,0 +1,86 @@
+name: Update an AWS User Group
+description: Add a new AWS User Group in Pakistan, or correct an existing one's leader or links.
+title: "[User Group] "
+labels: ["community-data", "user-group"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for keeping this accurate. You do not need to write any YAML —
+        fill this in and a maintainer will apply it, or you can open the pull
+        request yourself against `content/user-groups/<city>.yml`.
+
+  - type: dropdown
+    id: group
+    attributes:
+      label: Which User Group?
+      options:
+        - Karachi
+        - Lahore
+        - Islamabad
+        - Faisalabad
+        - Peshawar
+        - Women in Tech Lahore
+        - A group not listed here (new)
+    validations:
+      required: true
+
+  - type: input
+    id: new_group_name
+    attributes:
+      label: If new, what is the group called?
+      placeholder: AWS User Group Multan
+
+  - type: dropdown
+    id: change
+    attributes:
+      label: What needs changing?
+      multiple: true
+      options:
+        - Group leader or co-leader
+        - LinkedIn URL
+        - Meetup or community URL
+        - Other social links
+        - Group is no longer active
+        - Group logo
+        - Adding a brand new group
+    validations:
+      required: true
+
+  - type: textarea
+    id: leaders
+    attributes:
+      label: Leaders
+      description: |
+        One per line, as `Name — role — LinkedIn URL`.
+        Roles: lead, co-lead, mentor, organizer, co-organizer, core-team.
+      placeholder: |
+        Hamza Shabbir — organizer — https://www.linkedin.com/in/hamzashabbir1/
+        Abdullah Paracha — co-organizer — https://www.linkedin.com/in/eamaaypee/
+      render: text
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Group links
+      description: LinkedIn page, Meetup, Instagram, Facebook, X. Leave out any you do not have.
+      placeholder: |
+        linkedin: https://www.linkedin.com/company/aws-ug-karachi/
+        instagram: https://www.instagram.com/awsugkhi
+      render: text
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How can we verify this?
+      description: A link to the group's own page or the person's profile. This is what lets us merge without a back-and-forth.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: The people named here are happy to be listed publicly with these links.
+          required: true

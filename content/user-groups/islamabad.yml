@@ -1,0 +1,75 @@
+# AWS User Group Islamabad
+# Every value below was taken from islamabad/index.html — nothing is invented.
+# status: active | dormant | archived
+# role:   lead | co-lead | mentor | organizer | co-organizer | core-team | unspecified
+
+slug: islamabad
+name: AWS User Group Islamabad
+city: Islamabad
+province: Islamabad Capital Territory
+status: active
+logo: kirothon/logos/islamabad.jpeg
+page: islamabad/index.html
+
+# The Islamabad page carries NO social links of any kind. Left null rather than
+# borrowing the national accounts, which would be inaccurate.
+links:
+  linkedin: null
+  meetup: null
+  instagram: null
+  facebook: null
+  x: null
+
+# The first three people carry an explicit AWS User Group role on the page. The
+# last three are listed under "Meet our team" with a job title only, so their
+# role is recorded as unspecified rather than guessed.
+leaders:
+  - name: Fawad Hussain
+    role: mentor
+    label: AWS User Group Mentor
+    linkedin: https://www.linkedin.com/in/fawad-hussain-80124032/
+    photo: islamabad/images/team/Fawad.jpg
+
+  - name: Hamza Shabbir
+    role: organizer
+    label: AWS User Group Organizer
+    linkedin: https://www.linkedin.com/in/hamzashabbir1/
+    photo: islamabad/images/team/Hamza.jpg
+
+  - name: Abdullah Paracha
+    role: co-organizer
+    label: AWS User Group Co-Organizer
+    linkedin: https://www.linkedin.com/in/eamaaypee/
+    photo: islamabad/images/team/Abdullah.jpg
+
+  - name: Alina Shoaib Qureshi
+    role: unspecified
+    label: null
+    linkedin: https://www.linkedin.com/in/alina-shoaib/
+    photo: "islamabad/images/team/Alina Shoaib.jpg"
+
+  - name: Kashif Mehmood
+    role: unspecified
+    label: null
+    linkedin: https://www.linkedin.com/in/kashif-mehmood-km/
+    photo: islamabad/images/team/Kashif.jpg
+
+  - name: Waleed Rafi
+    role: unspecified
+    label: null
+    linkedin: https://www.linkedin.com/in/waleedrafi/
+    photo: "islamabad/images/team/Waleed Rafi.jpg"
+
+events:
+  - 2024-islamabad
+
+notes: >
+  islamabad/index.html is byte-identical to islamabad/community-day-2024/index.html,
+  so this group currently has no durable page of its own — the User Group page IS
+  the 2024 event page. Separating the two is tracked in docs/restructure-plan.md.
+  islamabad/images/team/Ahmed Anis.jpg exists but has no card on the page; the file
+  is retained. No social accounts and no meetup URL are recorded anywhere for this
+  group, and the three roles marked unspecified need confirming.
+
+needs_verification: false
+last_updated: 2026-10-02

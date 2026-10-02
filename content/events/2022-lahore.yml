@@ -1,0 +1,39 @@
+# AWS Community Day Lahore 2022
+# Date and venue taken from lahore/aws-community-day-lahore-2022/index.html,
+# which reads "1st October 2022, UET Lahore".
+
+slug: 2022-lahore
+name: AWS Community Day Lahore 2022
+year: 2022
+status: archived        # held 1 October 2022
+kind: community-day
+scope: city
+city: Lahore
+venue: UET Lahore
+date: 2022-10-01
+end_date: null
+
+user_groups:
+  - lahore
+
+links:
+  site: https://awscommunity.pk/lahore/aws-community-day-lahore-2022/
+  sessionize_widget_id: null
+
+page: lahore/aws-community-day-lahore-2022/index.html
+assets_dir: lahore/aws-community-day-lahore-2022/images
+
+notes: >
+  UNRESOLVED YEAR OVERLAP. The directory old-website/aws-community-day-pakistan-2021/
+  is named 2021, but its index.html advertises "October 1st, 2022" — the same date
+  as this event. Either that directory is the 2021 site later edited to promote the
+  2022 event, or both directories describe the same 1 October 2022 event. This needs
+  a human answer before either is renamed; see docs/restructure-plan.md.
+
+  This directory also contains a nested 2018/ subdirectory holding an entire earlier
+  template site (89 files), a committed GPUCache/ directory, a debug.log, .vs/ and
+  .vscode/ state, and its own config.rb and package-lock.json. All retained as
+  published.
+
+needs_verification: true
+last_updated: 2026-10-02
