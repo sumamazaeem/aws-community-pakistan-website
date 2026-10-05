@@ -15,3 +15,4 @@ This means you do not have to worry about stale or old data—your new changes a
 
 ## Contributing
 We welcome contributions from the community! If you'd like to help improve the website, please read our [Contributing Guidelines](CONTRIBUTING.md) to understand how you can fork the repository, make your changes, and submit a pull request.
+ 
