@@ -3,7 +3,7 @@
 Welcome to the official repository for the AWS Community Pakistan website! 
 
 ## Live Website
-The website is currently served live at **[awskvmt.pk](https://awskvmt.pk)**. 
+The website is currently served live at **[awscommunity.pk](https://awscommunity.pk)**. 
 
 ## Deployment & Cache Invalidation
 This repository is configured with a fully automated CI/CD pipeline using GitHub Actions. 
